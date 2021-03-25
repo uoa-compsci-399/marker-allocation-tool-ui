@@ -7,4 +7,4 @@ Trello board: https://trello.com/b/mAYp4wAx/classe-a-web-based-tool-for-organisi
 To start working on a feature either:
 
 - work on a existing branch (not develop or master)
-- or checkout from develop and name the branch according the branch name specified in the trello item e.g. (MAT-2)
+- or checkout from develop and name the branch according the branch name specified in the trello item e.g. MAT-2
