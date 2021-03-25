@@ -1,4 +1,4 @@
-# marker-allocation-tool-1
+# Marker-allocation-tool-ui
 
 Trello board: https://trello.com/b/mAYp4wAx/classe-a-web-based-tool-for-organising-markers
 
