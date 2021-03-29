@@ -2,6 +2,39 @@
 
 Trello board: https://trello.com/b/mAYp4wAx/classe-a-web-based-tool-for-organising-markers
 
+# Getting started
+
+1) Install Node js.
+
+2) Then to install Yarn: `npm install -g yarn`
+
+3) Install https://volta.sh/ for automatic node version management
+
+4) From project root run `yarn install`
+
+5) Then run `yarn dev` to open application in localhost 
+
+## Tools
+
+Craco - Helps extend create-react-app for use with tailwind
+
+Volta - makes sure you have the right node.js and yarn version set
+
+Create-react-app - [Create React App](https://github.com/facebook/create-react-app) [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+## Useful Vscode extensions
+
+Tailwind CSS IntelliSense - https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+
+Refactor CSS - https://marketplace.visualstudio.com/items?itemName=urbantrout.refactor-css
+
+## Other resources
+
+https://github.com/typescript-cheatsheets/react
+
+https://tailwindcomponents.com/cheatsheet/
+
+
 # Contributing 
 
 To start working on a feature either:
