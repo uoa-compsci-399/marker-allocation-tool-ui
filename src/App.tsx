@@ -1,3 +1,4 @@
+import React from 'react';
 import Example from './components/common-ui/example';
 
 function App(): JSX.Element {
