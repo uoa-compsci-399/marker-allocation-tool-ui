@@ -24,8 +24,9 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "./node_modules/.bin/prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "lint": "eslint ."
-    },
+    "lint": "eslint .",
+    "postinstall": "husky install"
+  },
   "volta": {
     "node": "14.16.0",
     "yarn": "1.22.10"
@@ -50,7 +51,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+        "pre-commit": "pretty-quick --staged"
     }
   },
   "lint-staged": {
