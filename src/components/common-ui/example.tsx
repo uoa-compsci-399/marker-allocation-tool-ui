@@ -1,5 +1,4 @@
-import React from "react";
-import clsx from "clsx";
+import clsx from 'clsx';
 
 interface ExampleProps {
   title: string;
@@ -14,9 +13,9 @@ const Example = ({ title, description }: ExampleProps): JSX.Element => {
           <div
             className={clsx(
               //  utillity classes at different screen widths
-              "text-sm font-semibold tracking-wide lg:text-indigo-700 uppercase",
-              "md:text-green-800",
-              "sm:text-red-700"
+              'text-sm font-semibold tracking-wide lg:text-indigo-700 uppercase',
+              'md:text-green-800',
+              'sm:text-red-700'
             )}
           >
             {title}

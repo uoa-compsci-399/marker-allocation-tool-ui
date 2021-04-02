@@ -5,53 +5,39 @@ const defaultRules = [
 ];
 
 module.exports = {
-  extends: ["airbnb", "plugin:prettier/recommended", "prettier"],
-  parser: "babel-eslint",
-  parserOptions: { sourceType: "module" },
+  extends: ['eslint-config-react-app'],
+  plugins: ['prettier'],
   rules: {
-    "no-use-before-define": "off",
-    "prettier/prettier": ["error", { endOfLine: "auto" }],
-    quotes: [2, "double", { avoidEscape: true }],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        js: "never",
-        jsx: "never",
-        ts: "never",
-        tsx: "never",
-      },
-    ],
-    "react/jsx-filename-extension": [
-      2,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
-    ],
+    'prettier/prettier': 'warn',
+    'array-callback-return': 'warn',
+    'consistent-return': 'warn',
+    'default-case': 'warn',
   },
   overrides: [
     //All extra typescript rules in this section
     {
-      files: ["**/*.ts", "**/*.tsx"],
-      plugins: ["@typescript-eslint"],
+      files: ['**/*.ts', '**/*.tsx'],
+      plugins: ['@typescript-eslint'],
       extends: [
         ...defaultRules,
-        "plugin:@typescript-eslint/recommended",
+        'plugin:@typescript-eslint/recommended',
         // any other TypeScript specific config (from a plugin, or custom)
       ],
       rules: {
         //These some examples of what we could have, this can be changed
-        "@typescript-eslint/no-explicit-any": "warn",
-        "@typescript-eslint/no-unused-expressions": "warn",
+        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/explicit-function-return-type': 'error',
       },
     },
   ],
   settings: {
     react: {
       // React version. "detect" automatically picks the version you have installed.
-      version: "detect",
+      version: 'detect',
     },
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
