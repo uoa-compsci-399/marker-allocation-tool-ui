@@ -5,14 +5,16 @@ const defaultRules = [
 ];
 
 module.exports = {
-  extends: ["eslint-config-react-app"],
+  extends: ['eslint-config-react-app'],
+  plugins: ['prettier'],
   rules: {
+    'prettier/prettier': 'warn',
     'array-callback-return': 'warn',
     'consistent-return': 'warn',
     'default-case': 'warn',
-    // etc.
   },
-  overrides: [ //All extra typescript rules in this section
+  overrides: [
+    //All extra typescript rules in this section
     {
       files: ['**/*.ts', '**/*.tsx'],
       plugins: ['@typescript-eslint'],
@@ -21,9 +23,10 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         // any other TypeScript specific config (from a plugin, or custom)
       ],
-      rules: { //These some examples of what we could have, this can be changed
+      rules: {
+        //These some examples of what we could have, this can be changed
         '@typescript-eslint/no-explicit-any': 'warn',
-        '@typescript-eslint/no-unused-expressions': 'warn',
+        '@typescript-eslint/explicit-function-return-type': 'error',
       },
     },
   ],
@@ -31,6 +34,11 @@ module.exports = {
     react: {
       // React version. "detect" automatically picks the version you have installed.
       version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     },
   },
 };
