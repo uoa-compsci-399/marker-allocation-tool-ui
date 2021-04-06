@@ -8,7 +8,7 @@ module.exports = {
   extends: ['eslint-config-react-app'],
   plugins: ['prettier'],
   rules: {
-    'prettier/prettier': 'warn',
+    'prettier/prettier': ['warn', { endOfLine: 'auto' }],
     'array-callback-return': 'warn',
     'consistent-return': 'warn',
     'default-case': 'warn',

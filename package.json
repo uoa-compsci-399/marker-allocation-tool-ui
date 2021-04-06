@@ -23,7 +23,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "format": "./node_modules/.bin/prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "format": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint --ext .tsx,.ts,.js . --max-warnings=0",
     "type-check": "tsc --noEmit",
     "prepare": "husky install"
@@ -52,11 +52,11 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "9.0.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^6.0.0",
     "postcss": "^8.2.9",
     "prettier": "^2.2.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "husky": "^6.0.0"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
