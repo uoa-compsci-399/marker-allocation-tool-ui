@@ -5,8 +5,8 @@ import ButtonGroup from './ButtonGroup';
 import DetailSection from './DetailSection';
 import { ApplicantDetails } from '../../models/ApplicantDetails';
 
-//TODO: Send GET request to get applicant details using ID
-const applicantDetails = (id: string): ApplicantDetails => {
+//TODO: Send GET request to get application details using applicationID
+const applicationDetails = (id: string): ApplicantDetails => {
   return {
     title: 'Application #1',
     name: 'Honger',
@@ -39,7 +39,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
     location,
     prefCourse,
     files,
-  } = applicantDetails(match.params.id);
+  } = applicationDetails(match.params.id);
 
   return (
     <div className="w-11/12 h-full border-2 mx-auto shadow-md my-12 rounded">

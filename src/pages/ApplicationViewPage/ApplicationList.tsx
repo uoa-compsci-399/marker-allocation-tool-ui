@@ -5,9 +5,9 @@ import { FormApplication } from '../../models/FormApplication';
 
 //TODO: GET data from API
 const applicationArray: FormApplication[] = [
-  { title: 'Application #3', date: '7/4/2021', applicantName: 'Name #3' },
-  { title: 'Application #2', date: '5/4/2021', applicantName: 'Name #2' },
-  { title: 'Application #1', date: '3/4/2021', applicantName: 'Name #1' },
+  { title: 'Application #3', date: '7/4/2021', applicantName: 'Name #3', applicationID: '1234567' },
+  { title: 'Application #2', date: '5/4/2021', applicantName: 'Name #2', applicationID: '2478913' },
+  { title: 'Application #1', date: '3/4/2021', applicantName: 'Name #1', applicationID: '7789456' },
 ];
 
 const applicationList = (applicationArray: FormApplication[]): JSX.Element[] => {
@@ -16,6 +16,7 @@ const applicationList = (applicationArray: FormApplication[]): JSX.Element[] => 
       title={application.title}
       date={application.date}
       applicantName={application.applicantName}
+      applicationID={application.applicationID}
     />
   ));
 };
