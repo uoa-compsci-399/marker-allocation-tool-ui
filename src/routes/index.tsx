@@ -7,7 +7,7 @@ import Example from '../components/common-ui/example';
 export default function Routes(): JSX.Element {
   return (
     <Switch>
-      <Route path="/" component={Example} />
+      <Route path="/" exact component={Example} />
       <Route path="/applications" component={ApplicationList} />
     </Switch>
   );
