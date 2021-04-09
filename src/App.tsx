@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { Router } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './routes';
-
-import history from './services/history';
 
 function App(): JSX.Element {
   return (
-    <Router history={history}>
+    <Router>
       <Routes />
     </Router>
   );

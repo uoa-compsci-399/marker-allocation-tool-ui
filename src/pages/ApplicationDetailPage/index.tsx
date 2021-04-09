@@ -1,13 +1,31 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
 
 import ButtonGroup from './ButtonGroup';
 import DetailSection from './DetailSection';
+import { ApplicantDetails } from '../../models/ApplicantDetails';
 
-interface ApplicationDetailProps {
-  info: Record<string, string>;
-}
+//TODO: Send GET request to get applicant details using ID
+const applicantDetails = (id: string): ApplicantDetails => {
+  return {
+    title: 'Application #1',
+    name: 'Honger',
+    studentID: '18051980',
+    email: 'hong518@aucklanduni.ac.nz',
+    areaOfStudy: 'Computer Science',
+    currentYear: '3',
+    availabeSems: 'Semester One, Two',
+    experience: 'No',
+    visaStatus: 'Valid',
+    location: 'In Auckland',
+    prefCourse: 'COMPSCI 399',
+    files: 'Some files',
+  };
+};
 
-const ApplicationDetail = ({ info }: ApplicationDetailProps): JSX.Element => {
+const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
+  const { match } = props;
+
   const {
     title,
     name,
@@ -21,7 +39,7 @@ const ApplicationDetail = ({ info }: ApplicationDetailProps): JSX.Element => {
     location,
     prefCourse,
     files,
-  } = info;
+  } = applicantDetails(match.params.id);
 
   return (
     <div className="w-11/12 h-full border-2 mx-auto shadow-md my-12 rounded">
