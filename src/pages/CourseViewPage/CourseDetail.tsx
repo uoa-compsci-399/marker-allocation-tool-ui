@@ -1,7 +1,8 @@
 import React from 'react';
 
+import Application from '../ApplicationViewPage/Application';
 import ButtonGroup from './ButtonGroup';
-import { CourseData } from './type';
+import { Application as ApplicationType, CourseData } from './types';
 
 interface CourseDetailProps {
   courseData: CourseData[];
@@ -14,15 +15,21 @@ const CourseDetail = ({ courseData }: CourseDetailProps): JSX.Element => {
     courseName,
     availableSpots,
     maxSpots,
+    applications,
     currentMarkers,
   } = courseData[0];
 
-  const markers = currentMarkers.map((marker: string) => {
+  const renderMarkers = currentMarkers.map((marker: string) => {
     return (
       <a href="/" className="">
         {marker},{' '}
       </a>
     );
+  });
+
+  const renderApplications = applications.map((application: ApplicationType) => {
+    const { title, date, applicantName } = application;
+    return <Application title={title} date={date} applicantName={applicantName} />;
   });
 
   return (
@@ -40,7 +47,11 @@ const CourseDetail = ({ courseData }: CourseDetailProps): JSX.Element => {
       </div>
       <div className="font-semibold text-2xl ml-12 my-6">
         Current Markers:
-        <div className="font-normal">{markers}</div>
+        <div className="font-normal">{renderMarkers}</div>
+      </div>
+      <div className="font-semibold text-2xl ml-12 my-6">
+        Current Applications:
+        <div>{renderApplications}</div>
       </div>
       <ButtonGroup />
     </div>

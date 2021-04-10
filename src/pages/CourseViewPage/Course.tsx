@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { Application } from './types';
+
 interface CourseProps {
   courseCood: string;
   courseId: string;
   courseName: string;
   availableSpots: string;
   maxSpots: string;
+  applications: Application[];
   currentMarkers: string[];
 }
 

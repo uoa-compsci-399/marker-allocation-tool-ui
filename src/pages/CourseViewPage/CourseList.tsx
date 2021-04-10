@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Course from './Course';
-import { CourseData } from './type';
+import { CourseData } from './types';
 
 interface CourseListProps {
   courseData: CourseData[];
@@ -16,6 +16,7 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
       courseName,
       availableSpots,
       maxSpots,
+      applications,
       currentMarkers,
     }: CourseData) => (
       <Course
@@ -24,6 +25,7 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
         courseName={courseName}
         availableSpots={availableSpots}
         maxSpots={maxSpots}
+        applications={applications}
         currentMarkers={currentMarkers}
       />
     )
