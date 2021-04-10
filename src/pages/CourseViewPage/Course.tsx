@@ -1,7 +1,5 @@
 import React from 'react';
 
-// courseCood, courseId, courseName, availableSpots, maxSpots, currentMarkers
-
 interface CourseProps {
   courseCood: string;
   courseId: string;
@@ -12,18 +10,18 @@ interface CourseProps {
 }
 
 const Course = ({
-  courseCood,
+  //   courseCood,
   courseId,
   courseName,
-  availableSpots,
-  maxSpots,
-  currentMarkers,
-}: CourseProps): JSX.Element => {
+}: //   availableSpots,
+//   maxSpots,
+//   currentMarkers,
+CourseProps): JSX.Element => {
   return (
     <div className="w-5/6 h-full  overflow-auto bg-white mx-auto rounded shadow-md border-gray-400 border my-5 py-4">
       <div className="md:flex">
         <a
-          href={`/${courseId}`}
+          href={`/courses/${courseId}`}
           className="w-full text-center text-2xl my-2 font-medium hover:text-blue-600"
         >
           {courseName}
