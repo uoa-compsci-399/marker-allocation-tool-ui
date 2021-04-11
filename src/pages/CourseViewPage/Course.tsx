@@ -25,7 +25,7 @@ const Course = ({
 //   maxSpots,
 CourseProps): JSX.Element => {
   return (
-    <div className="w-11/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
+    <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
       <div className="md:flex">
         <a
           href={`/courses/${courseId}`}
@@ -42,7 +42,7 @@ CourseProps): JSX.Element => {
         Closing Date:{' '}
         <span className="font-medium">
           {closingDate}
-          <span className="font-light text-red-500 text-base"> # days left</span>
+          <span className="font-light text-red-500 text-base mx-12"> # days left</span>
         </span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">

@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Application } from '../../constants/types';
+import FilterButtons from './FilterButtons';
+import SearchBar from './SearchBar';
 import CourseList from './CourseList';
 import CourseDetail from '../CourseDetailPage/';
 
@@ -53,10 +55,12 @@ const dummyCourseData = [
 
 const CourseViewPage = (): JSX.Element => {
   return (
-    <div>
+    <>
+      <FilterButtons />
+      <SearchBar />
       <CourseList courseData={dummyCourseData} />
       <CourseDetail courseData={dummyCourseData} />
-    </div>
+    </>
   );
 };
 

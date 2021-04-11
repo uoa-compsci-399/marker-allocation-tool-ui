@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Application from '../ApplicationViewPage/Application';
-import ButtonGroup from '../CourseViewPage/ButtonGroup';
 import { Application as ApplicationType, CourseData } from '../../constants/types';
 
 // URL endpoint: /courses/:id
@@ -55,7 +54,6 @@ const CourseDetail = ({ courseData }: CourseDetailProps): JSX.Element => {
         Current Applications:
         <div>{renderApplications}</div>
       </div>
-      <ButtonGroup />
     </div>
   );
 };
