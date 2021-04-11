@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Application } from './types';
+import { Application } from '../../constants/types';
 
 interface CourseProps {
   courseCood: string;
   courseId: string;
   courseName: string;
+  semester: string;
+  closingDate: string;
   availableSpots: string;
   maxSpots: string;
   applications: Application[];
@@ -13,22 +15,38 @@ interface CourseProps {
 }
 
 const Course = ({
-  //   courseCood,
+  courseCood,
   courseId,
   courseName,
+  semester,
+  closingDate,
+  applications,
 }: //   availableSpots,
 //   maxSpots,
-//   currentMarkers,
 CourseProps): JSX.Element => {
   return (
-    <div className="w-5/6 h-full  overflow-auto bg-white mx-auto rounded shadow-md border-gray-400 border my-5 py-4">
+    <div className="w-11/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
       <div className="md:flex">
         <a
           href={`/courses/${courseId}`}
-          className="w-full text-center text-2xl my-2 font-medium hover:text-blue-600"
+          className="w-full text-3xl mx-12 mt-6 font-semibold hover:text-blue-600"
         >
           {courseName}
         </a>
+      </div>
+      <div className="mx-12 font-medium text-gray-600">{semester}</div>
+      <div className="mx-12 font-semibold text-lg my-4">
+        Course Coordinator(s): <span className="font-medium">{courseCood}</span>
+      </div>
+      <div className="mx-12 font-semibold text-lg my-4">
+        Closing Date:{' '}
+        <span className="font-medium">
+          {closingDate}
+          <span className="font-light text-red-500 text-base"> # days left</span>
+        </span>
+      </div>
+      <div className="mx-12 font-semibold text-lg my-4">
+        Number of Applications: <span className="font-medium">{applications.length}</span>
       </div>
     </div>
   );

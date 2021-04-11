@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Application } from './types';
+import { Application } from '../../constants/types';
 import CourseList from './CourseList';
-import CourseDetail from './CourseDetail';
+import CourseDetail from '../CourseDetailPage/';
 
 // Dummy application data
 const applicationOne: Application = {
@@ -28,9 +28,11 @@ const applicationThree: Application = {
 // And maybe that data will be something like:
 const dummyCourseData = [
   {
-    courseCood: 'Asma',
+    courseCood: 'Asma Shakil',
     courseId: 'cs399',
     courseName: 'COMPSCI 399',
+    semester: 'Semester 1, 2021',
+    closingDate: '14/04/2021',
     availableSpots: '7',
     maxSpots: '10',
     applications: [applicationOne, applicationTwo],
@@ -40,6 +42,8 @@ const dummyCourseData = [
     courseCood: 'John Doe',
     courseId: 'cs358',
     courseName: 'COMPSCI 358',
+    semester: 'Semester 2, 2021',
+    closingDate: '14/04/2021',
     availableSpots: '8',
     maxSpots: '10',
     applications: [applicationThree],

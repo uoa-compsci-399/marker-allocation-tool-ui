@@ -1,8 +1,10 @@
 import React from 'react';
 
 import Application from '../ApplicationViewPage/Application';
-import ButtonGroup from './ButtonGroup';
-import { Application as ApplicationType, CourseData } from './types';
+import ButtonGroup from '../CourseViewPage/ButtonGroup';
+import { Application as ApplicationType, CourseData } from '../../constants/types';
+
+// URL endpoint: /courses/:id
 
 interface CourseDetailProps {
   courseData: CourseData[];

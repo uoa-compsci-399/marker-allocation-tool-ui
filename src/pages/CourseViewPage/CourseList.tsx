@@ -1,7 +1,9 @@
 import React from 'react';
 
 import Course from './Course';
-import { CourseData } from './types';
+import { CourseData } from '../../constants/types';
+
+// URL Endpoint: /courses
 
 interface CourseListProps {
   courseData: CourseData[];
@@ -14,6 +16,8 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
       courseCood,
       courseId,
       courseName,
+      semester,
+      closingDate,
       availableSpots,
       maxSpots,
       applications,
@@ -23,6 +27,8 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
         courseCood={courseCood}
         courseId={courseId}
         courseName={courseName}
+        semester={semester}
+        closingDate={closingDate}
         availableSpots={availableSpots}
         maxSpots={maxSpots}
         applications={applications}

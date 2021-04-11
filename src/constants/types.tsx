@@ -8,6 +8,8 @@ export type CourseData = {
   courseCood: string;
   courseId: string;
   courseName: string;
+  semester: string;
+  closingDate: string;
   availableSpots: string;
   maxSpots: string;
   applications: Application[];
