@@ -1,5 +1,3 @@
-import { FormApplication } from './FormApplication';
-
 export interface CourseData {
   courseCoord: string;
   courseId: string;
@@ -8,6 +6,5 @@ export interface CourseData {
   closingDate: string;
   availableSpots: string;
   maxSpots: string;
-  applications: FormApplication[];
   currentMarkers: string[];
 }

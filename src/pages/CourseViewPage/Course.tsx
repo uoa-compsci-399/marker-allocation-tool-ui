@@ -2,13 +2,17 @@ import React from 'react';
 
 import { CourseData } from '../../models/CourseData';
 
+//TODO: GET application count from DB using a query
+const getApplicationCount = (courseId: string): number => {
+  return 5;
+};
+
 const Course = ({
   courseCoord,
   courseId,
   courseName,
   semester,
   closingDate,
-  applications,
 }: CourseData): JSX.Element => {
   return (
     <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
@@ -32,7 +36,7 @@ const Course = ({
         </span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">
-        Number of Applications: <span className="font-medium">{applications.length}</span>
+        Number of Applications: <span className="font-medium">{getApplicationCount(courseId)}</span>
       </div>
     </div>
   );
