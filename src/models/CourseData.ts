@@ -6,5 +6,4 @@ export interface CourseData {
   closingDate: string;
   availableSpots: string;
   maxSpots: string;
-  currentMarkers: string[];
 }

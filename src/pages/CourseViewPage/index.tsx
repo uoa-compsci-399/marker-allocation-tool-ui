@@ -16,7 +16,6 @@ const dummyCourseData = [
     closingDate: '14/04/2021',
     availableSpots: '7',
     maxSpots: '10',
-    currentMarkers: ['Hussel', 'Lachlan', 'Jim'],
   },
   {
     courseCoord: 'John Doe',
@@ -26,7 +25,6 @@ const dummyCourseData = [
     closingDate: '14/04/2021',
     availableSpots: '8',
     maxSpots: '10',
-    currentMarkers: ['Darren', 'Songyan'],
   },
 ];
 

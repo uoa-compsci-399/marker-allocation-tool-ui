@@ -30,22 +30,26 @@ const applicantDetails = (id: string): FormApplication[] => {
 
 //TODO: Get data using props from routes
 const CourseDetail = (routeData: CourseData): JSX.Element => {
-  const { courseCoord, courseId, courseName, availableSpots, maxSpots, currentMarkers } = {
+  const { courseCoord, courseId, courseName, availableSpots, maxSpots } = {
     courseCoord: 'Asma Shakil',
     courseId: 'cs399',
     courseName: 'COMPSCI 399',
     availableSpots: '7',
     maxSpots: '10',
-    currentMarkers: ['Hussel', 'Lachlan', 'Jim'],
   };
 
-  const renderMarkers = currentMarkers.map((marker: string) => {
+  const renderMarkers = (): JSX.Element => {
     return (
-      <a href="/" className="">
-        {marker},{' '}
-      </a>
+      <p
+        className="font-semibold tracking-wide text-indigo-700 uppercase text-xl ml-12 my-8 cursor-pointer"
+        onClick={(): void => {
+          //TODO: Query current markers from DB and show in a modal
+        }}
+      >
+        View Current Markers
+      </p>
     );
-  });
+  };
 
   const renderApplications = applicantDetails(courseId).map((application: ApplicationType) => {
     const { title, date, applicantName, applicationID } = application;
@@ -63,7 +67,7 @@ const CourseDetail = (routeData: CourseData): JSX.Element => {
     <div className="w-11/12 h-full border-2 mx-auto shadow-md my-12 rounded">
       <div className="text-center text-5xl my-16">{courseName}</div>
       <div className="font-semibold text-2xl ml-12 my-8">
-        Course Coodrdinator:{' '}
+        Course Coordinator:{' '}
         <a href="/" className="font-normal">
           {courseCoord}
         </a>
@@ -72,12 +76,8 @@ const CourseDetail = (routeData: CourseData): JSX.Element => {
         Current Available Spots:{' '}
         <span className="font-normal">{`${availableSpots}/${maxSpots}`}</span>
       </div>
+      <div className="font-normal">{renderMarkers()}</div>
       <div className="font-semibold text-2xl ml-12 my-6">
-        Current Markers:
-        <div className="font-normal">{renderMarkers}</div>
-      </div>
-      <div className="font-semibold text-2xl ml-12 my-6">
-        Current Applications:
         <div className="flex justify-end mx-12 my-4">
           <label className="mx-4 text-lg font-semibold">Sort by:</label>
           <select className="text-lg">
