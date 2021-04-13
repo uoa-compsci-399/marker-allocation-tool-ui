@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Application } from '../../constants/types';
+import { FormApplication as Application } from '../../models/FormApplication';
 import FilterButtons from './FilterButtons';
 import SearchBar from './SearchBar';
 import CourseList from './CourseList';
@@ -11,18 +11,21 @@ const applicationOne: Application = {
   title: '399 Application #1',
   date: '11/04/21',
   applicantName: 'Songyan',
+  applicationID: '2456879',
 };
 
 const applicationTwo: Application = {
   title: '399 Application #2',
   date: '08/04/21',
   applicantName: 'Isaac',
+  applicationID: '1234567',
 };
 
 const applicationThree: Application = {
   title: '358 Application #1',
   date: '05/04/21',
   applicantName: 'Issac',
+  applicationID: '5968745',
 };
 
 // Pretend that we fetch data from API by
@@ -30,7 +33,7 @@ const applicationThree: Application = {
 // And maybe that data will be something like:
 const dummyCourseData = [
   {
-    courseCood: 'Asma Shakil',
+    courseCoord: 'Asma Shakil',
     courseId: 'cs399',
     courseName: 'COMPSCI 399',
     semester: 'Semester 1, 2021',
@@ -41,7 +44,7 @@ const dummyCourseData = [
     currentMarkers: ['Hussel', 'Lachlan', 'Jim'],
   },
   {
-    courseCood: 'John Doe',
+    courseCoord: 'John Doe',
     courseId: 'cs358',
     courseName: 'COMPSCI 358',
     semester: 'Semester 2, 2021',

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Course from './Course';
-import { CourseData } from '../../constants/types';
+import { CourseData } from '../../models/CourseData';
 
 // URL Endpoint: /courses
 
@@ -13,7 +13,7 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
   // render courses with fetched data
   const renderCourses = courseData.map(
     ({
-      courseCood,
+      courseCoord,
       courseId,
       courseName,
       semester,
@@ -24,7 +24,7 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
       currentMarkers,
     }: CourseData) => (
       <Course
-        courseCood={courseCood}
+        courseCoord={courseCoord}
         courseId={courseId}
         courseName={courseName}
         semester={semester}

@@ -5,7 +5,7 @@ export interface ApplicantDetails {
   email: string;
   areaOfStudy: string;
   currentYear: string;
-  availabeSems: string;
+  availableSems: string;
   experience: string;
   visaStatus: string;
   location: string;

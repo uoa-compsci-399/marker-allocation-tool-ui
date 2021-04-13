@@ -14,7 +14,7 @@ const applicationDetails = (id: string): ApplicantDetails => {
     email: 'hong518@aucklanduni.ac.nz',
     areaOfStudy: 'Computer Science',
     currentYear: '3',
-    availabeSems: 'Semester One, Two',
+    availableSems: 'Semester One, Two',
     experience: 'No',
     visaStatus: 'Valid',
     location: 'In Auckland',
@@ -33,7 +33,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
     email,
     areaOfStudy,
     currentYear,
-    availabeSems,
+    availableSems,
     experience,
     visaStatus,
     location,
@@ -49,7 +49,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
       <DetailSection title="Email" value={email} />
       <DetailSection title="Current Area of Study" value={areaOfStudy} />
       <DetailSection title="Year" value={currentYear} />
-      <DetailSection title="Availability" value={availabeSems} />
+      <DetailSection title="Availability" value={availableSems} />
       <DetailSection title="Experience" value={experience} />
       <DetailSection title="Visa Status" value={visaStatus} />
       <DetailSection title="Location" value={location} />

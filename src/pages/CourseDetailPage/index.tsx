@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Application from '../ApplicationViewPage/Application';
-import { Application as ApplicationType, CourseData } from '../../constants/types';
+import { FormApplication as ApplicationType } from '../../models/FormApplication';
+import { CourseData } from '../../models/CourseData';
 
 // URL endpoint: /courses/:id
 
@@ -11,7 +12,7 @@ interface CourseDetailProps {
 
 const CourseDetail = ({ courseData }: CourseDetailProps): JSX.Element => {
   const {
-    courseCood,
+    courseCoord,
     // courseId,
     courseName,
     availableSpots,
@@ -29,8 +30,15 @@ const CourseDetail = ({ courseData }: CourseDetailProps): JSX.Element => {
   });
 
   const renderApplications = applications.map((application: ApplicationType) => {
-    const { title, date, applicantName } = application;
-    return <Application title={title} date={date} applicantName={applicantName} />;
+    const { title, date, applicantName, applicationID } = application;
+    return (
+      <Application
+        title={title}
+        date={date}
+        applicantName={applicantName}
+        applicationID={applicationID}
+      />
+    );
   });
 
   return (
@@ -39,7 +47,7 @@ const CourseDetail = ({ courseData }: CourseDetailProps): JSX.Element => {
       <div className="font-semibold text-2xl ml-12 my-8">
         Course Coodrdinator:{' '}
         <a href="/" className="font-normal">
-          {courseCood}
+          {courseCoord}
         </a>
       </div>
       <div className="font-semibold text-2xl ml-12 my-8">
