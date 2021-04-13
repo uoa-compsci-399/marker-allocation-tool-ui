@@ -21,9 +21,8 @@ const Application = ({
           {applicantName}
         </p>
       </div>
-      {/* <div className="border-t w-full"></div> */}
       <div className="md:flex justify-between my-4">
-        <div className="text-left text-xl ml-28 my-4">{applicationID}</div>
+        <div className="text-left text-lg ml-28 my-4">{applicationID}</div>
         <div>
           <div className="mx-12 font-semibold text-lg my-4">
             Date Submitted: <span className="font-medium">{date}</span>

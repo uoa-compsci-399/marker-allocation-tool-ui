@@ -42,7 +42,7 @@ const CourseDetail = (routeData: CourseData): JSX.Element => {
   const renderMarkers = (): JSX.Element => {
     return (
       <p
-        className="font-semibold text-blue-800 text-2xl my-8 cursor-pointer"
+        className="font-semibold text-blue-800 text-xl my-8 cursor-pointer"
         onClick={(): void => {
           //TODO: Query current markers from DB and show in a modal
         }}
@@ -69,14 +69,14 @@ const CourseDetail = (routeData: CourseData): JSX.Element => {
       <div className="w-5/6 h-full border-2 mx-auto shadow-md my-12 rounded">
         <div className="text-center text-5xl mt-10 mb-4 m-auto">{courseName}</div>
         <div className="text-center text-xl mb-16 text-gray-600 m-auto">{semester}</div>
-        <div className="flex m-auto place-content-evenly">
-          <div className="font-semibold text-2xl my-8">
+        <div className="flex flex-wrap m-auto place-content-evenly">
+          <div className="font-semibold text-xl my-8">
             Course Coordinator:{' '}
             <a href="/" className="font-normal">
               {courseCoord}
             </a>
           </div>
-          <div className="font-semibold text-2xl my-8">
+          <div className="font-semibold text-xl my-8">
             Current Available Spots:{' '}
             <span className="font-normal">{`${availableSpots}/${maxSpots}`}</span>
           </div>

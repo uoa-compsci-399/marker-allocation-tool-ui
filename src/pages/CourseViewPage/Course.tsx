@@ -24,7 +24,7 @@ const Course = ({
           {courseName}
         </a>
       </div>
-      <div className="mx-12 font-medium text-gray-600">{semester}</div>
+      <div className="mx-12 font-medium text-gray-600 mb-8">{semester}</div>
       <div className="mx-12 font-semibold text-lg my-4">
         Course Coordinator(s): <span className="font-medium">{courseCoord}</span>
       </div>
