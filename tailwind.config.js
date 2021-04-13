@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ['neue-haas-grotesk-text', 'neue-haas-grotesk-text', 'ui-sans-serif', 'system-ui'],
+      sans: ['neue-haas-grotesk-text', 'neue-haas-grotesk-display', 'ui-sans-serif', 'system-ui'],
       serif: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman'],
     },
   },
