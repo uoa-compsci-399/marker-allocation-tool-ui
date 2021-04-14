@@ -27,7 +27,7 @@ export const applicationSchema = yup.object({
     .test('fileSize', 'File Size is too large', (value) =>
       value ? value.size <= FILE_SIZE : true
     ),
-  declaration: yup.string().defined('You must sign declaration'),
+  declaration: yup.string().defined('Please sign declaration'),
 });
 
 type FormTypes = yup.InferType<typeof applicationSchema>;

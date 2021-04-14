@@ -3,7 +3,7 @@ import Form from './form';
 
 function App(): JSX.Element {
   return (
-    <div className="flex max-w-full my-10 font-sans text-sm">
+    <div className="flex m-auto my-10 font-sans text-sm 3xl:max-w-screen-2xl">
       <Form />
     </div>
   );
