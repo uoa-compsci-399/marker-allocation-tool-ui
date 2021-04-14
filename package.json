@@ -28,7 +28,7 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint": "eslint --ext .tsx,.ts,.js . --max-warnings=0",
+    "lint": "eslint --ext .tsx,.ts,.js src --max-warnings=0",
     "type-check": "tsc --noEmit",
     "prepare": "husky install"
   },
