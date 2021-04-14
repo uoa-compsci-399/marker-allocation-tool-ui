@@ -1,15 +1,18 @@
-import React from 'react';
-// import clsx from 'clsx';
+import { ErrorMessage, Field } from 'formik';
 
 interface TextboxProps {
+  field: string;
   label: string;
 }
 
-const Textbox = ({ label }: TextboxProps): JSX.Element => {
+const Textbox = ({ field, label }: TextboxProps): JSX.Element => {
   return (
     <div className="flex flex-col space-y-1">
-      <div className="text-sm">{label}</div>
-      <input type="textbox" className="p-1 border border-gray-500" />
+      <label className="text-sm text-gray-900">{label}</label>
+      <Field className="p-1 border border-gray-500" type="textbox" id="firstName" name={field} />
+      <ErrorMessage name={field}>
+        {(msg): JSX.Element => <div className="text-red-600">{msg}</div>}
+      </ErrorMessage>
     </div>
   );
 };

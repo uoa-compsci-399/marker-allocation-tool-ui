@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from './components/common-ui/forms/form';
+import Form from './form';
 
 function App(): JSX.Element {
   return (
