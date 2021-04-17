@@ -20,7 +20,6 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
       closingDate,
       availableSpots,
       maxSpots,
-      applications,
     }: CourseData) => (
       <Course
         courseCoord={courseCoord}
@@ -30,7 +29,6 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
         closingDate={closingDate}
         availableSpots={availableSpots}
         maxSpots={maxSpots}
-        applications={applications}
       />
     )
   );

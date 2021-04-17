@@ -9,21 +9,21 @@ import { CourseData } from '../../models/CourseData';
 const applicantDetails = (id: string): FormApplication[] => {
   return [
     {
-      appliedCourseID: 'cs399',
+      courseID: 'cs399',
       title: '399 Application #1',
       date: '11/04/21',
       applicantName: 'Songyan Teng',
       applicationID: '2456879',
     },
     {
-      appliedCourseID: 'cs399',
+      courseID: 'cs399',
       title: '399 Application #2',
       date: '08/04/21',
       applicantName: 'Isaac Kaabel',
       applicationID: '1234567',
     },
     {
-      appliedCourseID: 'cs358',
+      courseID: 'cs358',
       title: '358 Application #3',
       date: '05/04/21',
       applicantName: 'Darren Chen',
@@ -41,7 +41,6 @@ const courseDetails = (id: string): CourseData => {
     closingDate: '',
     availableSpots: '7',
     maxSpots: '10',
-    applications: [],
   };
 };
 
@@ -70,7 +69,7 @@ const CourseDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element =
     const { title, date, applicantName, applicationID } = application;
     return (
       <Application
-        appliedCourseID={courseId}
+        courseID={courseId}
         title={title}
         date={date}
         applicantName={applicantName}
