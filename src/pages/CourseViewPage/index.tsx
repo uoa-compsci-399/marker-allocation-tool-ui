@@ -4,25 +4,23 @@ import FilterButtons from './FilterButtons';
 import SearchBar from './SearchBar';
 import CourseList from './CourseList';
 
-// Pretend that we fetch data from API by
-// const dummyCourseData = await fetch(URL blah blah)
-// And maybe that data will be something like:
+//TODO: Replace with API call
 const dummyCourseData = [
   {
     courseCoord: 'Asma Shakil',
     courseId: 'cs399',
     courseName: 'COMPSCI 399',
     semester: 'Semester 1, 2021',
-    closingDate: '14/04/2021',
+    closingDate: '14/06/2021',
     availableSpots: '7',
     maxSpots: '10',
   },
   {
-    courseCoord: 'John Doe',
+    courseCoord: 'John Doe, Asma Shakil',
     courseId: 'cs358',
     courseName: 'COMPSCI 358',
     semester: 'Semester 2, 2021',
-    closingDate: '14/04/2021',
+    closingDate: '14/06/2021',
     availableSpots: '8',
     maxSpots: '10',
   },

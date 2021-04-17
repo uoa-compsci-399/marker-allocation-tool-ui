@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { FormApplication } from '../../models/FormApplication';
 
 const Application = ({
+  courseID,
   title,
   date,
   applicantName,
@@ -15,7 +16,7 @@ const Application = ({
         <p
           className="w-full text-center text-2xl my-2 font-medium hover:text-blue-600 cursor-pointer"
           onClick={(): void => {
-            history.push(`/applications/${applicationID}`);
+            history.push(`/courses/${courseID}/applications/${applicationID}`);
           }}
         >
           {applicantName}

@@ -10,9 +10,16 @@ export default function Routes(): JSX.Element {
   return (
     <Switch>
       <Route path="/" exact component={Example} />
-      <Route path="/applications" exact component={CourseDetail} />
       <Route
-        path="/applications/:id"
+        path="/courses/:id/applications"
+        exact
+        render={(props): JSX.Element => {
+          return <CourseDetail {...props} />;
+        }}
+      />
+      <Route
+        path="/courses/:id/applications/:id"
+        exact
         render={(props): JSX.Element => {
           return <ApplicationDetail {...props} />;
         }}

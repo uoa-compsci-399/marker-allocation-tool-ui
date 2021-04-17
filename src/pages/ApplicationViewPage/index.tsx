@@ -1,26 +1,30 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
 
 import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
-import { CourseData } from '../../models/CourseData';
 
 //TODO: Send GET request to get a list applications for that course
 const applicantDetails = (id: string): FormApplication[] => {
+  const courseNumber = id.substr(2);
   return [
     {
-      title: '399 Application #1',
+      courseID: id,
+      title: `${courseNumber}  Application #1`,
       date: '11/04/21',
       applicantName: 'Songyan Teng',
       applicationID: '2456879',
     },
     {
-      title: '399 Application #2',
+      courseID: id,
+      title: `${courseNumber}  Application #2`,
       date: '08/04/21',
       applicantName: 'Isaac Kaabel',
       applicationID: '1234567',
     },
     {
-      title: '358 Application #3',
+      courseID: id,
+      title: `${courseNumber}  Application #3`,
       date: '05/04/21',
       applicantName: 'Darren Chen',
       applicationID: '5968745',
@@ -28,16 +32,14 @@ const applicantDetails = (id: string): FormApplication[] => {
   ];
 };
 
-//TODO: Get data using props from routes
-const CourseDetail = (routeData: CourseData): JSX.Element => {
-  const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = {
-    courseCoord: 'Asma Shakil',
-    courseId: 'cs399',
-    courseName: 'COMPSCI 399',
-    semester: 'Semester 1, 2021',
-    availableSpots: '7',
-    maxSpots: '10',
-  };
+const CourseDetail = (props: RouteComponentProps): JSX.Element => {
+  const { location } = props;
+
+  const { courseCoord, courseId, courseName, semester } = location.state;
+
+  //TODO: Get this data using API Call
+  const availableSpots = 7;
+  const maxSpots = 10;
 
   const renderMarkers = (): JSX.Element => {
     return (
@@ -56,6 +58,7 @@ const CourseDetail = (routeData: CourseData): JSX.Element => {
     const { title, date, applicantName, applicationID } = application;
     return (
       <Application
+        courseID={courseId}
         title={title}
         date={date}
         applicantName={applicantName}
