@@ -1,8 +1,7 @@
 import React from 'react';
 
-import FilterButtons from './FilterButtons';
-import SearchBar from './SearchBar';
 import CourseList from './CourseList';
+import ExtendedFAB from '../../components/common-ui/ExtendedFAB';
 
 //TODO: Replace with API call
 const dummyCourseData = [
@@ -28,11 +27,12 @@ const dummyCourseData = [
 
 const CourseViewPage = (): JSX.Element => {
   return (
-    <>
-      <FilterButtons />
-      <SearchBar />
+    <div>
+      <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-6">
+        <ExtendedFAB />
+      </div>
       <CourseList courseData={dummyCourseData} />
-    </>
+    </div>
   );
 };
 
