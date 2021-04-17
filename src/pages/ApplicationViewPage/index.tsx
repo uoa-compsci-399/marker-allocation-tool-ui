@@ -44,7 +44,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const renderMarkers = (): JSX.Element => {
     return (
       <p
-        className="font-semibold text-blue-800 text-xl tk-neue-haas-grotesk-display cursor-pointer"
+        className="font-semibold text-blue-800 text-xl tk-neue-haas-grotesk-display tracking-wide cursor-pointer"
         onClick={(): void => {
           //TODO: Query current markers from DB and show in a modal
         }}
@@ -74,16 +74,16 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
           <div className="font-semibold text-2xl text-gray-600 tracking-tight mb-3">
             {courseName}
           </div>
-          <div className="text-xl tk-neue-haas-grotesk-display text-gray-500">{semester}</div>
+          <div className="text-xl tk-neue-haas-grotesk-display text-gray-500 ">{semester}</div>
         </div>
         <div className="flex flex-grow m-auto place-content-evenly">
-          <div className="font-semibold tk-neue-haas-grotesk-display text-xl">
+          <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
             Course Coordinator:{' '}
             <a href="/" className="font-normal">
               {courseCoord}
             </a>
           </div>
-          <div className="font-semibold tk-neue-haas-grotesk-display text-xl">
+          <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
             Current Available Spots:{' '}
             <span className="font-normal">{`${availableSpots}/${maxSpots}`}</span>
           </div>
