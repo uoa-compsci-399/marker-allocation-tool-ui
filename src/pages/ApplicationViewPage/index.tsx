@@ -44,7 +44,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const renderMarkers = (): JSX.Element => {
     return (
       <p
-        className="font-semibold text-blue-800 text-xl tk-neue-haas-grotesk-display tracking-wide cursor-pointer"
+        className="font-semibold text-indigo-800 text-xl tk-neue-haas-grotesk-display tracking-wide cursor-pointer"
         onClick={(): void => {
           //TODO: Query current markers from DB and show in a modal
         }}
@@ -71,10 +71,13 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
     <div>
       <div className="flex flex-wrap m-auto shadow-md bg-blue-100 p-1">
         <div className="flex flex-col m-auto ml-7 my-7">
-          <div className="font-semibold text-2xl text-gray-600 tracking-tight mb-3">
+          <div className="font-semibold text-2xl tracking-tight text-gray-600 mb-3">
+            Course Applications
+          </div>
+          <div className="text-xl tk-neue-haas-grotesk-display tracking-wide text-gray-500">
             {courseName}
           </div>
-          <div className="text-xl tk-neue-haas-grotesk-display text-gray-500 ">{semester}</div>
+          <div className="text-lg tk-neue-haas-grotesk-display text-gray-500">{semester}</div>
         </div>
         <div className="flex flex-grow m-auto place-content-evenly">
           <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
