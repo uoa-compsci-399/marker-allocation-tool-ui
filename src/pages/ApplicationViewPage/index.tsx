@@ -3,7 +3,6 @@ import { RouteComponentProps } from 'react-router';
 
 import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
-import { CourseData } from '../../models/CourseData';
 
 //TODO: Send GET request to get a list applications for that course
 const applicantDetails = (id: string): FormApplication[] => {
@@ -32,25 +31,14 @@ const applicantDetails = (id: string): FormApplication[] => {
   ];
 };
 
-const courseDetails = (id: string): CourseData => {
-  return {
-    courseCoord: 'Asma Shakil',
-    courseId: 'cs399',
-    courseName: 'COMPSCI 399',
-    semester: 'Semester 1, 2021',
-    closingDate: '',
-    availableSpots: '7',
-    maxSpots: '10',
-  };
-};
+const CourseDetail = (props: RouteComponentProps): JSX.Element => {
+  const { location } = props;
 
-//TODO: Get data using props from routes
-const CourseDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
-  const { match } = props;
+  const { courseCoord, courseId, courseName, semester } = location.state;
 
-  const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = courseDetails(
-    match.params.id
-  );
+  //TODO: Get this data using API Call
+  const availableSpots = 7;
+  const maxSpots = 10;
 
   const renderMarkers = (): JSX.Element => {
     return (

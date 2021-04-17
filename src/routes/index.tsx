@@ -12,7 +12,6 @@ export default function Routes(): JSX.Element {
       <Route path="/" exact component={Example} />
       <Route
         path="/courses/:id/applications"
-        exact
         render={(props): JSX.Element => {
           return <CourseDetail {...props} />;
         }}
