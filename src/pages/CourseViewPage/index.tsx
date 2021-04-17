@@ -16,6 +16,7 @@ const dummyCourseData = [
     closingDate: '14/04/2021',
     availableSpots: '7',
     maxSpots: '10',
+    applications: [],
   },
   {
     courseCoord: 'John Doe',
@@ -25,6 +26,7 @@ const dummyCourseData = [
     closingDate: '14/04/2021',
     availableSpots: '8',
     maxSpots: '10',
+    applications: [],
   },
 ];
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
 
 import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
@@ -8,18 +9,21 @@ import { CourseData } from '../../models/CourseData';
 const applicantDetails = (id: string): FormApplication[] => {
   return [
     {
+      appliedCourseID: 'cs399',
       title: '399 Application #1',
       date: '11/04/21',
       applicantName: 'Songyan Teng',
       applicationID: '2456879',
     },
     {
+      appliedCourseID: 'cs399',
       title: '399 Application #2',
       date: '08/04/21',
       applicantName: 'Isaac Kaabel',
       applicationID: '1234567',
     },
     {
+      appliedCourseID: 'cs358',
       title: '358 Application #3',
       date: '05/04/21',
       applicantName: 'Darren Chen',
@@ -28,16 +32,35 @@ const applicantDetails = (id: string): FormApplication[] => {
   ];
 };
 
-//TODO: Get data using props from routes
-const CourseDetail = (routeData: CourseData): JSX.Element => {
-  const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = {
+const courseDetails = (id: string): CourseData => {
+  return {
     courseCoord: 'Asma Shakil',
     courseId: 'cs399',
     courseName: 'COMPSCI 399',
     semester: 'Semester 1, 2021',
+    closingDate: '',
     availableSpots: '7',
     maxSpots: '10',
+    applications: [],
   };
+};
+
+//TODO: Get data using props from routes
+const CourseDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
+  const { match } = props;
+
+  // const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = {
+  //   courseCoord: 'Asma Shakil',
+  //   courseId: 'cs399',
+  //   courseName: 'COMPSCI 399',
+  //   semester: 'Semester 1, 2021',
+  //   availableSpots: '7',
+  //   maxSpots: '10',
+  // };
+
+  const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = courseDetails(
+    match.params.id
+  );
 
   const renderMarkers = (): JSX.Element => {
     return (
@@ -56,6 +79,7 @@ const CourseDetail = (routeData: CourseData): JSX.Element => {
     const { title, date, applicantName, applicationID } = application;
     return (
       <Application
+        appliedCourseID={courseId}
         title={title}
         date={date}
         applicantName={applicantName}
