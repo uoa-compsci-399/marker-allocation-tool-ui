@@ -6,24 +6,25 @@ import { FormApplication, FormApplication as ApplicationType } from '../../model
 
 //TODO: Send GET request to get a list applications for that course
 const applicantDetails = (id: string): FormApplication[] => {
+  const courseNumber = id.substr(2);
   return [
     {
-      courseID: 'cs399',
-      title: '399 Application #1',
+      courseID: id,
+      title: `${courseNumber}  Application #1`,
       date: '11/04/21',
       applicantName: 'Songyan Teng',
       applicationID: '2456879',
     },
     {
-      courseID: 'cs399',
-      title: '399 Application #2',
+      courseID: id,
+      title: `${courseNumber}  Application #2`,
       date: '08/04/21',
       applicantName: 'Isaac Kaabel',
       applicationID: '1234567',
     },
     {
-      courseID: 'cs358',
-      title: '358 Application #3',
+      courseID: id,
+      title: `${courseNumber}  Application #3`,
       date: '05/04/21',
       applicantName: 'Darren Chen',
       applicationID: '5968745',
