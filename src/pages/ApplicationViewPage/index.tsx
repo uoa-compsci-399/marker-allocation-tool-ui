@@ -44,7 +44,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const renderMarkers = (): JSX.Element => {
     return (
       <p
-        className="font-semibold text-blue-800 text-xl my-8 cursor-pointer"
+        className="font-semibold text-blue-800 text-xl tk-neue-haas-grotesk-display cursor-pointer"
         onClick={(): void => {
           //TODO: Query current markers from DB and show in a modal
         }}
@@ -69,17 +69,21 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
 
   return (
     <div>
-      <div className="w-5/6 h-full border-2 mx-auto shadow-md my-12 rounded">
-        <div className="text-center text-5xl mt-10 mb-4 m-auto">{courseName}</div>
-        <div className="text-center text-xl mb-16 text-gray-600 m-auto">{semester}</div>
-        <div className="flex flex-wrap m-auto place-content-evenly">
-          <div className="font-semibold text-xl my-8">
+      <div className="flex flex-wrap m-auto shadow-md bg-blue-100 p-1">
+        <div className="flex flex-col m-auto ml-7 my-7">
+          <div className="font-semibold text-2xl text-gray-600 tracking-tight mb-3">
+            {courseName}
+          </div>
+          <div className="text-xl tk-neue-haas-grotesk-display text-gray-500">{semester}</div>
+        </div>
+        <div className="flex flex-grow m-auto place-content-evenly">
+          <div className="font-semibold tk-neue-haas-grotesk-display text-xl">
             Course Coordinator:{' '}
             <a href="/" className="font-normal">
               {courseCoord}
             </a>
           </div>
-          <div className="font-semibold text-xl my-8">
+          <div className="font-semibold tk-neue-haas-grotesk-display text-xl">
             Current Available Spots:{' '}
             <span className="font-normal">{`${availableSpots}/${maxSpots}`}</span>
           </div>
@@ -87,7 +91,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
         </div>
       </div>
       <div className="font-semibold text-2xl my-6">
-        <div className="flex w-5/6 m-auto justify-end my-4">
+        <div className="flex w-7/12 m-auto justify-end mt-10 mb-4">
           <label className="mx-4 text-lg font-semibold">Sort by:</label>
           <select className="text-lg">
             <option>Latest</option>

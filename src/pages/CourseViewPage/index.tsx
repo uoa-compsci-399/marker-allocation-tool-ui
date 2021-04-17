@@ -28,7 +28,8 @@ const dummyCourseData = [
 const CourseViewPage = (): JSX.Element => {
   return (
     <div>
-      <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-6">
+      <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
+        <p className="font-semibold text-2xl text-gray-500 tracking-tight m-4"> Manage Courses </p>
         <ExtendedFAB />
       </div>
       <CourseList courseData={dummyCourseData} />
