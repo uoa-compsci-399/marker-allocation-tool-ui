@@ -9,9 +9,9 @@ import { ApplicantDetails } from '../../models/ApplicantDetails';
 const applicationDetails = (id: string): ApplicantDetails => {
   return {
     title: 'Application #1',
-    name: 'Honger',
+    name: 'Harold Adams',
     studentID: '18051980',
-    email: 'hong518@aucklanduni.ac.nz',
+    email: 'hada518@aucklanduni.ac.nz',
     areaOfStudy: 'Computer Science',
     currentYear: '3',
     availableSems: 'Semester One, Two',
@@ -27,7 +27,6 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
   const { match } = props;
 
   const {
-    title,
     name,
     studentID,
     email,
@@ -43,8 +42,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
 
   return (
     <div className="w-7/12 h-full border-2 mx-auto shadow-md my-12 rounded">
-      <div className="text-center text-5xl my-16">{title}</div>
-      <DetailSection title="Name" value={name} />
+      <div className="text-center text-5xl my-16">{name}</div>
       <DetailSection title="Student ID" value={studentID} />
       <DetailSection title="Email" value={email} />
       <DetailSection title="Current Area of Study" value={areaOfStudy} />

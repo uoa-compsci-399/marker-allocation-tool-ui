@@ -74,10 +74,12 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
           <div className="font-semibold text-2xl tracking-tight text-gray-600 mb-3">
             Course Applications
           </div>
-          <div className="text-xl tk-neue-haas-grotesk-display tracking-wide text-gray-500">
+          <div className="text-xl tk-neue-haas-grotesk-display tracking-wide text-gray-600">
             {courseName}
           </div>
-          <div className="text-lg tk-neue-haas-grotesk-display text-gray-500">{semester}</div>
+          <div className="text-lg tk-neue-haas-grotesk-display tracking-wide text-gray-500">
+            {semester}
+          </div>
         </div>
         <div className="flex flex-grow m-auto place-content-evenly">
           <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
