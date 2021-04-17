@@ -16,9 +16,6 @@ const Header = (): JSX.Element => {
         <a href="/courses" className="font-medium text-xl mx-8">
           Courses
         </a>
-        <a href="/courses/applications" className="font-medium text-xl mx-8">
-          Applications
-        </a>
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto" />
     </nav>

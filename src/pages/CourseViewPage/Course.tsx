@@ -18,7 +18,7 @@ const Course = ({
     <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
       <div className="md:flex">
         <a
-          href={`/courses/${courseId}`}
+          href={`/courses/${courseId}/applications`}
           className="w-full text-3xl mx-12 mt-6 font-semibold hover:text-blue-600"
         >
           {courseName}

@@ -49,15 +49,6 @@ const courseDetails = (id: string): CourseData => {
 const CourseDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
   const { match } = props;
 
-  // const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = {
-  //   courseCoord: 'Asma Shakil',
-  //   courseId: 'cs399',
-  //   courseName: 'COMPSCI 399',
-  //   semester: 'Semester 1, 2021',
-  //   availableSpots: '7',
-  //   maxSpots: '10',
-  // };
-
   const { courseCoord, courseId, courseName, semester, availableSpots, maxSpots } = courseDetails(
     match.params.id
   );
