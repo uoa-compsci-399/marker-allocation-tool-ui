@@ -30,8 +30,7 @@ const CourseViewPage = (): JSX.Element => {
     <div>
       <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
         <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">
-          {' '}
-          Manage Courses{' '}
+          Manage Courses
         </p>
         <ExtendedFAB />
       </div>
