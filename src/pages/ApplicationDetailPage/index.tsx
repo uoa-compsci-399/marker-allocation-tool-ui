@@ -42,7 +42,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
   } = applicationDetails(match.params.id);
 
   return (
-    <div className="w-11/12 h-full border-2 mx-auto shadow-md my-12 rounded">
+    <div className="w-7/12 h-full border-2 mx-auto shadow-md my-12 rounded">
       <div className="text-center text-5xl my-16">{title}</div>
       <DetailSection title="Name" value={name} />
       <DetailSection title="Student ID" value={studentID} />
