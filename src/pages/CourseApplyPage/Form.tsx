@@ -9,9 +9,9 @@ import {
   Upload,
   ConfirmBox,
   Date,
-} from './components/common-ui/forms';
+} from '../../components/common-ui/forms';
 
-import { applicationSchema, initialValues } from './formDefination';
+import { applicationSchema, initialValues } from '../../models/formDefination';
 
 const ApplicationForm = (): JSX.Element => {
   return (

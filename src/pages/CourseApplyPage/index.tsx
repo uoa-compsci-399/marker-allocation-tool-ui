@@ -1,5 +1,4 @@
-import React from 'react';
-import Form from './form';
+import Form from './Form';
 
 function App(): JSX.Element {
   return (
