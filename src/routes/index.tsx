@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Example from '../components/common-ui/example';
+import Form from '../pages/CourseApplyPage';
 import ApplicationDetail from '../pages/ApplicationDetailPage';
 import CourseViewPage from '../pages/CourseViewPage';
 import CourseDetail from '../pages/ApplicationViewPage';
@@ -9,7 +9,8 @@ import CourseDetail from '../pages/ApplicationViewPage';
 export default function Routes(): JSX.Element {
   return (
     <Switch>
-      <Route path="/" exact component={Example} />
+      <Route path="/apply" exact component={Form} />
+      <Route path="/courses" exact component={CourseViewPage} />
       <Route
         path="/courses/:id/applications"
         exact
@@ -24,7 +25,6 @@ export default function Routes(): JSX.Element {
           return <ApplicationDetail {...props} />;
         }}
       />
-      <Route path="/courses" exact component={CourseViewPage} />
     </Switch>
   );
 }
