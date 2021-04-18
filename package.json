@@ -60,7 +60,7 @@
     "autoprefixer": "9.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "^6.0.0",
-    "postcss": "^8.2.9",
+    "postcss": "^7",
     "prettier": "^2.2.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
