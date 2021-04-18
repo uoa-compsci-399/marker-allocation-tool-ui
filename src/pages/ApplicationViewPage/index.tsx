@@ -32,29 +32,21 @@ const applicantDetails = (id: string): FormApplication[] => {
   ];
 };
 
-const CourseDetail = (props: RouteComponentProps): JSX.Element => {
-  const { location } = props;
+const renderMarkers = (): JSX.Element => {
+  return (
+    <p
+      className="font-semibold text-indigo-800 text-xl tk-neue-haas-grotesk-display tracking-wide cursor-pointer"
+      onClick={(): void => {
+        //TODO: Query current markers from DB and show in a modal
+      }}
+    >
+      View Current Markers
+    </p>
+  );
+};
 
-  const { courseCoord, courseId, courseName, semester } = location.state;
-
-  //TODO: Get this data using API Call
-  const availableSpots = 7;
-  const maxSpots = 10;
-
-  const renderMarkers = (): JSX.Element => {
-    return (
-      <p
-        className="font-semibold text-indigo-800 text-xl tk-neue-haas-grotesk-display tracking-wide cursor-pointer"
-        onClick={(): void => {
-          //TODO: Query current markers from DB and show in a modal
-        }}
-      >
-        View Current Markers
-      </p>
-    );
-  };
-
-  const renderApplications = applicantDetails(courseId).map((application: ApplicationType) => {
+const renderApplications = (courseId: string): JSX.Element[] =>
+  applicantDetails(courseId).map((application: ApplicationType) => {
     const { title, date, applicantName, applicationID } = application;
     return (
       <Application
@@ -66,6 +58,15 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
       />
     );
   });
+
+const CourseDetail = (props: RouteComponentProps): JSX.Element => {
+  const { location } = props;
+
+  const { courseCoord, courseId, courseName, semester } = location.state;
+
+  //TODO: Get this data using API Call
+  const availableSpots = 7;
+  const maxSpots = 10;
 
   return (
     <div>
@@ -96,7 +97,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
         </div>
       </div>
       <div className="font-semibold text-2xl my-6">
-        <div className="flex w-7/12 m-auto justify-end mt-10 mb-4">
+        <div className="w-7/12 m-auto text-right mt-10 mb-4">
           <label className="mx-4 text-lg font-semibold">Sort by:</label>
           <select className="text-lg">
             <option>Latest</option>
@@ -104,7 +105,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
             <option>Location</option>
           </select>
         </div>
-        <div>{renderApplications}</div>
+        <div>{renderApplications(courseId)}</div>
       </div>
     </div>
   );
