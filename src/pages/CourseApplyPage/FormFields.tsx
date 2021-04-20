@@ -12,7 +12,7 @@ import {
 import useFetch from '../../hooks/useFetch';
 
 const FormFields = (): JSX.Element => {
-  const [courses, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/availableCourses');
+  const [courses, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/courses/available');
 
   return (
     <div className="space-y-7">

@@ -16,6 +16,10 @@ const ApplyForm = (): JSX.Element => {
     return value === 'Yes' ? 1 : 0;
   }
 
+  function mapToWord(value: string): string {
+    return value === '1' ? 'Yes' : 'No';
+  }
+
   function getBase64(file: File): Promise<string | ArrayBuffer | null> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -34,7 +38,7 @@ const ApplyForm = (): JSX.Element => {
     data.academicRecord = await getBase64(form.academicRecord);
     data.curriculumVitae = await getBase64(form.curriculumVitae);
 
-    axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
+    await axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
   }
 
   return (
@@ -47,9 +51,22 @@ const ApplyForm = (): JSX.Element => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions): void => {
-          submitForm(values);
-          actions.setSubmitting(false);
-          actions.resetForm();
+          submitForm(values).then(
+            () => {
+              actions.setSubmitting(false);
+              actions.resetForm();
+              //TODO: Replace alert with modal
+              alert('Submitted!');
+            },
+            () => {
+              actions.setFieldValue('workEligible', mapToWord(values.workEligible.toString()));
+              actions.setFieldValue('inAuckland', mapToWord(values.inAuckland.toString()));
+              actions.setFieldValue('academicRecord', undefined);
+              actions.setFieldValue('curriculumVitae', undefined);
+              //TODO: Replace alert with modal
+              alert('Something went wrong, please try again');
+            }
+          );
         }}
         validationSchema={applicationSchema}
       >
