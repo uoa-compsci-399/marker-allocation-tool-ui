@@ -7,6 +7,7 @@ interface UploadProps {
 
 const Upload = ({ field, label }: UploadProps): JSX.Element => {
   const { setFieldValue, getFieldMeta } = useFormikContext();
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const file: any = getFieldMeta(field);
   let fileLabel = '';

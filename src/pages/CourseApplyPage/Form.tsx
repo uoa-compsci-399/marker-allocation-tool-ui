@@ -1,19 +1,43 @@
 import clsx from 'clsx';
 import { Formik, Form } from 'formik';
+import axios from 'axios';
 
 import {
-  Textbox,
-  CheckBoxes,
-  Dropdown,
-  RadioBoxes,
-  Upload,
-  ConfirmBox,
-  Date,
-} from '../../components/common-ui/forms';
+  applicationSchema,
+  FormFormatted,
+  FormTypes,
+  initialValues,
+} from '../../models/FormDefination';
 
-import { applicationSchema, initialValues } from '../../models/formDefination';
+import FormFields from './FormFields';
 
-const ApplicationForm = (): JSX.Element => {
+const ApplyForm = (): JSX.Element => {
+  function stringToInt(value: string): number {
+    return value === 'Yes' ? 1 : 0;
+  }
+
+  function getBase64(file: File): Promise<string | ArrayBuffer | null> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (): void => resolve(reader.result);
+      reader.onerror = (error): void => reject(error);
+    });
+  }
+
+  async function submitForm(form: FormTypes): Promise<void> {
+    const data: FormFormatted = form;
+    data.previousMarker = stringToInt(form.previousMarker);
+    data.workEligible = stringToInt(form.workEligible);
+    data.inAuckland = stringToInt(form.inAuckland);
+    data.declaration = stringToInt(form.declaration);
+
+    data.academicRecord = await getBase64(form.academicRecord);
+    data.cirriculumVitae = await getBase64(form.cirriculumVitae);
+
+    axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
+  }
+
   return (
     <div
       className={clsx(
@@ -24,66 +48,18 @@ const ApplicationForm = (): JSX.Element => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions): void => {
-          console.log(values);
+          submitForm(values);
           actions.setSubmitting(false);
+          actions.resetForm();
         }}
         validationSchema={applicationSchema}
       >
         <Form>
-          <div className="space-y-7">
-            <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
-              <Textbox field={'firstName'} label={'First Name'} />
-              <Textbox field={'lastName'} label={'Last Name'} />
-              <Textbox field={'studentId'} label={'Student ID'} />
-              <Textbox field={'email'} label={'University of Auckland Email'} />
-            </div>
-            <Dropdown
-              field={'selectedCourse'}
-              options={['compsci 335', 'compsci 316', 'need to fetch from api']}
-              label={'Course you are applying for'}
-            />
-            <Dropdown
-              field={'enrolmentStatus'}
-              options={['enrolled', 'waiting', 'unenrolled']}
-              label={'University enrolment status'}
-            />
-            <Dropdown
-              field={'areaOfStudy'}
-              options={['science', 'engineering', 'need to fetch from api']}
-              label={'Current area of study'}
-            />
-            <CheckBoxes
-              field={'avaliability'}
-              label={'Avaliability'}
-              options={['Summer School', 'Semester One', 'Semester Two']}
-            />
-            <Date field="dateOfBirth" label="Date of birth" />
-            <RadioBoxes field={'previousMarker'} label={'Have you worked as a marker before?'} />
-            <RadioBoxes
-              field={'workEligible'}
-              label={'Are you a NZ citizen or permanant resident?'}
-            />
-            <RadioBoxes field={'inAuckland'} label={'Are you located in Auckland?'} />
-            <Upload field={'academicRecord'} label={'Academic Record'} />
-            <Upload field={'cirriculumVitae'} label={'Cirriculum Vitae'} />
-            <ConfirmBox
-              field={'declaration'}
-              label={'Declaration'}
-              terms={
-                'I agree to take responsibility for monitoring my workload and undertake to inform the Head of School if any offer of work takes my combined University employment over 0.5 FTE.'
-              }
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-            >
-              Submit
-            </button>
-          </div>
+          <FormFields />
         </Form>
       </Formik>
     </div>
   );
 };
 
-export default ApplicationForm;
+export default ApplyForm;

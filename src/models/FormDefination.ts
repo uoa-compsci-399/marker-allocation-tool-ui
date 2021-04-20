@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 
+type Modify<T, R> = Omit<T, keyof R> & R;
+
 const FILE_SIZE = 50000000; //50 mb
 
 export const applicationSchema = yup.object({
@@ -7,7 +9,11 @@ export const applicationSchema = yup.object({
   lastName: yup.string().defined('Required field'),
   studentId: yup.string().matches(/^\d+$/, 'Input must be a number').defined('Required field'),
   email: yup.string().email('Input must be a valid email').defined('Required field'),
-  selectedCourse: yup.string().defined('Select avaliable course'),
+  selectedCourse: yup
+    .array()
+    .of(yup.string())
+    .defined()
+    .min(1, 'You must select an avaliable course'),
   areaOfStudy: yup.string().defined('Select area of study'),
   dateOfBirth: yup.string().defined('Input date of birth'),
   enrolmentStatus: yup.string().defined('Select your enrolment status'),
@@ -30,14 +36,25 @@ export const applicationSchema = yup.object({
   declaration: yup.string().defined('Please sign declaration'),
 });
 
-type FormTypes = yup.InferType<typeof applicationSchema>;
+export type FormTypes = yup.InferType<typeof applicationSchema>;
+
+//This will allow me to make modifications before posting the data
+export type FormFormatted = Modify<
+  FormTypes,
+  {
+    previousMarker: number | string;
+    workEligible: number | string;
+    inAuckland: number | string;
+    declaration: number | string;
+  }
+>;
 
 export const initialValues: FormTypes = {
   firstName: '',
   lastName: '',
   studentId: '',
   email: '',
-  selectedCourse: '',
+  selectedCourse: [],
   areaOfStudy: '',
   dateOfBirth: '',
   enrolmentStatus: '',
