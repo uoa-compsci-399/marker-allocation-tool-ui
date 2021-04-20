@@ -27,13 +27,12 @@ const ApplyForm = (): JSX.Element => {
 
   async function submitForm(form: FormTypes): Promise<void> {
     const data: FormFormatted = form;
-    data.previousMarker = stringToInt(form.previousMarker);
     data.workEligible = stringToInt(form.workEligible);
     data.inAuckland = stringToInt(form.inAuckland);
     data.declaration = stringToInt(form.declaration);
 
     data.academicRecord = await getBase64(form.academicRecord);
-    data.cirriculumVitae = await getBase64(form.cirriculumVitae);
+    data.curriculumVitae = await getBase64(form.curriculumVitae);
 
     axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
   }

@@ -27,7 +27,7 @@ const FormFields = (): JSX.Element => {
             <Textbox field={'email'} label={'University of Auckland Email'} />
           </div>
           <MultiSelect
-            field={'selectedCourse'}
+            field={'selectedCourses'}
             options={courses}
             label={'Course you are applying for'}
           />
@@ -42,19 +42,18 @@ const FormFields = (): JSX.Element => {
             label={'Current area of study'}
           />
           <CheckBoxes
-            field={'avaliability'}
-            label={'Avaliability'}
+            field={'availability'}
+            label={'Availability'}
             options={['Summer School', 'Semester One', 'Semester Two']}
           />
           <Date field="dateOfBirth" label="Date of birth" />
-          <RadioBoxes field={'previousMarker'} label={'Have you worked as a marker before?'} />
           <RadioBoxes
             field={'workEligible'}
             label={'Are you a NZ citizen or permanant resident?'}
           />
           <RadioBoxes field={'inAuckland'} label={'Are you located in Auckland?'} />
           <Upload field={'academicRecord'} label={'Academic Record'} />
-          <Upload field={'cirriculumVitae'} label={'Cirriculum Vitae'} />
+          <Upload field={'curriculumVitae'} label={'Curriculum Vitae'} />
           <ConfirmBox
             field={'declaration'}
             label={'Declaration'}
