@@ -13,11 +13,11 @@ export const applicationSchema = yup.object({
     .array()
     .of(yup.string())
     .defined()
-    .min(1, 'You choose at least 1 avaliable course'),
+    .min(1, 'You choose at least 1 available course'),
   areaOfStudy: yup.string().defined('Select area of study'),
   dateOfBirth: yup.string().defined('Input date of birth'),
   enrolmentStatus: yup.string().defined('Select your enrolment status'),
-  availability: yup.array().of(yup.string()).defined().min(1, 'You must select a avaliable period'),
+  availability: yup.array().of(yup.string()).defined().min(1, 'You must select a available period'),
   workEligible: yup.string().defined('Required field'),
   inAuckland: yup.string().defined('Required field'),
   academicRecord: yup
