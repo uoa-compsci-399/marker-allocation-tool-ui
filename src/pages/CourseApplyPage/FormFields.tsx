@@ -49,7 +49,7 @@ const FormFields = (): JSX.Element => {
           <Date field="dateOfBirth" label="Date of birth" />
           <RadioBoxes
             field={'workEligible'}
-            label={'Are you a NZ citizen or permanant resident?'}
+            label={'Are you a NZ citizen or permanent resident?'}
           />
           <RadioBoxes field={'inAuckland'} label={'Are you located in Auckland?'} />
           <Upload field={'academicRecord'} label={'Academic Record'} />
