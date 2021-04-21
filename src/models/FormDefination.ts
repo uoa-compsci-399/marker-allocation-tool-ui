@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 
+type Modify<T, R> = Omit<T, keyof R> & R;
+
 const FILE_SIZE = 50000000; //50 mb
 
 export const applicationSchema = yup.object({
@@ -7,12 +9,15 @@ export const applicationSchema = yup.object({
   lastName: yup.string().defined('Required field'),
   studentId: yup.string().matches(/^\d+$/, 'Input must be a number').defined('Required field'),
   email: yup.string().email('Input must be a valid email').defined('Required field'),
-  selectedCourse: yup.string().defined('Select avaliable course'),
+  selectedCourses: yup
+    .array()
+    .of(yup.string())
+    .defined()
+    .min(1, 'You choose at least 1 available course'),
   areaOfStudy: yup.string().defined('Select area of study'),
   dateOfBirth: yup.string().defined('Input date of birth'),
   enrolmentStatus: yup.string().defined('Select your enrolment status'),
-  avaliability: yup.array().of(yup.string()).defined().min(1, 'You must select a avaliable period'),
-  previousMarker: yup.string().defined('Required field'),
+  availability: yup.array().of(yup.string()).defined().min(1, 'You must select a available period'),
   workEligible: yup.string().defined('Required field'),
   inAuckland: yup.string().defined('Required field'),
   academicRecord: yup
@@ -21,31 +26,40 @@ export const applicationSchema = yup.object({
     .test('fileSize', 'File Size is too large', (value) =>
       value ? value.size <= FILE_SIZE : true
     ),
-  cirriculumVitae: yup
+  curriculumVitae: yup
     .mixed()
-    .defined('Upload cirriculum vitae')
+    .defined('Upload curriculum vitae')
     .test('fileSize', 'File Size is too large', (value) =>
       value ? value.size <= FILE_SIZE : true
     ),
   declaration: yup.string().defined('Please sign declaration'),
 });
 
-type FormTypes = yup.InferType<typeof applicationSchema>;
+export type FormTypes = yup.InferType<typeof applicationSchema>;
+
+//This will allow me to make modifications before posting the data
+export type FormFormatted = Modify<
+  FormTypes,
+  {
+    workEligible: number | string;
+    inAuckland: number | string;
+    declaration: number | string;
+  }
+>;
 
 export const initialValues: FormTypes = {
   firstName: '',
   lastName: '',
   studentId: '',
   email: '',
-  selectedCourse: '',
+  selectedCourses: [],
   areaOfStudy: '',
   dateOfBirth: '',
   enrolmentStatus: '',
-  avaliability: [],
-  previousMarker: '',
+  availability: [],
   workEligible: '',
   inAuckland: '',
   academicRecord: undefined,
-  cirriculumVitae: undefined,
+  curriculumVitae: undefined,
   declaration: '',
 };

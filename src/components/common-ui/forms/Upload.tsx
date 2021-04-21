@@ -7,6 +7,7 @@ interface UploadProps {
 
 const Upload = ({ field, label }: UploadProps): JSX.Element => {
   const { setFieldValue, getFieldMeta } = useFormikContext();
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const file: any = getFieldMeta(field);
   let fileLabel = '';
@@ -35,6 +36,7 @@ const Upload = ({ field, label }: UploadProps): JSX.Element => {
           onChange={(event): void => {
             if (!event.currentTarget.files) return;
             setFieldValue(field, event.currentTarget.files[0]);
+            event.target.value = '';
           }}
           accept=".doc,.docx,.pdf,.txt"
           className="hidden"
