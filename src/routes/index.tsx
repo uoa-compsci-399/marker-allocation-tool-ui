@@ -5,7 +5,7 @@ import Form from '../pages/CourseApplyPage';
 import ApplicationDetail from '../pages/ApplicationDetailPage';
 import CourseViewPage from '../pages/CourseViewPage';
 import CourseDetail from '../pages/ApplicationViewPage';
-import DashBoardViewPage from '../pages/DashBoard';
+import DashBoardViewPage from '../pages/DashBoardPage';
 
 export default function Routes(): JSX.Element {
   return (
