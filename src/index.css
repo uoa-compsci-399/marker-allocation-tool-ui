@@ -20,9 +20,9 @@ code {
   animation: spinner 1.5s linear infinite;
 }
 
-.dashCard {
+/* .dashCard {
   @apply bg-white rounded overflow-auto shadow-md relative border-2 mx-4 my-6 hover:opacity-50;
-}
+} */
 
 @-webkit-keyframes spinner {
   0% {
