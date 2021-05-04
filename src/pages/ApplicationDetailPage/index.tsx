@@ -1,9 +1,10 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import ButtonGroup from './ButtonGroup';
 import DetailSection from './DetailSection';
 import { ApplicantDetails } from '../../models/ApplicantDetails';
+
+import Button from './Button';
 
 //TODO: Send GET request to get application details using applicationID
 const applicationDetails = (id: string): ApplicantDetails => {
@@ -53,7 +54,11 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
       <DetailSection title="Location" value={location} />
       <DetailSection title="Preffered Course" value={prefCourse} />
       <DetailSection title="Files" value={files} />
-      <ButtonGroup />
+      <div className="text-center space-x-12 my-24">
+        <Button colour="green" title="Accept" />
+        <Button colour="red" title="Reject" />
+        <Button colour="yellow" title="Save" />
+      </div>
     </div>
   );
 };
