@@ -6,6 +6,7 @@ import ApplicationDetail from '../pages/ApplicationDetailPage';
 import CourseViewPage from '../pages/CourseViewPage';
 import CourseDetail from '../pages/ApplicationViewPage';
 import DashBoardViewPage from '../pages/DashBoardPage';
+import SavedApplicationsPage from '../pages/SavedApplicationsPage';
 
 export default function Routes(): JSX.Element {
   return (
@@ -27,6 +28,7 @@ export default function Routes(): JSX.Element {
           return <ApplicationDetail {...props} />;
         }}
       />
+      <Route path="/saved-applications" exact component={SavedApplicationsPage} />
     </Switch>
   );
 }
