@@ -35,7 +35,7 @@ const DashBoardViewPage = (): JSX.Element => {
           imgURL={imgURLs.apply}
         />
         <DashBoardCard
-          path="/applications"
+          path="/saved-applications"
           title="View Applications"
           body="Something"
           imgURL={imgURLs.applcations}
