@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormApplication } from '../../models/FormApplication';
 
-const Application = ({
+const SavedApplication = ({
   courseID,
   title,
   date,
@@ -35,4 +35,4 @@ const Application = ({
   );
 };
 
-export default Application;
+export default SavedApplication;

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Application from './Application';
+import SavedApplication from './SavedApplication';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
 
 // TODO: Send GET request
@@ -13,22 +12,8 @@ const savedApplicantDetails = (id: string): FormApplication[] => {
       courseID: id,
       title: `${courseNumber} Saved Application #1`,
       date: '11/04/21',
-      applicantName: 'Jim Park',
+      applicantName: 'Songyan Teng',
       applicationID: '2456879',
-    },
-    {
-      courseID: id,
-      title: `${courseNumber} Saved Application #2`,
-      date: '08/04/21',
-      applicantName: 'Isaac Kaabel',
-      applicationID: '1234567',
-    },
-    {
-      courseID: id,
-      title: `${courseNumber} Saved Application #3`,
-      date: '05/04/21',
-      applicantName: 'Darren Chen',
-      applicationID: '5968745',
     },
   ];
 };
@@ -37,7 +22,7 @@ const renderApplications = (courseId: string): JSX.Element[] =>
   savedApplicantDetails(courseId).map((application: ApplicationType) => {
     const { title, date, applicantName, applicationID } = application;
     return (
-      <Application
+      <SavedApplication
         courseID={courseId}
         title={title}
         date={date}
