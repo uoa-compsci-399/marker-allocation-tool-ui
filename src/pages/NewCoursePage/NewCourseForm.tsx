@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import axios from 'axios';
 
 import NewCourseFields from './NewCourseFields';
+import { CourseState } from '../../models/CourseState';
 
 import {
   newCourseFormSchema,
@@ -10,12 +11,6 @@ import {
   FormFormatted,
   FormTypes,
 } from '../../models/CourseFormDefinition';
-
-interface StateInfo {
-  userRole: string;
-  userId: string;
-  courseId: string;
-}
 
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
@@ -25,7 +20,7 @@ function mapToWord(value: string): string {
   return value === '1' ? 'Yes' : 'No';
 }
 
-const ApplyForm = (state: StateInfo): JSX.Element => {
+const ApplyForm = (state: CourseState): JSX.Element => {
   let values: FormTypes = initialValues;
   if (state.courseId !== '-9999') {
     //TODO: get course details from backend using userID + courseID and decode accordingly
@@ -85,7 +80,11 @@ const ApplyForm = (state: StateInfo): JSX.Element => {
         validationSchema={newCourseFormSchema}
       >
         <Form>
-          <NewCourseFields identity={state.userRole} userId={state.userId} />
+          <NewCourseFields
+            userRole={state.userRole}
+            userId={state.userId}
+            courseId={state.courseId}
+          />
         </Form>
       </Formik>
     </div>

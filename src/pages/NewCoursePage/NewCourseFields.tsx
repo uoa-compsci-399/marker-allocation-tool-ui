@@ -8,15 +8,15 @@ import {
 
 import useFetch from '../../hooks/useFetch';
 import RepeatField from '../../components/common-ui/forms/RepeatField';
+import { CourseState } from '../../models/CourseState';
 
 import React from 'react';
-import { UserRole } from '../../models/UserRole';
 
-const NewCourseFields = (userRole: UserRole): JSX.Element => {
+const NewCourseFields = (state: CourseState): JSX.Element => {
   //TODO: replace with new endpoint of avaiable course coordinators + their upi
   const [coordinators, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/courses/available');
 
-  const identity = userRole.identity;
+  const identity = state.userRole;
 
   return (
     <div className="space-y-7">
@@ -61,7 +61,7 @@ const NewCourseFields = (userRole: UserRole): JSX.Element => {
             type="submit"
             className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           >
-            Add Course
+            {state.courseId === '-9999' ? <span>Add Course</span> : <span>Update Course </span>}
           </button>
         </>
       )}
