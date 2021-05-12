@@ -11,9 +11,18 @@ import {
   FormTypes,
 } from '../../models/CourseFormDefinition';
 
+function stringToInt(value: string): number {
+  return value === 'Yes' ? 1 : 0;
+}
+
+function mapToWord(value: string): string {
+  return value === '1' ? 'Yes' : 'No';
+}
+
 const ApplyForm = (): JSX.Element => {
   async function submitForm(form: FormTypes): Promise<void> {
     const data: FormFormatted = form;
+    data.isPublished = stringToInt(form.isPublished);
 
     console.log(data);
     //TODO: replace with correct POST endpoint
@@ -38,6 +47,7 @@ const ApplyForm = (): JSX.Element => {
               alert('Course Added!');
             },
             () => {
+              actions.setFieldValue('isPublished', mapToWord(values.isPublished.toString()));
               //TODO: Replace alert with modal
               alert('Something went wrong, please try again');
             }
