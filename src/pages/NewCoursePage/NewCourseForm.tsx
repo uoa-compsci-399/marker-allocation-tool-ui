@@ -1,10 +1,25 @@
 import clsx from 'clsx';
 import { Formik, Form } from 'formik';
+import axios from 'axios';
 
 import NewCourseFields from './NewCourseFields';
-import { newCourseFormSchema, initialValues } from '../../models/CourseFormDefinition';
+
+import {
+  newCourseFormSchema,
+  initialValues,
+  FormFormatted,
+  FormTypes,
+} from '../../models/CourseFormDefinition';
 
 const ApplyForm = (): JSX.Element => {
+  async function submitForm(form: FormTypes): Promise<void> {
+    const data: FormFormatted = form;
+
+    console.log(data);
+    //TODO: replace with correct POST endpoint
+    await axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
+  }
+
   return (
     <div
       className={clsx(
@@ -15,7 +30,18 @@ const ApplyForm = (): JSX.Element => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions): void => {
-          console.log(values);
+          submitForm(values).then(
+            () => {
+              actions.setSubmitting(false);
+              actions.resetForm();
+              //TODO: Replace alert with modal
+              alert('Course Added!');
+            },
+            () => {
+              //TODO: Replace alert with modal
+              alert('Something went wrong, please try again');
+            }
+          );
         }}
         validationSchema={newCourseFormSchema}
       >
