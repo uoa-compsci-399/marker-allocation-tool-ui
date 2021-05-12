@@ -9,7 +9,9 @@ const ExtendedFAB = (userRole: UserRole): JSX.Element => {
         to={{
           pathname: `/courses/new`,
           state: {
-            identity: userRole.identity,
+            userRole: userRole.identity,
+            userId: userRole.userId,
+            courseId: '-9999',
           },
         }}
       >

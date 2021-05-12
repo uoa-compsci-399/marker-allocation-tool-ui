@@ -3,6 +3,12 @@ import React from 'react';
 import { CourseData } from '../../models/CourseData';
 import { Link } from 'react-router-dom';
 
+import { ReactComponent as EditIcon } from './edit_icon.svg';
+
+//TODO: GET user role using /whoami from backend
+//0: Marker, 1: MC, 2: CC
+import { userDetails } from './index';
+
 //TODO: GET application count from DB using a query
 const getApplicationCount = (courseId: string): number => {
   return 5;
@@ -31,6 +37,19 @@ const Course = ({
           }}
         >
           {courseName}
+        </Link>
+
+        <Link
+          to={{
+            pathname: `/courses/${courseId}/edit`,
+            state: {
+              courseId: courseId,
+              userId: userDetails.userId,
+              userRole: userDetails.identity,
+            },
+          }}
+        >
+          <EditIcon className="mr-4" />
         </Link>
       </div>
       <div className="mx-12 font-medium text-gray-600 mb-8">{semester}</div>

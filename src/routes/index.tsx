@@ -19,7 +19,17 @@ export default function Routes(): JSX.Element {
           if (!props.location.state) {
             return <Redirect to="/courses" />;
           }
-          return <NewCoursePage />;
+          return <NewCoursePage {...props} />;
+        }}
+      />
+      <Route
+        path="/courses/:id/edit"
+        exact
+        render={(props): JSX.Element => {
+          if (!props.location.state) {
+            return <Redirect to="/courses" />;
+          }
+          return <NewCoursePage {...props} />;
         }}
       />
       <Route

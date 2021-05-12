@@ -11,6 +11,12 @@ import {
   FormTypes,
 } from '../../models/CourseFormDefinition';
 
+interface StateInfo {
+  userRole: string;
+  userId: string;
+  courseId: string;
+}
+
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
 }
@@ -19,7 +25,30 @@ function mapToWord(value: string): string {
   return value === '1' ? 'Yes' : 'No';
 }
 
-const ApplyForm = (): JSX.Element => {
+const ApplyForm = (state: StateInfo): JSX.Element => {
+  let values: FormTypes = initialValues;
+  if (state.courseId !== '-9999') {
+    //TODO: get course details from backend using userID + courseID and decode accordingly
+    values = {
+      courseName: 'COMPSCI 399',
+      enrolmentEstimate: '100',
+      expectedWorkload: '',
+      courseCoordinators: ['COMPSCI 130'],
+      semesters: ['Semester One'],
+      year: '2021',
+      workloadDistributions: [
+        { assignment: 'Report', workload: '10' },
+        { assignment: 'Build', workload: '7' },
+      ],
+      applicationClosingDate: '2021-10-31',
+      courseInfoDeadline: '',
+      markerAssignmentDeadline: '',
+      markerPrefDeadline: '',
+      isPublished: mapToWord('1'),
+      otherNotes: '',
+    };
+  }
+
   async function submitForm(form: FormTypes): Promise<void> {
     const data: FormFormatted = form;
     data.isPublished = stringToInt(form.isPublished);
@@ -37,7 +66,7 @@ const ApplyForm = (): JSX.Element => {
       )}
     >
       <Formik
-        initialValues={initialValues}
+        initialValues={values}
         onSubmit={(values, actions): void => {
           submitForm(values).then(
             () => {
@@ -56,7 +85,7 @@ const ApplyForm = (): JSX.Element => {
         validationSchema={newCourseFormSchema}
       >
         <Form>
-          <NewCourseFields />
+          <NewCourseFields identity={state.userRole} userId={state.userId} />
         </Form>
       </Formik>
     </div>

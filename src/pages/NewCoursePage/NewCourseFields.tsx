@@ -9,9 +9,14 @@ import {
 import useFetch from '../../hooks/useFetch';
 import RepeatField from '../../components/common-ui/forms/RepeatField';
 
-const NewCourseFields = (): JSX.Element => {
+import React from 'react';
+import { UserRole } from '../../models/UserRole';
+
+const NewCourseFields = (userRole: UserRole): JSX.Element => {
   //TODO: replace with new endpoint of avaiable course coordinators + their upi
   const [coordinators, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/courses/available');
+
+  const identity = userRole.identity;
 
   return (
     <div className="space-y-7">
@@ -39,9 +44,15 @@ const NewCourseFields = (): JSX.Element => {
           <RepeatField name={'workloadDistributions'} labels={['Assignment', 'Workload (hours)']} />
 
           <Date field="applicationClosingDate" label="Application Closing Date" />
-          <Date field="markerAssignmentDeadline" label="Deadline for Marker Allocation" />
-          <Date field="courseInfoDeadline" label="Deadline to Submit Course Information" />
-          <Date field="markerPrefDeadline" label="Deadline for Submitting Marker Preferences" />
+          {identity === '1' ? (
+            <Date field="markerAssignmentDeadline" label="Deadline for Marker Allocation" />
+          ) : null}
+          {identity === '1' ? (
+            <Date field="courseInfoDeadline" label="Deadline to Submit Course Information" />
+          ) : null}
+          {identity === '1' ? (
+            <Date field="markerPrefDeadline" label="Deadline for Submitting Marker Preferences" />
+          ) : null}
           <RadioBoxes field={'isPublished'} label={'Publish this Course?'} />
 
           <Textbox field={'otherNotes'} label={'Additional Notes'} />
