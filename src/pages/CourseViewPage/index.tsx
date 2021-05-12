@@ -2,6 +2,7 @@ import React from 'react';
 
 import CourseList from './CourseList';
 import ExtendedFAB from '../../components/common-ui/ExtendedFAB';
+import { UserRole } from '../../models/UserRole';
 
 //TODO: Replace with API call
 const dummyCourseData = [
@@ -25,6 +26,13 @@ const dummyCourseData = [
   },
 ];
 
+//TODO: GET user role using /whoami from backend
+//0: Marker, 1: MC, 2: CC
+const userDetails: UserRole = {
+  identity: Math.floor(Math.random() * 3).toString(),
+  userId: '12345678',
+};
+
 const CourseViewPage = (): JSX.Element => {
   return (
     <div>
@@ -32,7 +40,9 @@ const CourseViewPage = (): JSX.Element => {
         <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">
           Manage Courses
         </p>
-        <ExtendedFAB />
+        {userDetails.identity === '1' ? (
+          <ExtendedFAB identity={userDetails.identity} userId={userDetails.userId} />
+        ) : null}
       </div>
       <CourseList courseData={dummyCourseData} />
     </div>
