@@ -5,6 +5,7 @@ import Form from '../pages/CourseApplyPage';
 import ApplicationDetail from '../pages/ApplicationDetailPage';
 import CourseViewPage from '../pages/CourseViewPage';
 import CourseDetail from '../pages/ApplicationViewPage';
+import NewCoursePage from '../pages/NewCoursePage';
 
 export default function Routes(): JSX.Element {
   return (
@@ -18,7 +19,7 @@ export default function Routes(): JSX.Element {
           if (!props.location.state) {
             return <Redirect to="/courses" />;
           }
-          return <CourseViewPage />;
+          return <NewCoursePage />;
         }}
       />
       <Route
