@@ -25,9 +25,11 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
         <>
           <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
             <Textbox field={'courseName'} label={'Course Name'} />
-            <Textbox field={'enrolmentEstimate'} label={'Estimated Enrolment'} />
-            <Textbox field={'expectedWorkload'} label={'Expected Total Workload'} />
             <Textbox field={'preferredMarkerCount'} label={'Preferred Number of Markers'} />
+            <Textbox field={'enrolmentEstimate'} label={'Estimated Enrolment'} />
+            <Textbox field={'enrolmentFinal'} label={'Final Enrolment'} />
+            <Textbox field={'expectedWorkload'} label={'Expected Total Workload'} />
+            <Date field="applicationClosingDate" label="Application Closing Date" />
           </div>
           <MultiSelect
             field={'courseCoordinators'}
@@ -43,7 +45,6 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
 
           <RepeatField name={'workloadDistributions'} labels={['Assignment', 'Workload (hours)']} />
 
-          <Date field="applicationClosingDate" label="Application Closing Date" />
           {identity === '1' ? (
             <Date field="markerAssignmentDeadline" label="Deadline for Marker Allocation" />
           ) : null}

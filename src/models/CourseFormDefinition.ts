@@ -5,6 +5,7 @@ type Modify<T, R> = Omit<T, keyof R> & R;
 export const newCourseFormSchema = yup.object({
   courseName: yup.string().defined('Required field'),
   enrolmentEstimate: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
+  enrolmentFinal: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
   expectedWorkload: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
   preferredMarkerCount: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
   courseCoordinators: yup
@@ -44,6 +45,7 @@ export type FormFormatted = Modify<
 export const initialValues: FormTypes = {
   courseName: '',
   enrolmentEstimate: '',
+  enrolmentFinal: '',
   expectedWorkload: '',
   preferredMarkerCount: '',
   courseCoordinators: [],

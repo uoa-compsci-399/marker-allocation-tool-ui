@@ -27,6 +27,7 @@ const ApplyForm = (state: CourseState): JSX.Element => {
     values = {
       courseName: 'COMPSCI 399',
       enrolmentEstimate: '100',
+      enrolmentFinal: '',
       expectedWorkload: '',
       preferredMarkerCount: '',
       courseCoordinators: ['COMPSCI 130'],
