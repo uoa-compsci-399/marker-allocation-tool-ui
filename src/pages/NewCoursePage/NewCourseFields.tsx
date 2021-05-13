@@ -13,8 +13,7 @@ import { CourseState } from '../../models/CourseState';
 import React from 'react';
 
 const NewCourseFields = (state: CourseState): JSX.Element => {
-  //TODO: replace with new endpoint of avaiable course coordinators + their upi
-  const [coordinators, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/courses/available');
+  const [coordinators, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/coursecoordinators');
 
   const identity = state.userRole;
 
