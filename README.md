@@ -45,7 +45,7 @@ Do not merge develop branch into main until we are ready to do a deployment and 
 
 # Backend Endpoints routes
 
-## Get
+## GET
 
 Get a list of users 
   - [/users ](url)
@@ -79,3 +79,14 @@ Get a single course row by courseID
 
 Get a list of course coordinators
   - [/coursecoordinators ](url) 
+
+# POST
+
+Post insert a user
+  - [/user/](url)
+ 
+Post insert a application
+  - [/application/](url)
+
+Post insert a course
+  - [/course/ ](url)
