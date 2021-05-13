@@ -80,7 +80,7 @@ Get a single course row by courseID
 Get a list of course coordinators
   - [/coursecoordinators ](url) 
 
-# POST
+## POST
 
 Post insert a user
   - [/user/](url)
