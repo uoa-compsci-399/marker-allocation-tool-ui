@@ -1539,6 +1539,44 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@rest-hooks/core@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@rest-hooks/core/-/core-1.1.2.tgz#0ea95b704986bfbb12a90db1529fea3c6ff1f26d"
+  integrity sha512-vMluWq3z9cRmYXqToIfpMVki+L/8/BkVwFnfsbt738Nc/OPLCqyCV94vj33L7iptUiYfF8kq+gRX9Oj0CbGwYQ==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@rest-hooks/endpoint" "^1.1.1"
+    "@rest-hooks/normalizr" "^6.1.1"
+    "@rest-hooks/use-enhanced-reducer" "^1.0.6"
+    flux-standard-action "^2.1.1"
+
+"@rest-hooks/endpoint@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@rest-hooks/endpoint/-/endpoint-1.1.1.tgz#1fa9dc133d8901d187745eb999bbd888ff45cfee"
+  integrity sha512-9s/e7n8dZxhfAn8OtEFeG0ojvLnWJyBkK6J0Msp55ybQ7s4UGk/taAxk91Jk/8B0NXXTXfPrSwKm6J1si3jvtg==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@rest-hooks/normalizr" "^6.1.1"
+
+"@rest-hooks/normalizr@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@rest-hooks/normalizr/-/normalizr-6.1.1.tgz#c667e5e1323e641dd635c028f505678c52d4e42e"
+  integrity sha512-SbX9/8sGfwoAK0tjr7EQmfuWiPT0hZjqChzp5+xxYj5MEqvtghuz2Zu6fEZGnxLkHeH4UUBWf29gkF06IPKLtg==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+
+"@rest-hooks/rest@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@rest-hooks/rest/-/rest-2.1.1.tgz#fe2040f7e6d70ae1d962db7aa236ca95bdf76a31"
+  integrity sha512-TAGa+VxT09fjBA7nm5kR2P+PzUk4vXvqrW23IAuUnBqlxrp0sgiTI7A6EdqECBX9SVkPH6MErM1LRI+hYb3o4w==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+
+"@rest-hooks/use-enhanced-reducer@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@rest-hooks/use-enhanced-reducer/-/use-enhanced-reducer-1.0.6.tgz#795269e98e1d885537915d2de2e1c34453b165ac"
+  integrity sha512-xNUa7fJfbnizUZb3tXomT+GsfiR8Y0bYjK7PC98UtmZpL7qF/5HazhVz+F/Hig1X6A+V9rN1R7mi1tEYaN5yJg==
+
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz#80de384edfbd7bfc9101164910f86078151a3eca"
@@ -5318,6 +5356,13 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+flux-standard-action@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/flux-standard-action/-/flux-standard-action-2.1.1.tgz#b2e204145ea8e4294d6b0f178d8e8c416802948f"
+  integrity sha512-W86GzmXmIiTVq/dpYVd2HtTIUX9c35Iq3ao3xR6qcKtuXgbu+BDEj72op5VnEIe/kpuSbhl+I8kT1iS2hpcusw==
+  dependencies:
+    lodash "^4.17.15"
 
 follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.3"
@@ -10053,6 +10098,15 @@ resolve@^2.0.0-next.3:
   dependencies:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
+
+rest-hooks@^5.0.23:
+  version "5.0.23"
+  resolved "https://registry.yarnpkg.com/rest-hooks/-/rest-hooks-5.0.23.tgz#6aa4f668e7621a8573854876af2b6daa872dd596"
+  integrity sha512-E4jR7wpPT+NFvYS6nErxhyA8MTONmxxpMCn5SoFHFMYkw/FEerGaTgUcrJ4SaD6FAP9Vn8CG3yl7v1N57bK0Tg==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@rest-hooks/core" "^1.1.2"
+    "@rest-hooks/endpoint" "^1.1.1"
 
 ret@~0.1.10:
   version "0.1.15"

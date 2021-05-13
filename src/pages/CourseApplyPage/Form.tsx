@@ -2,12 +2,7 @@ import clsx from 'clsx';
 import { Formik, Form } from 'formik';
 import axios from 'axios';
 
-import {
-  applicationSchema,
-  FormFormatted,
-  FormTypes,
-  initialValues,
-} from '../../models/FormDefination';
+import { applicationSchema, FormFormatted, FormTypes, initialValues } from 'models/FormDefination';
 
 import FormFields from './FormFields';
 

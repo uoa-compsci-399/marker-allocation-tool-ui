@@ -1,6 +1,5 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { FormApplication } from '../../models/FormApplication';
+import { FormApplication } from 'models/FormApplication';
 
 const Application = ({
   courseID,
@@ -11,10 +10,10 @@ const Application = ({
 }: FormApplication): JSX.Element => {
   const history = useHistory();
   return (
-    <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
+    <div className="w-7/12 h-full py-4 mx-auto my-5 overflow-auto bg-white border-2 rounded shadow-md">
       <div className="md:flex">
         <p
-          className="w-full text-center text-2xl my-2 font-medium hover:text-blue-600 cursor-pointer"
+          className="w-full my-2 text-2xl font-medium text-center cursor-pointer hover:text-blue-600"
           onClick={(): void => {
             history.push(`/courses/${courseID}/applications/${applicationID}`);
           }}
@@ -22,13 +21,13 @@ const Application = ({
           {applicantName}
         </p>
       </div>
-      <div className="md:flex justify-between my-4">
-        <div className="text-left text-lg ml-28 my-4">{applicationID}</div>
+      <div className="justify-between my-4 md:flex">
+        <div className="my-4 text-lg text-left ml-28">{applicationID}</div>
         <div>
-          <div className="mx-12 font-semibold text-lg my-4">
+          <div className="mx-12 my-4 text-lg font-semibold">
             Date Submitted: <span className="font-medium">{date}</span>
           </div>
-          <div className="mx-12 text-right md:text-sm text-gray-600">{title}</div>
+          <div className="mx-12 text-right text-gray-600 md:text-sm">{title}</div>
         </div>
       </div>
     </div>

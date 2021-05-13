@@ -7,17 +7,18 @@ import {
   ConfirmBox,
   MultiSelect,
   Date,
-} from '../../components/common-ui/forms';
+} from 'components/common-ui/forms';
+import Spinner from 'components/common-ui/Spinner';
 
-import useFetch from '../../hooks/useFetch';
+import useFetchCourses from 'hooks/useFetchCourses';
 
 const FormFields = (): JSX.Element => {
-  const [courses, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/courses/available');
+  const [courses, loading] = useFetchCourses();
 
   return (
     <div className="space-y-7">
       {loading ? (
-        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+        <Spinner />
       ) : (
         <>
           <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
