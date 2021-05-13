@@ -28,6 +28,7 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
             <Textbox field={'courseName'} label={'Course Name'} />
             <Textbox field={'enrolmentEstimate'} label={'Estimated Enrolment'} />
             <Textbox field={'expectedWorkload'} label={'Expected Total Workload'} />
+            <Textbox field={'preferredMarkerCount'} label={'Preferred Number of Markers'} />
           </div>
           <MultiSelect
             field={'courseCoordinators'}

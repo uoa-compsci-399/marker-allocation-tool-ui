@@ -28,6 +28,7 @@ const ApplyForm = (state: CourseState): JSX.Element => {
       courseName: 'COMPSCI 399',
       enrolmentEstimate: '100',
       expectedWorkload: '',
+      preferredMarkerCount: '',
       courseCoordinators: ['COMPSCI 130'],
       semesters: ['Semester One'],
       year: '2021',
