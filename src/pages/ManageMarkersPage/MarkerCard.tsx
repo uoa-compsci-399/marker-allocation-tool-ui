@@ -23,7 +23,7 @@ const MarkerCard = ({ markerId, name, mobile, email }: MarkerData): JSX.Element 
         <div className="my-8">
           <span className="float-left mr-8">
             <MailIcon className="w-6 h-6" />
-          </span>{' '}
+          </span>
           <span className="text-xl">{email}</span>
         </div>
         <div className="my-8">
