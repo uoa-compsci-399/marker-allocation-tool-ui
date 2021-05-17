@@ -47,8 +47,9 @@ const ApplyForm = (state: CourseState): JSX.Element => {
   }
 
   async function submitForm(form: FormTypes): Promise<void> {
-    const data: FormFormatted = form;
+    const data: FormFormatted = Object.assign({}, form);
     data.isPublished = stringToInt(form.isPublished);
+    data.workloadDistributions = JSON.stringify(data.workloadDistributions);
 
     console.log(data);
     //TODO: replace with correct POST endpoint
@@ -73,7 +74,6 @@ const ApplyForm = (state: CourseState): JSX.Element => {
               alert('Course Added!');
             },
             () => {
-              actions.setFieldValue('isPublished', mapToWord(values.isPublished.toString()));
               //TODO: Replace alert with modal
               alert('Something went wrong, please try again');
             }

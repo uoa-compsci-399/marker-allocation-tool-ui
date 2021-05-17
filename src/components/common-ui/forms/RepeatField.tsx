@@ -1,13 +1,9 @@
 import { ErrorMessage, Field, FieldArray } from 'formik';
+import { WorkloadDistribution } from '../../../models/WorkloadDistribution';
 
 interface TextboxProps {
   name: string;
   labels: string[];
-}
-
-interface FieldValues {
-  assignment: string;
-  workload: string;
 }
 
 const RepeatField = ({ name, labels }: TextboxProps): JSX.Element => {
@@ -17,7 +13,7 @@ const RepeatField = ({ name, labels }: TextboxProps): JSX.Element => {
       render={(arrayHelpers): JSX.Element => (
         <div>
           {arrayHelpers.form.values.workloadDistributions.map(
-            (workloadDistribution: FieldValues, index: number) => (
+            (workloadDistribution: WorkloadDistribution, index: number) => (
               <div className="grid min-w-full grid-cols-2 row-span-1 gap-x-7 gap-y-2" key={index}>
                 <div className="flex flex-col space-y-1">
                   <label className="text-sm text-gray-900">{labels[0]}</label>

@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { WorkloadDistribution } from './WorkloadDistribution';
 
 type Modify<T, R> = Omit<T, keyof R> & R;
 
@@ -39,8 +40,16 @@ export type FormFormatted = Modify<
   FormTypes,
   {
     isPublished: number | string;
+    workloadDistributions: yup.SchemaOf<WorkloadDistribution[]> | any;
   }
 >;
+
+const workloadDistribution: WorkloadDistribution[] = [{ assignment: '', workload: '' }];
+
+export type load = {
+  assignment: string;
+  workload: string;
+};
 
 export const initialValues: FormTypes = {
   courseName: '',
@@ -51,7 +60,7 @@ export const initialValues: FormTypes = {
   courseCoordinators: [],
   semesters: [],
   year: '',
-  workloadDistributions: [{ assignment: '', workload: '' }],
+  workloadDistributions: workloadDistribution,
   applicationClosingDate: '',
   courseInfoDeadline: '',
   markerAssignmentDeadline: '',
