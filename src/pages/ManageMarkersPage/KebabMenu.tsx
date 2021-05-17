@@ -1,19 +1,18 @@
 import React from 'react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 
-// const openMenu = () => {
-//     return (
-//         <div>
-
-//         </div>
-//     )
-// }
+import KebabPopup from './KebabPopup';
 
 const KebabMenu = (): JSX.Element => {
+  const [showPopup, setShowPopup] = React.useState(false);
+
   return (
-    <button>
-      <DotsVerticalIcon className="hover:bg-gray-300 rounded-md mt-2" />
-    </button>
+    <>
+      <button onClick={(): void => setShowPopup(!showPopup)}>
+        <DotsVerticalIcon className="hover:bg-gray-300 rounded-md mt-2" />
+      </button>
+      {showPopup ? <KebabPopup /> : null}
+    </>
   );
 };
 

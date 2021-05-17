@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FloatingButton = (): JSX.Element => {
-  const [showModel, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
   return (
     <div className="fixed bottom-2 right-20">
       <button
@@ -18,7 +18,7 @@ const FloatingButton = (): JSX.Element => {
         </svg>
       </button>
 
-      {showModel ? (
+      {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-sm">
