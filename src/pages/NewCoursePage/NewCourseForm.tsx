@@ -11,6 +11,7 @@ import {
   FormFormatted,
   FormTypes,
 } from '../../models/CourseFormDefinition';
+import { NULL_COURSE_ID } from '../../utils/Constants';
 
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
@@ -22,7 +23,7 @@ function mapToWord(value: string): string {
 
 const ApplyForm = (state: CourseState): JSX.Element => {
   let values: FormTypes = initialValues;
-  if (state.courseId !== '-9999') {
+  if (state.courseId !== NULL_COURSE_ID) {
     //TODO: get course details from backend using userID + courseID and decode accordingly
     values = {
       courseName: 'COMPSCI 399',

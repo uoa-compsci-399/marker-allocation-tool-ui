@@ -4,10 +4,7 @@ import { CourseData } from '../../models/CourseData';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as EditIcon } from './edit_icon.svg';
-
-//TODO: GET user role using /whoami from backend
-//0: Marker, 1: MC, 2: CC
-import { userDetails } from './index';
+import { USER_DETAILS } from '../../utils/Constants';
 
 //TODO: GET application count from DB using a query
 const getApplicationCount = (courseId: string): number => {
@@ -46,8 +43,8 @@ const Course = ({
             pathname: `/courses/${courseID}/edit`,
             state: {
               courseId: courseID,
-              userId: userDetails.userId,
-              userRole: userDetails.identity,
+              userId: USER_DETAILS.userId,
+              userRole: USER_DETAILS.identity,
             },
           }}
         >

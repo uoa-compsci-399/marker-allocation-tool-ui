@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { UserRole } from '../../models/UserRole';
+import { NULL_COURSE_ID } from '../../utils/Constants';
 
 const ExtendedFAB = (userRole: UserRole): JSX.Element => {
   return (
@@ -11,7 +12,7 @@ const ExtendedFAB = (userRole: UserRole): JSX.Element => {
           state: {
             userRole: userRole.identity,
             userId: userRole.userId,
-            courseId: '-9999',
+            courseId: NULL_COURSE_ID,
           },
         }}
       >
