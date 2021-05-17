@@ -15,11 +15,13 @@ const getApplicationCount = (courseId: string): number => {
 };
 
 const Course = ({
-  courseCoord,
-  courseId,
+  courseCoordinators,
+  courseID,
   courseName,
-  semester,
-  closingDate,
+  semesters,
+  applicationClosingDate,
+  year,
+  isPublished,
 }: CourseData): JSX.Element => {
   return (
     <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
@@ -27,12 +29,12 @@ const Course = ({
         <Link
           className="w-full text-3xl mx-12 mt-6 font-semibold hover:text-blue-600"
           to={{
-            pathname: `/courses/${courseId}/applications/`,
+            pathname: `/courses/${courseID}/applications/`,
             state: {
-              courseId: courseId,
-              courseCoord: courseCoord,
+              courseID: courseID,
+              courseCoordinators: courseCoordinators,
               courseName: courseName,
-              semester: semester,
+              semesters: semesters,
             },
           }}
         >
@@ -41,9 +43,9 @@ const Course = ({
 
         <Link
           to={{
-            pathname: `/courses/${courseId}/edit`,
+            pathname: `/courses/${courseID}/edit`,
             state: {
-              courseId: courseId,
+              courseId: courseID,
               userId: userDetails.userId,
               userRole: userDetails.identity,
             },
@@ -52,19 +54,19 @@ const Course = ({
           <EditIcon className="mr-4" />
         </Link>
       </div>
-      <div className="mx-12 font-medium text-gray-600 mb-8">{semester}</div>
+      <div className="mx-12 font-medium text-gray-600 mb-8">{semesters}</div>
       <div className="mx-12 font-semibold text-lg my-4">
-        Course Coordinator(s): <span className="font-medium">{courseCoord}</span>
+        Course Coordinator(s): <span className="font-medium">{courseCoordinators}</span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">
         Closing Date:{' '}
         <span className="font-medium">
-          {closingDate}
+          {applicationClosingDate}
           <span className="font-light text-red-500 text-base mx-12"> # days left</span>
         </span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">
-        Number of Applications: <span className="font-medium">{getApplicationCount(courseId)}</span>
+        Number of Applications: <span className="font-medium">{getApplicationCount(courseID)}</span>
       </div>
     </div>
   );

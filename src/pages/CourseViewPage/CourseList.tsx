@@ -13,22 +13,24 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
   // render courses with fetched data
   const renderCourses = courseData.map(
     ({
-      courseCoord,
-      courseId,
+      courseCoordinators,
+      courseID,
       courseName,
-      semester,
-      closingDate,
-      availableSpots,
-      maxSpots,
+      semesters,
+      applicationClosingDate,
+      isPublished,
+      year,
+      preferredMarkerCount,
     }: CourseData) => (
       <Course
-        courseCoord={courseCoord}
-        courseId={courseId}
+        courseCoordinators={courseCoordinators}
+        courseID={courseID}
         courseName={courseName}
-        semester={semester}
-        closingDate={closingDate}
-        availableSpots={availableSpots}
-        maxSpots={maxSpots}
+        semesters={semesters}
+        applicationClosingDate={applicationClosingDate}
+        preferredMarkerCount={preferredMarkerCount}
+        isPublished={isPublished}
+        year={year}
       />
     )
   );

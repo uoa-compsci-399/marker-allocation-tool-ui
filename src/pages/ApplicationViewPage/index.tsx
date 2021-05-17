@@ -5,26 +5,25 @@ import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
 
 //TODO: Send GET request to get a list applications for that course
-const applicantDetails = (id: string): FormApplication[] => {
-  const courseNumber = id.substr(2);
+const applicantDetails = (id: string, name: string): FormApplication[] => {
   return [
     {
       courseID: id,
-      title: `${courseNumber}  Application #1`,
+      title: `${name}  Application #1`,
       date: '11/04/21',
       applicantName: 'Songyan Teng',
       applicationID: '2456879',
     },
     {
       courseID: id,
-      title: `${courseNumber}  Application #2`,
+      title: `${name}  Application #2`,
       date: '08/04/21',
       applicantName: 'Isaac Kaabel',
       applicationID: '1234567',
     },
     {
       courseID: id,
-      title: `${courseNumber}  Application #3`,
+      title: `${name}  Application #3`,
       date: '05/04/21',
       applicantName: 'Darren Chen',
       applicationID: '5968745',
@@ -45,8 +44,8 @@ const renderMarkers = (): JSX.Element => {
   );
 };
 
-const renderApplications = (courseId: string): JSX.Element[] =>
-  applicantDetails(courseId).map((application: ApplicationType) => {
+const renderApplications = (courseId: string, courseName: string): JSX.Element[] =>
+  applicantDetails(courseId, courseName).map((application: ApplicationType) => {
     const { title, date, applicantName, applicationID } = application;
     return (
       <Application
@@ -62,7 +61,7 @@ const renderApplications = (courseId: string): JSX.Element[] =>
 const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;
 
-  const { courseCoord, courseId, courseName, semester } = location.state;
+  const { courseCoordinators, courseID, courseName, semesters } = location.state;
 
   //TODO: Get this data using API Call
   const availableSpots = 7;
@@ -79,14 +78,14 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
             {courseName}
           </div>
           <div className="text-lg tk-neue-haas-grotesk-display tracking-wide text-gray-500">
-            {semester}
+            {semesters}
           </div>
         </div>
         <div className="flex flex-grow m-auto place-content-evenly">
           <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
             Course Coordinator:{' '}
             <a href="/" className="font-normal">
-              {courseCoord}
+              {courseCoordinators}
             </a>
           </div>
           <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
@@ -105,7 +104,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
             <option>Location</option>
           </select>
         </div>
-        <div>{renderApplications(courseId)}</div>
+        <div>{renderApplications(courseID, courseName)}</div>
       </div>
     </div>
   );

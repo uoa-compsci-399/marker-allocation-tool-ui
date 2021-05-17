@@ -3,28 +3,7 @@ import React from 'react';
 import CourseList from './CourseList';
 import ExtendedFAB from '../../components/common-ui/ExtendedFAB';
 import { UserRole } from '../../models/UserRole';
-
-//TODO: Replace with API call
-const dummyCourseData = [
-  {
-    courseCoord: 'Asma Shakil',
-    courseId: 'cs399',
-    courseName: 'COMPSCI 399',
-    semester: 'Semester 1, 2021',
-    closingDate: '14/06/2021',
-    availableSpots: '7',
-    maxSpots: '10',
-  },
-  {
-    courseCoord: 'John Doe, Asma Shakil',
-    courseId: 'cs358',
-    courseName: 'COMPSCI 358',
-    semester: 'Semester 2, 2021',
-    closingDate: '14/06/2021',
-    availableSpots: '8',
-    maxSpots: '10',
-  },
-];
+import useFetchCourses from '../../hooks/useFetchCourses';
 
 //TODO: GET user role using /whoami from backend
 //0: Marker, 1: MC, 2: CC
@@ -34,6 +13,8 @@ export const userDetails: UserRole = {
 };
 
 const CourseViewPage = (): JSX.Element => {
+  //TODO: Filter course list by userID
+  const [courses, loading] = useFetchCourses();
   return (
     <div>
       <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
@@ -44,7 +25,13 @@ const CourseViewPage = (): JSX.Element => {
           <ExtendedFAB identity={userDetails.identity} userId={userDetails.userId} />
         ) : null}
       </div>
-      <CourseList courseData={dummyCourseData} />
+      {loading ? (
+        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+      ) : (
+        <>
+          <CourseList courseData={courses.data} />
+        </>
+      )}
     </div>
   );
 };
