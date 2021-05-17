@@ -11,7 +11,7 @@ const MarkerCard = ({ markerId, name, mobile, email }: MarkerData): JSX.Element 
         <div className="mt-0 mb-4 w-full text-center">
           <span className="text-3xl font-medium">{name}</span>
           <span className="float-right mr-12 w-8 h-8">
-            <KebabMenu />
+            <KebabMenu markerId={markerId} name={name} mobile={mobile} email={email} />
           </span>
         </div>
         <div className="my-8">
