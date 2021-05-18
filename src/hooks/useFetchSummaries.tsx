@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 // fetches Application summaries
 
 function useFetchApplicant(id: string): [any, boolean] {
@@ -9,13 +11,13 @@ function useFetchApplicant(id: string): [any, boolean] {
 
   useEffect(() => {
     async function fetchApplication(): Promise<any> {
-      const json = await axios.get(`https://dev.classe.wumbo.co.nz/api/application/${id}`);
+      const json = await axios.get(`${api_url}/api/application/${id}`);
       return json.data.data;
     }
 
     async function fetchData(): Promise<void> {
       const application = await fetchApplication();
-      setData({ ...application });
+      setData(application);
       setLoading(false);
     }
 

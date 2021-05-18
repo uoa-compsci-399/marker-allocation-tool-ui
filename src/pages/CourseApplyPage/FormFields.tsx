@@ -1,5 +1,5 @@
 import {
-  Textbox,
+  TextBox,
   CheckBoxes,
   Dropdown,
   RadioBoxes,
@@ -10,10 +10,10 @@ import {
 } from 'components/common-ui/forms';
 import Spinner from 'components/common-ui/Spinner';
 
-import useFetchCourses from 'hooks/useFetchCourses';
+import useFetchCourseNames from 'hooks/useFetchCourseNames';
 
 const FormFields = (): JSX.Element => {
-  const [courses, loading] = useFetchCourses();
+  const [courses, loading] = useFetchCourseNames();
 
   return (
     <div className="space-y-7">
@@ -22,10 +22,10 @@ const FormFields = (): JSX.Element => {
       ) : (
         <>
           <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
-            <Textbox field={'firstName'} label={'First Name'} />
-            <Textbox field={'lastName'} label={'Last Name'} />
-            <Textbox field={'studentId'} label={'Student ID'} />
-            <Textbox field={'email'} label={'University of Auckland Email'} />
+            <TextBox field={'firstName'} label={'First Name'} />
+            <TextBox field={'lastName'} label={'Last Name'} />
+            <TextBox field={'studentId'} label={'Student ID'} />
+            <TextBox field={'email'} label={'University of Auckland Email'} />
           </div>
           <MultiSelect
             field={'selectedCourses'}

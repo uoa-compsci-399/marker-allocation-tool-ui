@@ -18,7 +18,7 @@ const CourseViewPage = (): JSX.Element => {
             </p>
             <ExtendedFAB />
           </div>
-          <CourseList courseData={courses.data} />
+          <CourseList courseData={courses} />
         </>
       )}
     </div>

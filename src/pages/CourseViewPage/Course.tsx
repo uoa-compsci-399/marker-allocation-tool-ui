@@ -1,16 +1,12 @@
 import { CourseData } from 'models/CourseData';
 import { Link } from 'react-router-dom';
 
-//TODO: GET application count from DB using a query
-const getApplicationCount = (courseId: string): number => {
-  return 5;
-};
-
 const Course = ({
   courseCoord,
-  courseId,
+  courseID,
   courseName,
   semester,
+  daysLeft,
   closingDate,
 }: CourseData): JSX.Element => {
   return (
@@ -19,9 +15,9 @@ const Course = ({
         <Link
           className="w-full mx-12 mt-6 text-3xl font-semibold hover:text-blue-600"
           to={{
-            pathname: `/courses/${courseId}/applications/`,
+            pathname: `/courses/${courseID}/applications/`,
             state: {
-              courseId: courseId,
+              courseId: courseID,
               courseCoord: courseCoord,
               courseName: courseName,
               semester: semester,
@@ -39,11 +35,11 @@ const Course = ({
         Closing Date:{' '}
         <span className="font-medium">
           {closingDate}
-          <span className="mx-12 text-base font-light text-red-500"> # days left</span>
+          <span className="mx-12 text-base font-light text-red-500">{daysLeft} # days left</span>
         </span>
       </div>
       <div className="mx-12 my-4 text-lg font-semibold">
-        Number of Applications: <span className="font-medium">{getApplicationCount(courseId)}</span>
+        Number of Applications: <span className="font-medium"> </span>
       </div>
     </div>
   );

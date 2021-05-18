@@ -3,30 +3,32 @@ import { RouteComponentProps } from 'react-router';
 import ButtonGroup from './ButtonGroup';
 import DetailSection from './DetailSection';
 import Spinner from 'components/common-ui/Spinner';
+import DownloadButton from 'components/common-ui/DownloadButton';
 import { ApplicantDetails } from 'models/ApplicantDetails';
 
 import useFetchApplicant from 'hooks/useFetchApplicant';
 
 function ApplicationDetails(data: any): ApplicantDetails {
   return {
-    title: `N/A`, //Not sure what this value needs to be
     name: `${data.firstName} ${data.lastName}`,
-    studentID: 'N/A', //from MARKER table
+    studentID: `${data.studentID}`,
     email: `${data.email}`,
     areaOfStudy: `${data.areaOfStudy}`,
     currentYear: `${data.year}`,
     availableSems: `${data.availability}`,
-    experience: 'N/A', //cant find anywhere
+    experience: 'N/A',
     visaStatus: `${data.workEligible === 1 ? 'Valid' : 'Invalid'}`,
     location: `${data.inAuckland === 1 ? 'In Auckland' : 'Remote'}`,
-    prefCourse: 'N/A', //cant find anywhere
-    files: 'Need to add components for downloading files',
+    prefCourse: 'N/A',
+    academicRecord: ``,
+    curriculumVitae: ``,
   };
 }
 
 const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
   const { match } = props; //allows us to get the id of the route
   const [data, loading] = useFetchApplicant(match.params.id);
+  console.log(data);
 
   const {
     name,
@@ -39,7 +41,8 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
     visaStatus,
     location,
     prefCourse,
-    files,
+    academicRecord,
+    curriculumVitae,
   } = ApplicationDetails(data);
 
   return (
@@ -57,8 +60,15 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
           <DetailSection title="Experience" value={experience} />
           <DetailSection title="Visa Status" value={visaStatus} />
           <DetailSection title="Location" value={location} />
-          <DetailSection title="Preffered Course" value={prefCourse} />
-          <DetailSection title="Files" value={files} />
+          <DetailSection title="Preferred Course" value={prefCourse} />
+          <div className="mx-32 mb-4">
+            <div className="mb-1 ml-4 text-2xl font-semibold">Files</div>
+            <div className="mb-2 border-t-2"></div>
+            <div className="flex mb-12 ml-4 text-xl">
+              <DownloadButton title="Academic Record" downloadLink={academicRecord} />
+              <DownloadButton title="Curriculum Vitae" downloadLink={curriculumVitae} />
+            </div>
+          </div>
           <ButtonGroup />
         </>
       )}

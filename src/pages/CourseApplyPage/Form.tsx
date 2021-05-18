@@ -26,6 +26,8 @@ const ApplyForm = (): JSX.Element => {
 
   async function submitForm(form: FormTypes): Promise<void> {
     const data: FormFormatted = form;
+    const api_url = process.env.REACT_APP_API_DOMAIN;
+
     data.workEligible = stringToInt(form.workEligible);
     data.inAuckland = stringToInt(form.inAuckland);
     data.declaration = stringToInt(form.declaration);
@@ -33,7 +35,7 @@ const ApplyForm = (): JSX.Element => {
     data.academicRecord = await getBase64(form.academicRecord);
     data.curriculumVitae = await getBase64(form.curriculumVitae);
 
-    await axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
+    await axios.post(`${api_url}/api/application`, data);
   }
 
   return (
