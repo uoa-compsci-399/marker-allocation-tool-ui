@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router';
 
 import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
+import { DecodeBitField } from '../../utils/BitFieldHelper';
 
 //TODO: Send GET request to get a list applications for that course
 const applicantDetails = (id: string, name: string): FormApplication[] => {
@@ -61,7 +62,7 @@ const renderApplications = (courseId: string, courseName: string): JSX.Element[]
 const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;
 
-  const { courseCoordinators, courseID, courseName, semesters } = location.state;
+  const { courseCoordinators, courseID, courseName, semesters, year } = location.state;
 
   //TODO: Get this data using API Call
   const availableSpots = 7;
@@ -78,7 +79,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
             {courseName}
           </div>
           <div className="text-lg tk-neue-haas-grotesk-display tracking-wide text-gray-500">
-            {semesters}
+            {`${DecodeBitField(semesters).join(', ')} ${year}`}
           </div>
         </div>
         <div className="flex flex-grow m-auto place-content-evenly">

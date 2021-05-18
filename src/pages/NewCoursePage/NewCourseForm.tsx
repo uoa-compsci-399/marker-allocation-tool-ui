@@ -10,7 +10,7 @@ import { newCourseFormSchema, FormFormatted, FormTypes } from '../../models/Cour
 import useFetchCourse from '../../hooks/useFetchCourse';
 import React from 'react';
 import { ResponseCourseData } from '../../models/ResponseCourseData';
-import { BitFieldHelper, EncodeBitField } from '../../utils/BitFieldHelper';
+import { DecodeBitField, EncodeBitField } from '../../utils/BitFieldHelper';
 
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
@@ -29,7 +29,7 @@ function parseCourse(course: ResponseCourseData): FormTypes {
     preferredMarkerCount: course.preferredMarkerCount,
     courseCoordinators:
       course.courseCoordinators.trim() === '' ? [] : course.courseCoordinators.split(', '),
-    semesters: BitFieldHelper(course.semesters),
+    semesters: DecodeBitField(course.semesters),
     year: course.year,
     workloadDistributions: JSON.parse(course.workloadDistributions).data,
     applicationClosingDate: course.applicationClosingDate,

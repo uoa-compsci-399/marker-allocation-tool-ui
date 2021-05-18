@@ -8,7 +8,7 @@ export interface CourseData {
   expectedWorkload?: string;
   preferredMarkerCount?: string;
   courseCoordinators: string[];
-  semesters: string[];
+  semesters: number;
   year: string;
   workloadDistributions?: WorkloadDistribution[];
   applicationClosingDate: string;

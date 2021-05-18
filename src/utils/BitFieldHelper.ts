@@ -1,4 +1,4 @@
-export function BitFieldHelper(bitfield: number): string[] {
+export function DecodeBitField(bitfield: number): string[] {
   const semesters: string[] = [];
   if (bitfield & 0x04) semesters.push('Semester Two');
   if (bitfield & 0x02) semesters.push('Semester One');

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as EditIcon } from './edit_icon.svg';
 import { USER_DETAILS } from '../../utils/Constants';
+import { DecodeBitField } from '../../utils/BitFieldHelper';
 
 //TODO: GET application count from DB using a query
 const getApplicationCount = (courseId: string): number => {
@@ -32,6 +33,7 @@ const Course = ({
               courseCoordinators: courseCoordinators,
               courseName: courseName,
               semesters: semesters,
+              year: year,
             },
           }}
         >
@@ -51,16 +53,13 @@ const Course = ({
           <EditIcon className="mr-4" />
         </Link>
       </div>
-      <div className="mx-12 font-medium text-gray-600 mb-8">{semesters}</div>
+      <div className="mx-12 font-medium text-gray-600">{DecodeBitField(semesters).join(', ')}</div>
+      <div className="mx-12 font-medium text-gray-600 mb-8">{year}</div>
       <div className="mx-12 font-semibold text-lg my-4">
         Course Coordinator(s): <span className="font-medium">{courseCoordinators}</span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">
-        Closing Date:{' '}
-        <span className="font-medium">
-          {applicationClosingDate}
-          <span className="font-light text-red-500 text-base mx-12"> # days left</span>
-        </span>
+        Closing Date: <span className="font-medium">{applicationClosingDate}</span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">
         Number of Applications: <span className="font-medium">{getApplicationCount(courseID)}</span>
