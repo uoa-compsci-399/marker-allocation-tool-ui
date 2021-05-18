@@ -6,11 +6,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as EditIcon } from './edit_icon.svg';
 import { USER_DETAILS } from '../../utils/Constants';
 import { DecodeBitField } from '../../utils/BitFieldHelper';
-
-//TODO: GET application count from DB using a query
-const getApplicationCount = (courseId: string): number => {
-  return 5;
-};
+import useFetchApplicationCount from '../../hooks/useFetchApplicationCount';
 
 const Course = ({
   courseCoordinators,
@@ -19,8 +15,12 @@ const Course = ({
   semesters,
   applicationClosingDate,
   year,
+  preferredMarkerCount,
   isPublished,
 }: CourseData): JSX.Element => {
+  const [count] = useFetchApplicationCount(
+    `https://dev.classe.wumbo.co.nz/api/course/${courseID}/application/total`
+  );
   return (
     <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-2 my-5 py-4">
       <div className="md:flex">
@@ -34,6 +34,7 @@ const Course = ({
               courseName: courseName,
               semesters: semesters,
               year: year,
+              preferredMarkerCount: preferredMarkerCount,
             },
           }}
         >
@@ -62,7 +63,7 @@ const Course = ({
         Closing Date: <span className="font-medium">{applicationClosingDate}</span>
       </div>
       <div className="mx-12 font-semibold text-lg my-4">
-        Number of Applications: <span className="font-medium">{getApplicationCount(courseID)}</span>
+        Number of Applications: <span className="font-medium">{count}</span>
       </div>
     </div>
   );

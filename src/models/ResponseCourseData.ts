@@ -6,7 +6,7 @@ export interface ResponseCourseData {
   enrolmentEstimate?: string;
   enrolmentFinal?: string;
   expectedWorkload?: string;
-  preferredMarkerCount?: string;
+  preferredMarkerCount: string;
   courseCoordinators: string;
   semesters: number;
   year: string;

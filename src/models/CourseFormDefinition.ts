@@ -8,7 +8,10 @@ export const newCourseFormSchema = yup.object({
   enrolmentEstimate: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
   enrolmentFinal: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
   expectedWorkload: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
-  preferredMarkerCount: yup.string().matches(/^\d+$/, 'Input must be a valid number'),
+  preferredMarkerCount: yup
+    .string()
+    .matches(/^\d+$/, 'Input must be a valid number')
+    .defined('Required field'),
   courseCoordinators: yup
     .array()
     .of(yup.string())

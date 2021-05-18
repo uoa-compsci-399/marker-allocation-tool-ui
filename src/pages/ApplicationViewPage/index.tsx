@@ -4,6 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from '../../models/FormApplication';
 import { DecodeBitField } from '../../utils/BitFieldHelper';
+import useFetchAvailableCount from '../../hooks/useFetchAvailableCount';
 
 //TODO: Send GET request to get a list applications for that course
 const applicantDetails = (id: string, name: string): FormApplication[] => {
@@ -62,11 +63,18 @@ const renderApplications = (courseId: string, courseName: string): JSX.Element[]
 const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;
 
-  const { courseCoordinators, courseID, courseName, semesters, year } = location.state;
+  const {
+    courseCoordinators,
+    courseID,
+    courseName,
+    semesters,
+    year,
+    preferredMarkerCount,
+  } = location.state;
 
-  //TODO: Get this data using API Call
-  const availableSpots = 7;
-  const maxSpots = 10;
+  const [count] = useFetchAvailableCount(
+    `https://dev.classe.wumbo.co.nz/api/course/${courseID}/application/open`
+  );
 
   return (
     <div>
@@ -91,7 +99,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
           </div>
           <div className="font-semibold tk-neue-haas-grotesk-display tracking-wide text-xl">
             Current Available Spots:{' '}
-            <span className="font-normal">{`${availableSpots}/${maxSpots}`}</span>
+            <span className="font-normal">{`${count}/${preferredMarkerCount}`}</span>
           </div>
           <div>{renderMarkers()}</div>
         </div>
