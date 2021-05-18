@@ -14,7 +14,7 @@ function useFetchCourses(id: string): [ResponseBody, boolean] {
 
   useEffect(() => {
     async function fetchAvaliableCourses(): Promise<void> {
-      const json = await axios.get(`http://localhost:8000/api/course/${id}`);
+      const json = await axios.get(`https://dev.classe.wumbo.co.nz/api/course/${id}`);
       setData({ ...json.data });
       setLoading(false);
     }

@@ -40,6 +40,7 @@ export type FormFormatted = Modify<
   FormTypes,
   {
     isPublished: number | string;
+    semesters: string[] | any;
     workloadDistributions: yup.SchemaOf<WorkloadDistribution[]> | any;
   }
 >;

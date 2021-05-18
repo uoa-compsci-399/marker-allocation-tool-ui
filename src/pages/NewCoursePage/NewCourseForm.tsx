@@ -10,6 +10,7 @@ import { newCourseFormSchema, FormFormatted, FormTypes } from '../../models/Cour
 import useFetchCourse from '../../hooks/useFetchCourse';
 import React from 'react';
 import { ResponseCourseData } from '../../models/ResponseCourseData';
+import { BitFieldHelper, EncodeBitField } from '../../utils/BitFieldHelper';
 
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
@@ -26,8 +27,9 @@ function parseCourse(course: ResponseCourseData): FormTypes {
     enrolmentFinal: course.enrolmentFinal,
     expectedWorkload: course.expectedWorkload,
     preferredMarkerCount: course.preferredMarkerCount,
-    courseCoordinators: course.courseCoordinators,
-    semesters: course.semesters,
+    courseCoordinators:
+      course.courseCoordinators.trim() === '' ? [] : course.courseCoordinators.split(', '),
+    semesters: BitFieldHelper(course.semesters),
     year: course.year,
     workloadDistributions: JSON.parse(course.workloadDistributions).data,
     applicationClosingDate: course.applicationClosingDate,
@@ -43,11 +45,12 @@ const ApplyForm = (state: CourseState): JSX.Element => {
   async function submitForm(form: FormTypes): Promise<void> {
     const data: FormFormatted = Object.assign({}, form);
     data.isPublished = stringToInt(form.isPublished);
+    data.semesters = EncodeBitField(data.semesters);
     data.workloadDistributions = JSON.stringify(data.workloadDistributions);
 
     console.log(data);
     //TODO: replace with correct POST endpoint
-    await axios.post('http://localhost:8000/api/course', data);
+    await axios.post('http://dev.classe.wumbo.co.nz/api/course', data);
   }
 
   //TODO: validate request for course using userID

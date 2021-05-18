@@ -7,8 +7,8 @@ export interface ResponseCourseData {
   enrolmentFinal?: string;
   expectedWorkload?: string;
   preferredMarkerCount?: string;
-  courseCoordinators: string[];
-  semesters: string[];
+  courseCoordinators: string;
+  semesters: number;
   year: string;
   workloadDistributions: string;
   applicationClosingDate: string;
@@ -26,8 +26,8 @@ export const initialValues: ResponseCourseData = {
   enrolmentFinal: '',
   expectedWorkload: '',
   preferredMarkerCount: '',
-  courseCoordinators: [],
-  semesters: [],
+  courseCoordinators: '',
+  semesters: 0,
   year: '',
   workloadDistributions: `{"data": [{ "assignment":"", "workload":"" }]}`,
   applicationClosingDate: '',
