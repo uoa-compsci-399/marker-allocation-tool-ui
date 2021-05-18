@@ -5,13 +5,11 @@ import axios from 'axios';
 import NewCourseFields from './NewCourseFields';
 import { CourseState } from '../../models/CourseState';
 
-import {
-  newCourseFormSchema,
-  initialValues,
-  FormFormatted,
-  FormTypes,
-} from '../../models/CourseFormDefinition';
-import { NULL_COURSE_ID } from '../../utils/Constants';
+import { newCourseFormSchema, FormFormatted, FormTypes } from '../../models/CourseFormDefinition';
+
+import useFetchCourse from '../../hooks/useFetchCourse';
+import React from 'react';
+import { ResponseCourseData } from '../../models/ResponseCourseData';
 
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
@@ -21,32 +19,27 @@ function mapToWord(value: string): string {
   return value === '1' ? 'Yes' : 'No';
 }
 
-const ApplyForm = (state: CourseState): JSX.Element => {
-  let values: FormTypes = initialValues;
-  if (state.courseId !== NULL_COURSE_ID) {
-    //TODO: get course details from backend using userID + courseID and decode accordingly
-    values = {
-      courseName: 'COMPSCI 399',
-      enrolmentEstimate: '100',
-      enrolmentFinal: '',
-      expectedWorkload: '',
-      preferredMarkerCount: '',
-      courseCoordinators: ['COMPSCI 130'],
-      semesters: ['Semester One'],
-      year: '2021',
-      workloadDistributions: [
-        { assignment: 'Report', workload: '10' },
-        { assignment: 'Build', workload: '7' },
-      ],
-      applicationClosingDate: '2021-10-31',
-      courseInfoDeadline: '',
-      markerAssignmentDeadline: '',
-      markerPrefDeadline: '',
-      isPublished: mapToWord('1'),
-      otherNotes: '',
-    };
-  }
+function parseCourse(course: ResponseCourseData): FormTypes {
+  return {
+    courseName: course.courseName,
+    enrolmentEstimate: course.enrolmentEstimate,
+    enrolmentFinal: course.enrolmentFinal,
+    expectedWorkload: course.expectedWorkload,
+    preferredMarkerCount: course.preferredMarkerCount,
+    courseCoordinators: course.courseCoordinators,
+    semesters: course.semesters,
+    year: course.year,
+    workloadDistributions: JSON.parse(course.workloadDistributions).data,
+    applicationClosingDate: course.applicationClosingDate,
+    courseInfoDeadline: course.courseInfoDeadline,
+    markerAssignmentDeadline: course.markerAssignmentDeadline,
+    markerPrefDeadline: course.markerPrefDeadline,
+    isPublished: mapToWord(course.isPublished.toString()),
+    otherNotes: course.otherNotes,
+  };
+}
 
+const ApplyForm = (state: CourseState): JSX.Element => {
   async function submitForm(form: FormTypes): Promise<void> {
     const data: FormFormatted = Object.assign({}, form);
     data.isPublished = stringToInt(form.isPublished);
@@ -54,9 +47,12 @@ const ApplyForm = (state: CourseState): JSX.Element => {
 
     console.log(data);
     //TODO: replace with correct POST endpoint
-    await axios.post('http://dev.classe.wumbo.co.nz/api/application', data);
+    await axios.post('http://localhost:8000/api/course', data);
   }
 
+  //TODO: validate request for course using userID
+  const [course, loading] = useFetchCourse(state.courseId);
+  const values = parseCourse(course.data);
   return (
     <div
       className={clsx(
@@ -64,32 +60,38 @@ const ApplyForm = (state: CourseState): JSX.Element => {
         '3xl:w-1/3 2xl:w-1/2 lg:w-2/3 md:w-10/12 sm:p-16 xs:w-11/12 xs:p-8'
       )}
     >
-      <Formik
-        initialValues={values}
-        onSubmit={(values, actions): void => {
-          submitForm(values).then(
-            () => {
-              actions.setSubmitting(false);
-              actions.resetForm();
-              //TODO: Replace alert with modal
-              alert('Course Added!');
-            },
-            () => {
-              //TODO: Replace alert with modal
-              alert('Something went wrong, please try again');
-            }
-          );
-        }}
-        validationSchema={newCourseFormSchema}
-      >
-        <Form>
-          <NewCourseFields
-            userRole={state.userRole}
-            userId={state.userId}
-            courseId={state.courseId}
-          />
-        </Form>
-      </Formik>
+      {loading ? (
+        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+      ) : (
+        <>
+          <Formik
+            initialValues={values}
+            onSubmit={(values, actions): void => {
+              submitForm(values).then(
+                () => {
+                  actions.setSubmitting(false);
+                  actions.resetForm();
+                  //TODO: Replace alert with modal
+                  alert('Course Added!');
+                },
+                () => {
+                  //TODO: Replace alert with modal
+                  alert('Something went wrong, please try again');
+                }
+              );
+            }}
+            validationSchema={newCourseFormSchema}
+          >
+            <Form>
+              <NewCourseFields
+                userRole={state.userRole}
+                userId={state.userId}
+                courseId={state.courseId}
+              />
+            </Form>
+          </Formik>
+        </>
+      )}
     </div>
   );
 };

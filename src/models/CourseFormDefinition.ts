@@ -43,28 +43,3 @@ export type FormFormatted = Modify<
     workloadDistributions: yup.SchemaOf<WorkloadDistribution[]> | any;
   }
 >;
-
-const workloadDistribution: WorkloadDistribution[] = [{ assignment: '', workload: '' }];
-
-export type load = {
-  assignment: string;
-  workload: string;
-};
-
-export const initialValues: FormTypes = {
-  courseName: '',
-  enrolmentEstimate: '',
-  enrolmentFinal: '',
-  expectedWorkload: '',
-  preferredMarkerCount: '',
-  courseCoordinators: [],
-  semesters: [],
-  year: '',
-  workloadDistributions: workloadDistribution,
-  applicationClosingDate: '',
-  courseInfoDeadline: '',
-  markerAssignmentDeadline: '',
-  markerPrefDeadline: '',
-  isPublished: '',
-  otherNotes: '',
-};

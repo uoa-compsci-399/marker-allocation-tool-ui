@@ -11,6 +11,7 @@ import RepeatField from '../../components/common-ui/forms/RepeatField';
 import { CourseState } from '../../models/CourseState';
 
 import React from 'react';
+import { NULL_COURSE_ID } from '../../utils/Constants';
 
 const NewCourseFields = (state: CourseState): JSX.Element => {
   const [coordinators, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/coursecoordinators');
@@ -62,7 +63,11 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
             type="submit"
             className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           >
-            {state.courseId === '-9999' ? <span>Add Course</span> : <span>Update Course </span>}
+            {state.courseId === NULL_COURSE_ID ? (
+              <span>Add Course</span>
+            ) : (
+              <span>Update Course </span>
+            )}
           </button>
         </>
       )}
