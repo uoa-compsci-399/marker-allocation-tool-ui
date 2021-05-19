@@ -13,8 +13,10 @@ import { CourseState } from '../../models/CourseState';
 import React from 'react';
 import { NULL_COURSE_ID } from '../../utils/Constants';
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 const NewCourseFields = (state: CourseState): JSX.Element => {
-  const [coordinators, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/coursecoordinators');
+  const [coordinators, loading] = useFetch(`${api_url}/api/coursecoordinators`);
 
   const identity = state.userRole;
 

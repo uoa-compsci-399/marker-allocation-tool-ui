@@ -6,6 +6,8 @@ import { USER_DETAILS } from '../../utils/Constants';
 import { DecodeBitField } from '../../utils/BitFieldHelper';
 import useFetchApplicationCount from '../../hooks/useFetchApplicationCount';
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 const Course = ({
   courseCoordinators,
   courseID,
@@ -16,9 +18,7 @@ const Course = ({
   preferredMarkerCount,
   isPublished,
 }: CourseData): JSX.Element => {
-  const [count] = useFetchApplicationCount(
-    `https://dev.classe.wumbo.co.nz/api/course/${courseID}/application/total`
-  );
+  const [count] = useFetchApplicationCount(`${api_url}/api/course/${courseID}/application/total`);
   return (
     <div className="w-7/12 h-full py-4 mx-auto my-5 overflow-auto bg-white border-2 rounded shadow-md">
       <div className="md:flex">

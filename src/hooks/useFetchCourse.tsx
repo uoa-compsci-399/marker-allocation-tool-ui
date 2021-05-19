@@ -8,13 +8,15 @@ interface ResponseBody {
   data: ResponseCourseData;
 }
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 function useFetchCourses(id: string): [ResponseBody, boolean] {
   const [data, setData] = useState<ResponseBody>({ message: '', data: initialValues });
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchAvaliableCourses(): Promise<void> {
-      const json = await axios.get(`https://dev.classe.wumbo.co.nz/api/course/${id}`);
+      const json = await axios.get(`${api_url}/api/course/${id}`);
       setData({ ...json.data });
       setLoading(false);
     }

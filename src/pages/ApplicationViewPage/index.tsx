@@ -5,6 +5,8 @@ import { FormApplication, FormApplication as ApplicationType } from 'models/Form
 import { DecodeBitField } from '../../utils/BitFieldHelper';
 import useFetchAvailableCount from '../../hooks/useFetchAvailableCount';
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 //TODO: Send GET request to get a list applications for that course
 const applicantDetails = (id: string, name: string): FormApplication[] => {
   return [
@@ -65,9 +67,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const { courseCoordinators, courseID, courseName, semesters, year, preferredMarkerCount } =
     location.state;
 
-  const [count] = useFetchAvailableCount(
-    `https://dev.classe.wumbo.co.nz/api/course/${courseID}/application/open`
-  );
+  const [count] = useFetchAvailableCount(`${api_url}/api/course/${courseID}/application/open`);
 
   return (
     <div>

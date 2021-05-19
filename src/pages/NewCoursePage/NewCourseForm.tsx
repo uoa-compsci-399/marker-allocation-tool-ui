@@ -12,6 +12,8 @@ import React from 'react';
 import { ResponseCourseData } from '../../models/ResponseCourseData';
 import { DecodeBitField, EncodeBitField } from '../../utils/BitFieldHelper';
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 function stringToInt(value: string): number {
   return value === 'Yes' ? 1 : 0;
 }
@@ -50,7 +52,7 @@ const ApplyForm = (state: CourseState): JSX.Element => {
 
     console.log(data);
     //TODO: replace with correct POST endpoint
-    await axios.post('http://dev.classe.wumbo.co.nz/api/course', data);
+    await axios.post(`${api_url}/api/course`, data);
   }
 
   //TODO: validate request for course using userID
