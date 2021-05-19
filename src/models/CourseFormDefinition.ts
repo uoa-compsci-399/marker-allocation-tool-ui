@@ -42,6 +42,7 @@ export type FormTypes = yup.InferType<typeof newCourseFormSchema>;
 export type FormFormatted = Modify<
   FormTypes,
   {
+    courseID?: string;
     isPublished: number | string;
     semesters: string[] | any;
     workloadDistributions: yup.SchemaOf<WorkloadDistribution[]> | any;
