@@ -2,9 +2,9 @@ import { CourseData } from 'models/CourseData';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as EditIcon } from './edit_icon.svg';
-import { USER_DETAILS } from '../../utils/Constants';
-import { DecodeBitField } from '../../utils/BitFieldHelper';
-import useFetchApplicationCount from '../../hooks/useFetchApplicationCount';
+import { USER_DETAILS } from 'utils/Constants';
+import { DecodeBitField } from 'utils/BitFieldHelper';
+import useFetchApplicationCount from 'hooks/useFetchApplicationCount';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 

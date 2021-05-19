@@ -1,4 +1,4 @@
-import { UserRole } from '../models/UserRole';
+import { UserRole } from 'models/UserRole';
 
 export const NULL_COURSE_ID = '-9999';
 

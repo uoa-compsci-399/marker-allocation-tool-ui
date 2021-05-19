@@ -1,4 +1,4 @@
-import { NULL_COURSE_ID } from '../utils/Constants';
+import { NULL_COURSE_ID } from 'utils/Constants';
 
 export interface ResponseCourseData {
   courseID: string;

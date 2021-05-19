@@ -1,7 +1,7 @@
 import NewCourseForm from './NewCourseForm';
 import { RouteComponentProps } from 'react-router';
 import React from 'react';
-import { NULL_COURSE_ID } from '../../utils/Constants';
+import { NULL_COURSE_ID } from 'utils/Constants';
 
 const NewCoursePage = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;

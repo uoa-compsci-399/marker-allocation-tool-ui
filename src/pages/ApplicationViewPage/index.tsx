@@ -2,8 +2,8 @@ import { RouteComponentProps } from 'react-router';
 
 import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from 'models/FormApplication';
-import { DecodeBitField } from '../../utils/BitFieldHelper';
-import useFetchAvailableCount from '../../hooks/useFetchAvailableCount';
+import { DecodeBitField } from 'utils/BitFieldHelper';
+import useFetchAvailableCount from 'hooks/useFetchAvailableCount';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 

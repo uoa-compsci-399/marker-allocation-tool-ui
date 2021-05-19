@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CourseData } from '../models/CourseData';
+import { CourseData } from 'models/CourseData';
 
 interface ResponseBody {
   message: string;

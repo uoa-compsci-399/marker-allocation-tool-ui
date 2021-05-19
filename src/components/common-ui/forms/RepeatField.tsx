@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, FieldArray } from 'formik';
-import { WorkloadDistribution } from '../../../models/WorkloadDistribution';
+import { WorkloadDistribution } from 'models/WorkloadDistribution';
 
 interface TextboxProps {
   name: string;

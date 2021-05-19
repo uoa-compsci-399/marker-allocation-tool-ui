@@ -1,17 +1,12 @@
-import {
-  TextBox,
-  CheckBoxes,
-  RadioBoxes,
-  MultiSelect,
-  Date,
-} from '../../components/common-ui/forms';
+import { TextBox, CheckBoxes, RadioBoxes, MultiSelect, Date } from 'components/common-ui/forms';
 
-import useFetch from '../../hooks/useFetch';
-import RepeatField from '../../components/common-ui/forms/RepeatField';
-import { CourseState } from '../../models/CourseState';
+import useFetch from 'hooks/useFetch';
+import RepeatField from 'components/common-ui/forms/RepeatField';
+import { CourseState } from 'models/CourseState';
 
 import React from 'react';
-import { NULL_COURSE_ID } from '../../utils/Constants';
+import { NULL_COURSE_ID } from 'utils/Constants';
+import Spinner from 'components/common-ui/Spinner';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
@@ -23,7 +18,7 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
   return (
     <div className="space-y-7">
       {loading ? (
-        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+        <Spinner />
       ) : (
         <>
           <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">

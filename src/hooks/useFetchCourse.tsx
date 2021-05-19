@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { NULL_COURSE_ID } from '../utils/Constants';
-import { initialValues, ResponseCourseData } from '../models/ResponseCourseData';
+import { NULL_COURSE_ID } from 'utils/Constants';
+import { initialValues, ResponseCourseData } from 'models/ResponseCourseData';
 
 interface ResponseBody {
   message: string;

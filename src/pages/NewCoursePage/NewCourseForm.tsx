@@ -3,14 +3,14 @@ import { Formik, Form } from 'formik';
 import axios from 'axios';
 
 import NewCourseFields from './NewCourseFields';
-import { CourseState } from '../../models/CourseState';
+import { CourseState } from 'models/CourseState';
 
-import { newCourseFormSchema, FormFormatted, FormTypes } from '../../models/CourseFormDefinition';
+import { newCourseFormSchema, FormFormatted, FormTypes } from 'models/CourseFormDefinition';
 
-import useFetchCourse from '../../hooks/useFetchCourse';
+import useFetchCourse from 'hooks/useFetchCourse';
 import React from 'react';
-import { ResponseCourseData } from '../../models/ResponseCourseData';
-import { DecodeBitField, EncodeBitField } from '../../utils/BitFieldHelper';
+import { ResponseCourseData } from 'models/ResponseCourseData';
+import { DecodeBitField, EncodeBitField } from 'utils/BitFieldHelper';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
