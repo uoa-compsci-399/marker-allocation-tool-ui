@@ -10,7 +10,7 @@ interface ResponseBody {
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
-function useFetchCourses(id: string): [ResponseBody, boolean] {
+function useFetchCourse(id: string): [ResponseBody, boolean] {
   const [data, setData] = useState<ResponseBody>({ message: '', data: initialValues });
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -31,4 +31,4 @@ function useFetchCourses(id: string): [ResponseBody, boolean] {
   return [data, loading];
 }
 
-export default useFetchCourses;
+export default useFetchCourse;

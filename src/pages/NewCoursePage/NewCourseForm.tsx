@@ -11,6 +11,7 @@ import useFetchCourse from 'hooks/useFetchCourse';
 import React from 'react';
 import { ResponseCourseData } from 'models/ResponseCourseData';
 import { DecodeBitField, EncodeBitField } from 'utils/BitFieldHelper';
+import Spinner from '../../components/common-ui/Spinner';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
@@ -66,7 +67,7 @@ const ApplyForm = (state: CourseState): JSX.Element => {
       )}
     >
       {loading ? (
-        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+        <Spinner />
       ) : (
         <>
           <Formik
