@@ -1,7 +1,12 @@
 import React from 'react';
+import useFetch from '../../hooks/useFetch';
+import FabPopup from './FABpopup';
+
+
 
 const FloatingButton = (): JSX.Element => {
   const [showModal, setShowModal] = React.useState(false);
+
   return (
     <div className="fixed bottom-2 right-20">
       <button
@@ -20,84 +25,7 @@ const FloatingButton = (): JSX.Element => {
 
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-sm">
-              {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header/title*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Add a Marker</h3>
-                </div>
-                {/*Body/Input*/}
-
-                <div className="relative p-6 flex-auto">
-                  <div className="mb-4 relative">
-                    <input
-                      placeholder="First Name"
-                      className="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
-                      id="email"
-                      type="text"
-                      autoFocus
-                    />
-                  </div>
-                  <div className="mb-4 relative">
-                    <input
-                      placeholder="Last Name"
-                      className="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
-                      id="password"
-                      type="password"
-                      autoFocus
-                    />
-                  </div>
-                  <div className="mb-4 relative">
-                    <input
-                      placeholder="Email"
-                      className="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
-                      id="email"
-                      type="text"
-                      autoFocus
-                    />
-                  </div>
-                  <div className="mb-4 relative">
-                    <input
-                      placeholder="Phone Number"
-                      className="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
-                      id="password"
-                      type="password"
-                      autoFocus
-                    />
-                  </div>
-                  <div className="mb-4 relative">
-                    <input
-                      placeholder="Assigned CourseId"
-                      className="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
-                      id="password"
-                      type="password"
-                      autoFocus
-                    />
-                  </div>
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={(): void => setShowModal(false)}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="bg-green-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={(): void => setShowModal(false)}
-                  >
-                    Assign
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <FabPopup />
         </>
       ) : null}
     </div>
@@ -105,3 +33,4 @@ const FloatingButton = (): JSX.Element => {
 };
 
 export default FloatingButton;
+
