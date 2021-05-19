@@ -21,9 +21,10 @@ function getDaysLeft(markerAssignmentDeadline: string): any {
   return getDifferenceInDays(deadline, now);
 }
 
-function getDifferenceInDays(date1: any, date2: any): number {
-  const diffInMs = Math.abs(date2 - date1);
-  return Math.round(diffInMs / (1000 * 60 * 60 * 24));
+function getDifferenceInDays(date1: any, date2: any): string {
+  const diffInMs = date1 - date2;
+  if (diffInMs < 0) return 'Closed';
+  else return `${Math.round(diffInMs / (1000 * 60 * 60 * 24))} days left`;
 }
 
 const Course = ({
@@ -80,7 +81,7 @@ const Course = ({
         Deadline for Marker Allocation:{' '}
         <span className="font-medium">{markerAssignmentDeadline}</span>
         <span className="mx-12 text-base font-light text-red-500">
-          {getDaysLeft(markerAssignmentDeadline)} days left
+          {getDaysLeft(markerAssignmentDeadline)}
         </span>
       </div>
       <div className="mx-12 my-4 text-lg font-semibold">
