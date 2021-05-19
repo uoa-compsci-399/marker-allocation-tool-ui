@@ -1,11 +1,11 @@
 const ExtendedFAB = (): JSX.Element => {
   return (
-    <div className="flex m-auto justify-end mr-10">
-      <button className="text-white px-4 py-2 w-auto h-12 bg-indigo-600 rounded-full hover:bg-indigo-800 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+    <div className="flex justify-end m-auto mr-10">
+      <button className="w-auto h-12 px-4 py-2 text-white transition duration-200 ease-in bg-indigo-600 rounded-full shadow hover:bg-indigo-800 active:shadow-lg mouse focus:outline-none">
         <svg
           viewBox="0 0 20 20"
           enableBackground="new 0 0 20 20"
-          className="w-6 h-6 inline-block content-center mr-2"
+          className="content-center inline-block w-6 h-6 mr-2"
         >
           <path
             fill="#FFFFFF"

@@ -1,40 +1,26 @@
-import React from 'react';
-
 import CourseList from './CourseList';
-import ExtendedFAB from '../../components/common-ui/ExtendedFAB';
-
-//TODO: Replace with API call
-const dummyCourseData = [
-  {
-    courseCoord: 'Asma Shakil',
-    courseId: 'cs399',
-    courseName: 'COMPSCI 399',
-    semester: 'Semester 1, 2021',
-    closingDate: '14/06/2021',
-    availableSpots: '7',
-    maxSpots: '10',
-  },
-  {
-    courseCoord: 'John Doe, Asma Shakil',
-    courseId: 'cs358',
-    courseName: 'COMPSCI 358',
-    semester: 'Semester 2, 2021',
-    closingDate: '14/06/2021',
-    availableSpots: '8',
-    maxSpots: '10',
-  },
-];
+import ExtendedFAB from 'components/common-ui/ExtendedFAB';
+import useFetchCourses from 'hooks/useFetchCourses';
+import Spinner from 'components/common-ui/Spinner';
 
 const CourseViewPage = (): JSX.Element => {
+  const [courses, loading] = useFetchCourses();
+
   return (
     <div>
-      <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
-        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">
-          Manage Courses
-        </p>
-        <ExtendedFAB />
-      </div>
-      <CourseList courseData={dummyCourseData} />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className="flex flex-wrap p-5 mb-10 bg-blue-100 shadow-md">
+            <p className="my-4 ml-4 text-2xl font-semibold tracking-tight text-gray-600">
+              Manage Courses
+            </p>
+            <ExtendedFAB />
+          </div>
+          <CourseList courseData={courses} />
+        </>
+      )}
     </div>
   );
 };

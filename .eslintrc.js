@@ -25,7 +25,7 @@ module.exports = {
       ],
       rules: {
         //These some examples of what we could have, this can be changed
-        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/explicit-function-return-type': 'error',
       },
     },

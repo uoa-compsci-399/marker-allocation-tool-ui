@@ -1,4 +1,4 @@
-export { default as Textbox } from './TextBox';
+export { default as TextBox } from './TextBox';
 export { default as CheckBoxes } from './Checkboxes';
 export { default as Dropdown } from './Dropdown';
 export { default as RadioBoxes } from './RadioBoxes';

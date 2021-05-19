@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Form from '../pages/CourseApplyPage';
-import ApplicationDetail from '../pages/ApplicationDetailPage';
-import CourseViewPage from '../pages/CourseViewPage';
-import CourseDetail from '../pages/ApplicationViewPage';
+import Form from 'pages/CourseApplyPage';
+import ApplicationDetail from 'pages/ApplicationDetailPage';
+import CourseViewPage from 'pages/CourseViewPage';
+import CourseDetail from 'pages/ApplicationViewPage';
 
 export default function Routes(): JSX.Element {
   return (
