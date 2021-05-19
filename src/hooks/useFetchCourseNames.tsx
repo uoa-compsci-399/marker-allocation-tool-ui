@@ -9,14 +9,10 @@ function useFetchCourseNames(): [any, boolean] {
 
   useEffect(() => {
     async function fetchAvailableCourses(): Promise<void> {
-      const json = await axios.get(`${api_url}/api/courses`);
+      const json = await axios.get(`${api_url}/api/courses/available`);
+      const data = json.data.data;
 
-      //This will add how many days until application deadline
-      const jsonModified = json.data.data.map((course: any) => {
-        return course.courseName;
-      });
-
-      setData(jsonModified);
+      setData(data);
       setLoading(false);
     }
 
