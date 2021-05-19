@@ -1,4 +1,5 @@
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Form from 'pages/CourseApplyPage';
 import ApplicationDetail from 'pages/ApplicationDetailPage';
@@ -14,6 +15,9 @@ export default function Routes(): JSX.Element {
         path="/courses/:id/applications"
         exact
         render={(props): JSX.Element => {
+          if (!props.location.state) {
+            return <Redirect to="/courses" />;
+          }
           return <CourseDetail {...props} />;
         }}
       />
@@ -24,6 +28,7 @@ export default function Routes(): JSX.Element {
           return <ApplicationDetail {...props} />;
         }}
       />
+      <Redirect to="/apply" />
     </Switch>
   );
 }
