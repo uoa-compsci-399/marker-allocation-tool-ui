@@ -1,5 +1,5 @@
 import {
-  Textbox,
+  TextBox,
   CheckBoxes,
   RadioBoxes,
   MultiSelect,
@@ -25,11 +25,11 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
       ) : (
         <>
           <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
-            <Textbox field={'courseName'} label={'Course Name'} />
-            <Textbox field={'preferredMarkerCount'} label={'Preferred Number of Markers'} />
-            <Textbox field={'enrolmentEstimate'} label={'Estimated Enrolment'} />
-            <Textbox field={'enrolmentFinal'} label={'Final Enrolment'} />
-            <Textbox field={'expectedWorkload'} label={'Expected Total Workload'} />
+            <TextBox field={'courseName'} label={'Course Name'} />
+            <TextBox field={'preferredMarkerCount'} label={'Preferred Number of Markers'} />
+            <TextBox field={'enrolmentEstimate'} label={'Estimated Enrolment'} />
+            <TextBox field={'enrolmentFinal'} label={'Final Enrolment'} />
+            <TextBox field={'expectedWorkload'} label={'Expected Total Workload'} />
             <Date field="applicationClosingDate" label="Application Closing Date" />
           </div>
           <MultiSelect
@@ -42,7 +42,7 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
             label={'Semesters'}
             options={['Summer School', 'Semester One', 'Semester Two']}
           />
-          <Textbox field={'year'} label={'Year'} placeholder={'YYYY'} />
+          <TextBox field={'year'} label={'Year'} placeholder={'YYYY'} />
 
           <RepeatField name={'workloadDistributions'} labels={['Assignment', 'Workload (hours)']} />
 
@@ -57,7 +57,7 @@ const NewCourseFields = (state: CourseState): JSX.Element => {
           ) : null}
           <RadioBoxes field={'isPublished'} label={'Publish this Course?'} />
 
-          <Textbox field={'otherNotes'} label={'Additional Notes'} />
+          <TextBox field={'otherNotes'} label={'Additional Notes'} />
 
           <button
             type="submit"

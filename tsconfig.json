@@ -18,8 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "rootDir": "src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
-    "jsx": "react-jsx"
+    "rootDir": "src",
+    "jsx": "react-jsx",
+    "baseUrl": "src",
   },
   "include": [
     "./src/**/*"

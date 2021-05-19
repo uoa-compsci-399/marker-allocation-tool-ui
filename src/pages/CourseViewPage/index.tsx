@@ -1,8 +1,7 @@
-import React from 'react';
-
 import CourseList from './CourseList';
-import ExtendedFAB from '../../components/common-ui/ExtendedFAB';
-import useFetchCourses from '../../hooks/useFetchCourses';
+import ExtendedFAB from 'components/common-ui/ExtendedFAB';
+import useFetchCourses from 'hooks/useFetchCourses';
+import Spinner from 'components/common-ui/Spinner';
 import { USER_DETAILS } from '../../utils/Constants';
 
 const CourseViewPage = (): JSX.Element => {
@@ -10,8 +9,8 @@ const CourseViewPage = (): JSX.Element => {
   const [courses, loading] = useFetchCourses();
   return (
     <div>
-      <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
-        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">
+      <div className="flex flex-wrap p-5 mb-10 bg-blue-100 shadow-md">
+        <p className="my-4 ml-4 text-2xl font-semibold tracking-tight text-gray-600">
           Manage Courses
         </p>
         {USER_DETAILS.identity === '1' ? (
@@ -19,7 +18,7 @@ const CourseViewPage = (): JSX.Element => {
         ) : null}
       </div>
       {loading ? (
-        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+        <Spinner />
       ) : (
         <>
           <CourseList courseData={courses.data} />

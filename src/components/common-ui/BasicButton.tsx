@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface BasicButtonProps {
   size?: string;
   colour?: string;

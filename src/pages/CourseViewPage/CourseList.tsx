@@ -1,13 +1,35 @@
-import React from 'react';
-
 import Course from './Course';
-import { CourseData } from '../../models/CourseData';
-
-// URL Endpoint: /courses
+import { CourseData } from 'models/CourseData';
 
 interface CourseListProps {
   courseData: CourseData[];
 }
+
+// function bitCodeDecoder(value: number): string {
+//   let str = '';
+//   if (value === 1) {
+//     str = 'Semester 1';
+//   } else if (value === 2) {
+//     str = 'Semester 2';
+//   } else if (value === 4) {
+//     str = 'Summer School';
+//   }
+//
+//   return str;
+// }
+//
+// function CourseDetails(data: any): CourseData {
+//   return {
+//     courseCoord: `N/A`,
+//     courseID: `${data.courseID}`,
+//     courseName: `${data.courseName}`,
+//     semester: `${bitCodeDecoder(data.whichSemestersField)}`,
+//     closingDate: `${data.markerAssignmentDeadline}`,
+//     daysLeft: `${data.daysLeft}`,
+//     availableSpots: ``,
+//     maxSpots: ``,
+//   };
+// }
 
 const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
   // render courses with fetched data
