@@ -63,14 +63,8 @@ const renderApplications = (courseId: string, courseName: string): JSX.Element[]
 const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;
 
-  const {
-    courseCoordinators,
-    courseID,
-    courseName,
-    semesters,
-    year,
-    preferredMarkerCount,
-  } = location.state;
+  const { courseCoordinators, courseID, courseName, semesters, year, preferredMarkerCount } =
+    location.state;
 
   const [count] = useFetchAvailableCount(
     `https://dev.classe.wumbo.co.nz/api/course/${courseID}/application/open`
