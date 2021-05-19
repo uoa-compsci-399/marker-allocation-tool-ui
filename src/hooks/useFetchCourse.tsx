@@ -15,14 +15,14 @@ function useFetchCourses(id: string): [ResponseBody, boolean] {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    async function fetchAvaliableCourses(): Promise<void> {
+    async function fetchCourse(): Promise<void> {
       const json = await axios.get(`${api_url}/api/course/${id}`);
       setData({ ...json.data });
       setLoading(false);
     }
 
     if (id !== NULL_COURSE_ID) {
-      fetchAvaliableCourses();
+      fetchCourse();
     } else {
       setLoading(false);
     }

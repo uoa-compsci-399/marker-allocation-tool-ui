@@ -14,13 +14,13 @@ function useFetchCourses(): [ResponseBody, boolean] {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    async function fetchAvaliableCourses(): Promise<void> {
+    async function fetchCourses(): Promise<void> {
       const json = await axios.get(`${api_url}/api/courses`);
       setData({ ...json.data });
       setLoading(false);
     }
 
-    fetchAvaliableCourses();
+    fetchCourses();
   }, []);
 
   return [data, loading];
