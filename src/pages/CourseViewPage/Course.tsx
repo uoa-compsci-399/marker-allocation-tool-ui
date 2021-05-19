@@ -8,12 +8,31 @@ import useFetchApplicationCount from 'hooks/useFetchApplicationCount';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
+function getDaysLeft(markerAssignmentDeadline: string): any {
+  const deadline = new Date(markerAssignmentDeadline.replace(/-/g, '/'));
+  const d = new Date();
+
+  const yyyy = d.getFullYear();
+  const mm = `${d.getMonth() + 1 < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1}`;
+  const dd = `${d.getDate() < 10 ? '0' + d.getDate() : d.getDate()}`;
+
+  const now = new Date(yyyy + '/' + mm + '/' + dd);
+
+  return getDifferenceInDays(deadline, now);
+}
+
+function getDifferenceInDays(date1: any, date2: any): number {
+  const diffInMs = Math.abs(date2 - date1);
+  return Math.round(diffInMs / (1000 * 60 * 60 * 24));
+}
+
 const Course = ({
   courseCoordinators,
   courseID,
   courseName,
   semesters,
   applicationClosingDate,
+  markerAssignmentDeadline,
   year,
   preferredMarkerCount,
   isPublished,
@@ -58,7 +77,14 @@ const Course = ({
         Course Coordinator(s): <span className="font-medium">{courseCoordinators}</span>
       </div>
       <div className="mx-12 my-4 text-lg font-semibold">
-        Closing Date: <span className="font-medium">{applicationClosingDate}</span>
+        Deadline for Marker Allocation:{' '}
+        <span className="font-medium">{markerAssignmentDeadline}</span>
+        <span className="mx-12 text-base font-light text-red-500">
+          {getDaysLeft(markerAssignmentDeadline)} days left
+        </span>
+      </div>
+      <div className="mx-12 my-4 text-lg font-semibold">
+        Application Closing Date: <span className="font-medium">{applicationClosingDate}</span>
       </div>
       <div className="mx-12 my-4 text-lg font-semibold">
         Number of Applications: <span className="font-medium">{count}</span>

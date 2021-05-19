@@ -5,32 +5,6 @@ interface CourseListProps {
   courseData: CourseData[];
 }
 
-/*function bitCodeDecoder(value: number): string {
-  let str = '';
-  if (value === 1) {
-    str = 'Semester 1';
-  } else if (value === 2) {
-    str = 'Semester 2';
-  } else if (value === 4) {
-    str = 'Summer School';
-  }
-
-  return str;
-}
-
-function CourseDetails(data: any): CourseData {
-  return {
-    courseCoord: `N/A`,
-    courseID: `${data.courseID}`,
-    courseName: `${data.courseName}`,
-    semester: `${bitCodeDecoder(data.whichSemestersField)}`,
-    closingDate: `${data.markerAssignmentDeadline}`,
-    daysLeft: `${data.daysLeft}`,
-    availableSpots: ``,
-    maxSpots: ``,
-  };
-}*/
-
 const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
   // render courses with fetched data
   const renderCourses = courseData.map(
@@ -43,6 +17,7 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
       isPublished,
       year,
       preferredMarkerCount,
+      markerAssignmentDeadline,
     }: CourseData) => (
       <Course
         courseCoordinators={courseCoordinators}
@@ -50,6 +25,7 @@ const CourseList = ({ courseData }: CourseListProps): JSX.Element => {
         courseName={courseName}
         semesters={semesters}
         applicationClosingDate={applicationClosingDate}
+        markerAssignmentDeadline={markerAssignmentDeadline}
         preferredMarkerCount={preferredMarkerCount}
         isPublished={isPublished}
         year={year}

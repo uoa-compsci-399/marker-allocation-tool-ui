@@ -30,7 +30,7 @@ export const newCourseFormSchema = yup.object({
   ),
   applicationClosingDate: yup.string().defined('Enter an application closing date'),
   courseInfoDeadline: yup.string(),
-  markerAssignmentDeadline: yup.string(),
+  markerAssignmentDeadline: yup.string().defined('Required field'),
   markerPrefDeadline: yup.string(),
   isPublished: yup.string().defined('Required field'),
   otherNotes: yup.string(),

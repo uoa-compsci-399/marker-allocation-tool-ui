@@ -13,7 +13,7 @@ export interface CourseData {
   workloadDistributions?: WorkloadDistribution[];
   applicationClosingDate: string;
   courseInfoDeadline?: string;
-  markerAssignmentDeadline?: string;
+  markerAssignmentDeadline: string;
   markerPrefDeadline?: string;
   isPublished: number;
   otherNotes?: string;

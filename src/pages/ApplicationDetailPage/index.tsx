@@ -7,6 +7,7 @@ import DownloadButton from 'components/common-ui/DownloadButton';
 import { ApplicantDetails } from 'models/ApplicantDetails';
 
 import useFetchApplicant from 'hooks/useFetchApplicant';
+import { DecodeBitField } from '../../utils/BitFieldHelper';
 
 function ApplicationDetails(data: any): ApplicantDetails {
   return {
@@ -56,7 +57,10 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
           <DetailSection title="Email" value={email} />
           <DetailSection title="Current Area of Study" value={areaOfStudy} />
           <DetailSection title="Year" value={currentYear} />
-          <DetailSection title="Availability" value={availableSems} />
+          <DetailSection
+            title="Availability"
+            value={DecodeBitField(parseInt(availableSems)).join(', ')}
+          />
           <DetailSection title="Experience" value={experience} />
           <DetailSection title="Visa Status" value={visaStatus} />
           <DetailSection title="Location" value={location} />
