@@ -11,7 +11,8 @@ import useFetchCourse from 'hooks/useFetchCourse';
 import React from 'react';
 import { ResponseCourseData } from 'models/ResponseCourseData';
 import { DecodeBitField, EncodeBitField } from 'utils/BitFieldHelper';
-import Spinner from '../../components/common-ui/Spinner';
+import Spinner from 'components/common-ui/Spinner';
+import { NULL_COURSE_ID } from 'utils/Constants';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
@@ -51,9 +52,14 @@ const ApplyForm = (state: CourseState): JSX.Element => {
     data.semesters = EncodeBitField(data.semesters);
     data.workloadDistributions = JSON.stringify(data.workloadDistributions);
 
+    if (state.courseId === NULL_COURSE_ID) {
+      await axios.post(`${api_url}/api/course`, data);
+    } else {
+      data.courseID = state.courseId;
+      await axios.post(`${api_url}/api/course/edit`, data);
+    }
+
     console.log(data);
-    //TODO: replace with correct POST endpoint
-    await axios.post(`${api_url}/api/course`, data);
   }
 
   //TODO: validate request for course using userID
