@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputField from '../../components/common-ui/InputField';
+import InputField from 'components/common-ui/InputField';
 import NameInputField from './NameInputField';
 
 const ApplicationPage = (): JSX.Element => {
