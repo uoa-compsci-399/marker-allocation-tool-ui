@@ -1,38 +1,39 @@
 import { RouteComponentProps } from 'react-router';
 
-import Application from './Application';
-import { FormApplication, FormApplication as ApplicationType } from 'models/FormApplication';
+// import Application from './Application';
+// import { FormApplication, FormApplication as ApplicationType } from 'models/FormApplication';
 import { DecodeBitField } from 'utils/BitFieldHelper';
 import useFetchAvailableCount from 'hooks/useFetchAvailableCount';
+import Table from './Table';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
 //TODO: Send GET request to get a list applications for that course
-const applicantDetails = (id: string, name: string): FormApplication[] => {
-  return [
-    {
-      courseID: id,
-      title: `${name}  Application #1`,
-      date: '11/04/21',
-      applicantName: 'Songyan Teng',
-      applicationID: '1',
-    },
-    {
-      courseID: id,
-      title: `${name}  Application #2`,
-      date: '08/04/21',
-      applicantName: 'Isaac Kaabel',
-      applicationID: '2',
-    },
-    {
-      courseID: id,
-      title: `${name}  Application #3`,
-      date: '05/04/21',
-      applicantName: 'Darren Chen',
-      applicationID: '3',
-    },
-  ];
-};
+// const applicantDetails = (id: string, name: string): FormApplication[] => {
+//   return [
+//     {
+//       courseID: id,
+//       title: `${name}  Application #1`,
+//       date: '11/04/21',
+//       applicantName: 'Songyan Teng',
+//       applicationID: '1',
+//     },
+//     {
+//       courseID: id,
+//       title: `${name}  Application #2`,
+//       date: '08/04/21',
+//       applicantName: 'Isaac Kaabel',
+//       applicationID: '2',
+//     },
+//     {
+//       courseID: id,
+//       title: `${name}  Application #3`,
+//       date: '05/04/21',
+//       applicantName: 'Darren Chen',
+//       applicationID: '3',
+//     },
+//   ];
+// };
 
 const renderMarkers = (): JSX.Element => {
   return (
@@ -47,19 +48,19 @@ const renderMarkers = (): JSX.Element => {
   );
 };
 
-const renderApplications = (courseId: string, courseName: string): JSX.Element[] =>
-  applicantDetails(courseId, courseName).map((application: ApplicationType) => {
-    const { title, date, applicantName, applicationID } = application;
-    return (
-      <Application
-        courseID={courseId}
-        title={title}
-        date={date}
-        applicantName={applicantName}
-        applicationID={applicationID}
-      />
-    );
-  });
+// const renderApplications = (courseId: string, courseName: string): JSX.Element[] =>
+//   applicantDetails(courseId, courseName).map((application: ApplicationType) => {
+//     const { title, date, applicantName, applicationID } = application;
+//     return (
+//       <Application
+//         courseID={courseId}
+//         title={title}
+//         date={date}
+//         applicantName={applicantName}
+//         applicationID={applicationID}
+//       />
+//     );
+//   });
 
 const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;
@@ -98,15 +99,29 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
         </div>
       </div>
       <div className="my-6 text-2xl font-semibold">
-        <div className="w-7/12 m-auto mt-10 mb-4 text-right">
-          <label className="mx-4 text-lg font-semibold">Sort by:</label>
-          <select className="text-lg">
-            <option>Latest</option>
-            <option>GPA</option>
-            <option>Location</option>
-          </select>
+        <div className="flex w-7/12 m-auto mt-10 mb-4">
+          <div className="px-5 text-left">
+            <button className="px-4 py-2 mx-3 text-lg font-bold text-white bg-blue-500 rounded-full w-44 hover:bg-blue-700">
+              Current Markers
+            </button>
+            <button className="w-32 px-4 py-2 mx-3 text-lg font-bold text-white bg-green-500 rounded-full hover:bg-green-700">
+              Applied
+            </button>
+            <button className="w-32 px-4 py-2 mx-3 text-lg font-bold text-white bg-red-500 rounded-full hover:bg-red-700">
+              Rejected
+            </button>
+          </div>
+          <div className="w-6/12"></div>
+          <div className="justify-end">
+            <label className="mx-4 text-lg font-semibold">Sort by:</label>
+            <select className="text-lg">
+              <option>Date Submitted</option>
+              <option>Location</option>
+            </select>
+          </div>
         </div>
-        <div>{renderApplications(courseID, courseName)}</div>
+        {/* <div>{renderApplications(courseID, courseName)}</div> */}
+        <Table />
       </div>
     </div>
   );
