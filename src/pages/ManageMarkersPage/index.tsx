@@ -1,6 +1,9 @@
 import React from 'react';
 
+import FloatingButton from './FAB';
 import MarkersList from './MarkersList';
+import Modal from './Modal';
+import { useModal } from '../../hooks/useModal';
 
 // fetch markers
 const markers = [
@@ -25,9 +28,15 @@ const markers = [
 ];
 
 const ManageCoursesPage = (): JSX.Element => {
+  const [isShown, toggle] = useModal();
+
+  const modal = <React.Fragment>Modal!</React.Fragment>;
+
   return (
     <div>
       <MarkersList markerData={markers} />
+      <Modal isShown={isShown} hide={toggle} modalContent={modal} headerText={'Modal!'} />
+      <FloatingButton onClick={toggle} />
     </div>
   );
 };
