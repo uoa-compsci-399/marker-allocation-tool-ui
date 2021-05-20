@@ -2,7 +2,7 @@ import React from 'react';
 
 import FloatingButton from './FAB';
 import MarkersList from './MarkersList';
-import Modal from './Modal';
+import Modal from '../../components/common-ui/Modal';
 import { useModal } from '../../hooks/useModal';
 
 // fetch markers
