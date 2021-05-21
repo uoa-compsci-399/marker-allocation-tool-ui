@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+// File not being used at the moment
+
 const FabPopup: React.FC = () => {
   const [state, setState] = useState({ loading: false });
   const [userID, setUserId] = useState('');

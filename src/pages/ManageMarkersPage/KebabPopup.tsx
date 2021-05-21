@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MarkerData } from '../../models/MarkerData';
+import { MarkerData } from 'models/MarkerData';
 
 // TODO:
 const deleteMarker = (id: string): void => {
