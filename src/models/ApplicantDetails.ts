@@ -1,5 +1,4 @@
 export interface ApplicantDetails {
-  title: string;
   name: string;
   studentID: string;
   email: string;
@@ -10,5 +9,6 @@ export interface ApplicantDetails {
   visaStatus: string;
   location: string;
   prefCourse: string;
-  files: string;
+  academicRecord: string;
+  curriculumVitae: string;
 }

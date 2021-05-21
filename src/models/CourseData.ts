@@ -1,9 +1,20 @@
+import { WorkloadDistribution } from './WorkloadDistribution';
+
 export interface CourseData {
-  courseCoord: string;
-  courseId: string;
+  courseID: string;
   courseName: string;
-  semester: string;
-  closingDate: string;
-  availableSpots: string;
-  maxSpots: string;
+  enrolmentEstimate?: string;
+  enrolmentFinal?: string;
+  expectedWorkload?: string;
+  preferredMarkerCount?: string;
+  courseCoordinators: string[];
+  semesters: number;
+  year: string;
+  workloadDistributions?: WorkloadDistribution[];
+  applicationClosingDate: string;
+  courseInfoDeadline?: string;
+  markerAssignmentDeadline: string;
+  markerPrefDeadline?: string;
+  isPublished: number;
+  otherNotes?: string;
 }
