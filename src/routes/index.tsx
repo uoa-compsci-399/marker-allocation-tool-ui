@@ -5,11 +5,14 @@ import Form from 'pages/CourseApplyPage';
 import ApplicationDetail from 'pages/ApplicationDetailPage';
 import CourseViewPage from 'pages/CourseViewPage';
 import CourseDetail from 'pages/ApplicationViewPage';
+import DashBoardViewPage from 'pages/DashBoardPage';
+import ManageMarkersPage from 'pages/ManageMarkersPage';
 import NewCoursePage from 'pages/NewCoursePage';
 
 export default function Routes(): JSX.Element {
   return (
     <Switch>
+      <Route path="/dashBoard" exact component={DashBoardViewPage} />
       <Route path="/apply" exact component={Form} />
       <Route path="/courses" exact component={CourseViewPage} />
       <Route
@@ -49,6 +52,7 @@ export default function Routes(): JSX.Element {
           return <ApplicationDetail {...props} />;
         }}
       />
+      <Route path="/manage-markers" exact component={ManageMarkersPage} />
       <Redirect to="/apply" />
     </Switch>
   );
