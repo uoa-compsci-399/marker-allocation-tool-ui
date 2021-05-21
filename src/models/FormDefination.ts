@@ -35,7 +35,16 @@ export const applicationSchema = yup.object({
   declaration: yup.string().defined('Please sign declaration'),
 });
 
+export const courseCoordinatorSchema = yup.object({
+  firstName: yup.string().defined('Required field'),
+  lastName: yup.string().defined('Required field'),
+  email: yup.string().email('Input must be a valid email').defined('Required field'),
+  UPI: yup.string().defined('Required field'),
+  userID: yup.string(),
+});
+
 export type FormTypes = yup.InferType<typeof applicationSchema>;
+export type CCType = yup.InferType<typeof courseCoordinatorSchema>;
 
 //This will allow me to make modifications before posting the data
 export type FormFormatted = Modify<
@@ -62,4 +71,12 @@ export const initialValues: FormTypes = {
   academicRecord: undefined,
   curriculumVitae: undefined,
   declaration: '',
+};
+
+export const initialCCValues: CCType = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  UPI: '',
+  userID: '',
 };
