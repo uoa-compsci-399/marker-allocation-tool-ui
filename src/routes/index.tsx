@@ -7,6 +7,7 @@ import CourseViewPage from '../pages/CourseViewPage';
 import CourseDetail from '../pages/ApplicationViewPage';
 import DashBoardViewPage from '../pages/DashBoardPage';
 import ManageMarkersPage from '../pages/ManageMarkersPage';
+import ManageCCsPage from '../pages/ManageCCsPage';
 
 export default function Routes(): JSX.Element {
   return (
@@ -29,6 +30,7 @@ export default function Routes(): JSX.Element {
         }}
       />
       <Route path="/manage-markers" exact component={ManageMarkersPage} />
+      <Route path="/manage-course-coordinators" exact component={ManageCCsPage} />
     </Switch>
   );
 }
