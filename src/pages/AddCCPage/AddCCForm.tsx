@@ -3,22 +3,30 @@ import axios from 'axios';
 
 import AddCCFields from './AddCCFields';
 import clsx from 'clsx';
-import {
-  CCFormatted,
-  CCTypes,
-  courseCoordinatorSchema,
-  initialCCValues,
-} from 'models/CoordinatorFormDefinition';
+import { CCFormatted, CCTypes, courseCoordinatorSchema } from 'models/CoordinatorFormDefinition';
+import useFetchCoordinator from 'hooks/useFetchCoordinator';
+import Spinner from 'components/common-ui/Spinner';
+import React from 'react';
+import { NULL_USER_ID } from 'utils/Constants';
+import { User } from 'models/User';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
 
-const AddCCForm = (): JSX.Element => {
+const AddCCForm = (state: User): JSX.Element => {
   async function submitForm(form: CCTypes): Promise<void> {
     const data: CCFormatted = Object.assign({}, form);
     console.log(data);
-    await axios.post(`${api_url}/api/user/coordinator`, data);
+
+    if (state.userID === NULL_USER_ID) {
+      await axios.post(`${api_url}/api/user/coordinator`, data);
+    } else {
+      data.userID = state.userID;
+      await axios.post(`${api_url}/api/user/coordinator/edit`, data);
+    }
   }
 
+  const [coordinator, loading] = useFetchCoordinator(state.userID);
+  const values = coordinator.data;
   return (
     <div
       className={clsx(
@@ -26,21 +34,33 @@ const AddCCForm = (): JSX.Element => {
         '3xl:w-1/3 2xl:w-1/2 lg:w-2/3 md:w-10/12 sm:p-16 xs:w-11/12 xs:p-8'
       )}
     >
-      <Formik
-        initialValues={initialCCValues}
-        onSubmit={(values, actions): void => {
-          submitForm(values).then(() => {
-            actions.setSubmitting(false);
-            actions.resetForm();
-            alert('A New Course Coordinator Added');
-          });
-        }}
-        validationSchema={courseCoordinatorSchema}
-      >
-        <Form>
-          <AddCCFields />
-        </Form>
-      </Formik>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Formik
+            initialValues={values}
+            onSubmit={(values, actions): void => {
+              submitForm(values).then(
+                () => {
+                  actions.setSubmitting(false);
+                  actions.resetForm();
+                  alert('Course Coordinator Added');
+                },
+                () => {
+                  //TODO: Replace alert with modal
+                  alert('Something went wrong, please try again');
+                }
+              );
+            }}
+            validationSchema={courseCoordinatorSchema}
+          >
+            <Form>
+              <AddCCFields userID={state.userID} />
+            </Form>
+          </Formik>
+        </>
+      )}
     </div>
   );
 };

@@ -40,7 +40,7 @@ const DashBoardViewPage = (): JSX.Element => {
           imgURL={imgURLs.applcations}
         />
         <DashBoardCard
-          path="/manage-course-coordinators"
+          path="/coursecoordinators"
           title="Manage Course Coordinators"
           body="Something"
           imgURL={imgURLs.appTable}

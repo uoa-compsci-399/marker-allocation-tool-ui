@@ -2,9 +2,9 @@ import React from 'react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 
 import KebabPopup from './KebabPopup';
-import { CoordinatorData } from 'models/CoordinatorData';
+import { User } from 'models/User';
 
-const KebabMenu = ({ userID }: CoordinatorData): JSX.Element => {
+const KebabMenu = ({ userID }: User): JSX.Element => {
   const [showPopup, setShowPopup] = React.useState(false);
 
   return (

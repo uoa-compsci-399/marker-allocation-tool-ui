@@ -17,6 +17,8 @@ export default function Routes(): JSX.Element {
       <Route path="/dashboard" exact component={DashBoardViewPage} />
       <Route path="/apply" exact component={Form} />
       <Route path="/courses" exact component={CourseViewPage} />
+      <Route path="/manage-markers" exact component={ManageMarkersPage} />
+      <Route path="/coursecoordinators" exact component={ManageCCsPage} />
       <Route
         path="/courses/new"
         exact
@@ -54,9 +56,26 @@ export default function Routes(): JSX.Element {
           return <ApplicationDetail {...props} />;
         }}
       />
-      <Route path="/manage-markers" exact component={ManageMarkersPage} />
-      <Route path="/manage-course-coordinators" exact component={ManageCCsPage} />
-      <Route path="/add-new-cc" exact component={AddCCPage} />
+      <Route
+        path="/coursecoordinator/new"
+        exact
+        render={(props): JSX.Element => {
+          if (!props.location.state) {
+            return <Redirect to="/coursecoordinators" />;
+          }
+          return <AddCCPage {...props} />;
+        }}
+      />
+      <Route
+        path="/coursecoordinator/:id/edit"
+        exact
+        render={(props): JSX.Element => {
+          if (!props.location.state) {
+            return <Redirect to="/coursecoordinators" />;
+          }
+          return <AddCCPage {...props} />;
+        }}
+      />
       <Redirect to="/apply" />
     </Switch>
   );

@@ -3,6 +3,7 @@ import React from 'react';
 import CCsList from './CCsList';
 import ExtendedFAB from 'components/common-ui/ExtendedFAB';
 import useFetchCoordinators from 'hooks/useFetchCoordinators';
+import { NULL_USER_ID } from 'utils/Constants';
 
 const ManageCCsPage = (): JSX.Element => {
   const [users, loading] = useFetchCoordinators();
@@ -15,7 +16,10 @@ const ManageCCsPage = (): JSX.Element => {
         <ExtendedFAB
           title={'Add a New Course Coordinator'}
           to={{
-            pathname: `/add-new-cc`,
+            pathname: `/coursecoordinator/new`,
+            state: {
+              userID: NULL_USER_ID,
+            },
           }}
         />
       </div>

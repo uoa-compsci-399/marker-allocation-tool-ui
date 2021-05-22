@@ -1,16 +1,26 @@
 import React from 'react';
 
-import { CoordinatorData } from 'models/CoordinatorData';
+import { Link } from 'react-router-dom';
+import { User } from 'models/User';
 
 // TODO: Delete marker using id
 const deleteCoordinator = (id: string): void => {
   console.log(`Course Coordinator with userID ${id} will be deleted`);
 };
 
-const KebabPopup = ({ userID }: CoordinatorData): JSX.Element => {
+const KebabPopup = ({ userID }: User): JSX.Element => {
   return (
     <div className="border-2 w-20 h-24 shadow-lg">
-      <button className="w-full h-12 text-center hover:bg-gray-200">Edit</button>
+      <Link
+        to={{
+          pathname: `/coursecoordinator/${userID}/edit`,
+          state: {
+            userID: userID,
+          },
+        }}
+      >
+        <button className="w-full h-12 text-center hover:bg-gray-200">Edit</button>
+      </Link>
       <button
         className="w-full h-12 text-center hover:bg-gray-200"
         onClick={(): void => deleteCoordinator(userID)}
