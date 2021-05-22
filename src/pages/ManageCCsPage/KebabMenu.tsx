@@ -9,7 +9,7 @@ const KebabMenu = ({ userID }: User): JSX.Element => {
 
   return (
     <>
-      <button onClick={(): void => setShowPopup(!showPopup)}>
+      <button className="focus:outline-none" onClick={(): void => setShowPopup(!showPopup)}>
         <svg
           viewBox="0 0 20 20"
           enableBackground="new 0 0 20 20"
