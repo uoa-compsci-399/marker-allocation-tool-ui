@@ -10,11 +10,13 @@ import {
   initialCCValues,
 } from 'models/CoordinatorFormDefinition';
 
+const api_url = process.env.REACT_APP_API_DOMAIN;
+
 const AddCCForm = (): JSX.Element => {
   async function submitForm(form: CCTypes): Promise<void> {
     const data: CCFormatted = Object.assign({}, form);
     console.log(data);
-    await axios.post('http://dev.classe.wumbo.co.nz/api/user/coordinator', data);
+    await axios.post(`${api_url}/api/user/coordinator`, data);
   }
 
   return (

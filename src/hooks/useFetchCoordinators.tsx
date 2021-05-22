@@ -15,8 +15,7 @@ function useFetchCoordinators(): [ResponseBody, boolean] {
 
   useEffect(() => {
     async function fetchCoordinators(): Promise<void> {
-      //TODO: GET only Course Coordinator roles
-      const json = await axios.get(`${api_url}/api/users`);
+      const json = await axios.get(`${api_url}/api/coursecoordinators/details`);
       setData({ ...json.data });
       setLoading(false);
     }

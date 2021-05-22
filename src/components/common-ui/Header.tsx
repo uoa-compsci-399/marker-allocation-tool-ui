@@ -8,7 +8,7 @@ const Header = (): JSX.Element => {
         <a href="/">
           <img src={logo} alt="Classe Logo" className="max-h-16" />
         </a>
-        <a href="/" className="m-4 text-3xl font-semibold tracking-tight">
+        <a href="/dashboard" className="m-4 text-3xl font-semibold tracking-tight">
           Classe
         </a>
       </div>

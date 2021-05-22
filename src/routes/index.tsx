@@ -14,7 +14,7 @@ import AddCCPage from '../pages/AddCCPage';
 export default function Routes(): JSX.Element {
   return (
     <Switch>
-      <Route path="/dashBoard" exact component={DashBoardViewPage} />
+      <Route path="/dashboard" exact component={DashBoardViewPage} />
       <Route path="/apply" exact component={Form} />
       <Route path="/courses" exact component={CourseViewPage} />
       <Route

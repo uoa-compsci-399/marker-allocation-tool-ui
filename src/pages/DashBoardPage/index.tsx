@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 import DashBoardCard from './DashBoardCard';
 
@@ -18,7 +17,7 @@ const DashBoardViewPage = (): JSX.Element => {
   return (
     <div>
       <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
-        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">DashBoard</p>
+        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">Dashboard</p>
       </div>
 
       <div className="mt-8 grid lg:grid-cols-4">
