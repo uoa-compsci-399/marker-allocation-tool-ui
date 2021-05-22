@@ -1,49 +1,18 @@
-import { Form, Formik } from 'formik';
-import axios from 'axios';
+import { RouteComponentProps } from 'react-router';
+import AddCCForm from './AddCCForm';
 
-import {
-  courseCoordinatorSchema,
-  CCTypes,
-  initialCCValues,
-  CCFormatted,
-} from '../../models/FormDefination';
-import AddCCFields from './AddCCFields';
-
-const AddCCPage = (): JSX.Element => {
-  //   const [state, setState] = useState({ loading: false });
-  //   const [firstName, setFirstName] = useState('');
-  //   const [lastName, setLastName] = useState('');
-  //   const [email, setEmail] = useState('');
-  //   const [upi, setUpi] = useState('');
-  //   const [role, setRole] = useState('CC');
-
-  async function addNewCC(cc: CCTypes): Promise<void> {
-    // setState({ ...state, loading: true });
-    const data: CCFormatted = cc;
-    data.userID = data.UPI;
-    console.log(data);
-    await axios.post('http://dev.classe.wumbo.co.nz/api/user/coordinator', data);
-  }
-
+const AddCCPage = (props: RouteComponentProps): JSX.Element => {
   return (
-    <>
-      <Formik
-        initialValues={initialCCValues}
-        onSubmit={(values, actions): void => {
-          console.log(values);
-          addNewCC(values).then(() => {
-            actions.setSubmitting(false);
-            actions.resetForm();
-            alert('A New Course Coordinator Added');
-          });
-        }}
-        validationSchema={courseCoordinatorSchema}
-      >
-        <Form>
-          <AddCCFields />
-        </Form>
-      </Formik>
-    </>
+    <div>
+      <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
+        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">
+          Add Course Coordinator
+        </p>
+      </div>
+      <div className="flex m-auto my-10 font-sans text-sm 3xl:max-w-screen-2xl">
+        <AddCCForm />
+      </div>
+    </div>
   );
 };
 
