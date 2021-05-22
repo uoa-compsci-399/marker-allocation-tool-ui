@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface InputFieldProps {
   isGroup?: boolean;
   type: string;
@@ -17,7 +15,7 @@ const InputField = ({ isGroup, type, placeholder, size }: InputFieldProps): JSX.
     <div className={`flex flex-wrap items-stretch w-${size} mb-4 relative`}>
       <input
         type={type}
-        className="flex-shrink flex-grow flex-auto leading-normal mr-4 w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-3 relative focus:border-blue focus:shadow"
+        className="relative flex-auto flex-grow flex-shrink w-px h-10 px-3 mr-4 leading-normal border rounded rounded-l-none border-grey-light focus:border-blue focus:shadow"
         placeholder={placeholder}
       />
     </div>

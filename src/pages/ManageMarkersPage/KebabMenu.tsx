@@ -1,7 +1,7 @@
 import React from 'react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 
-import { MarkerData } from '../../models/MarkerData';
+import { MarkerData } from 'models/MarkerData';
 import KebabPopup from './KebabPopup';
 
 const KebabMenu = ({ markerId, name, mobile, email }: MarkerData): JSX.Element => {
