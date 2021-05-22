@@ -1,20 +1,19 @@
 import React from 'react';
 
-import { CCData } from '../../models/CCData';
+import { CoordinatorData } from 'models/CoordinatorData';
 
-// TODO:
+// TODO: Delete marker using id
 const deleteCoordinator = (id: string): void => {
-  // Delete marker using id
-  console.log(`Course Coordinator with ccID ${id} will be deleted`);
+  console.log(`Course Coordinator with userID ${id} will be deleted`);
 };
 
-const KebabPopup = ({ ccId, name, mobile, email }: CCData): JSX.Element => {
+const KebabPopup = ({ userID }: CoordinatorData): JSX.Element => {
   return (
     <div className="border-2 w-20 h-24 shadow-lg">
       <button className="w-full h-12 text-center hover:bg-gray-200">Edit</button>
       <button
         className="w-full h-12 text-center hover:bg-gray-200"
-        onClick={(): void => deleteCoordinator(ccId)}
+        onClick={(): void => deleteCoordinator(userID)}
       >
         Delete
       </button>

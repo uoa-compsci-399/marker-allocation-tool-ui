@@ -1,18 +1,24 @@
 import React from 'react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 
-import { CCData } from '../../models/CCData';
 import KebabPopup from './KebabPopup';
+import { CoordinatorData } from 'models/CoordinatorData';
 
-const KebabMenu = ({ ccId, name, mobile, email }: CCData): JSX.Element => {
+const KebabMenu = ({ userID }: CoordinatorData): JSX.Element => {
   const [showPopup, setShowPopup] = React.useState(false);
 
   return (
     <>
       <button onClick={(): void => setShowPopup(!showPopup)}>
-        <DotsVerticalIcon className="hover:bg-gray-300 rounded-md mt-2" />
+        <svg
+          viewBox="0 0 20 20"
+          enableBackground="new 0 0 20 20"
+          className="content-center inline-block w-6 h-6 mr-2"
+        >
+          <DotsVerticalIcon className="hover:bg-gray-300 rounded-md mt-2" />
+        </svg>
       </button>
-      {showPopup ? <KebabPopup ccId={ccId} name={name} mobile={mobile} email={email} /> : null}
+      {showPopup ? <KebabPopup userID={userID} /> : null}
     </>
   );
 };

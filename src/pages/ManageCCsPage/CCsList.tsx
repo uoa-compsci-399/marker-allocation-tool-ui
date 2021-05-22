@@ -1,15 +1,23 @@
 import React from 'react';
 
-import { CCData } from '../../models/CCData';
 import CCCard from './CCCard';
+import { CoordinatorData } from 'models/CoordinatorData';
 
 interface CCsListProps {
-  ccData: CCData[];
+  ccData: CoordinatorData[];
 }
 
 const CCsList = ({ ccData }: CCsListProps): JSX.Element => {
-  const renderCCs = ccData.map(({ ccId, name, mobile, email }) => (
-    <CCCard ccId={ccId} name={name} mobile={mobile} email={email} key={ccId} />
+  const renderCCs = ccData.map(({ userID, firstName, lastName, email, upi, courses }) => (
+    <CCCard
+      userID={userID}
+      firstName={firstName}
+      lastName={lastName}
+      email={email}
+      upi={upi}
+      courses={courses}
+      key={userID}
+    />
   ));
 
   return (

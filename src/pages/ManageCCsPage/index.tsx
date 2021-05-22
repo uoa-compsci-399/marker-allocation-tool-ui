@@ -1,27 +1,11 @@
 import React from 'react';
 
-import useFetch from '../../hooks/useFetch';
 import CCsList from './CCsList';
 import ExtendedFAB from 'components/common-ui/ExtendedFAB';
-
-// fetch course coordinators
-const courseCoordinators = [
-  {
-    ccId: '0000',
-    name: 'Asma Shakil',
-    mobile: '0229572357',
-    email: 'asha747@aucklanduni.ac.nz',
-  },
-  {
-    ccId: '0001',
-    name: 'Burkhard Wuensche',
-    mobile: '0275882229',
-    email: 'bwue853@aucklanduni.ac.nz',
-  },
-];
+import useFetchCoordinators from 'hooks/useFetchCoordinators';
 
 const ManageCCsPage = (): JSX.Element => {
-  const [users, loading] = useFetch('https://dev.classe.wumbo.co.nz/api/users');
+  const [users, loading] = useFetchCoordinators();
   return (
     <div>
       <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
@@ -36,11 +20,10 @@ const ManageCCsPage = (): JSX.Element => {
         />
       </div>
       {loading ? (
-        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>
+        <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader" />
       ) : (
-        <CCsList ccData={courseCoordinators} />
+        <CCsList ccData={users.data} />
       )}
-      {console.log(users)}
     </div>
   );
 };
