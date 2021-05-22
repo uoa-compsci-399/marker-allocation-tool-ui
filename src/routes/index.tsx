@@ -57,7 +57,7 @@ export default function Routes(): JSX.Element {
       <Route path="/manage-markers" exact component={ManageMarkersPage} />
       <Route path="/manage-course-coordinators" exact component={ManageCCsPage} />
       <Route path="/add-new-cc" exact component={AddCCPage} />
-        <Redirect to="/apply" />
+      <Redirect to="/apply" />
     </Switch>
   );
 }

@@ -29,7 +29,7 @@ const DashBoardViewPage = (): JSX.Element => {
           imgURL={imgURLs.courses}
         />
         <DashBoardCard
-          path="/apply"
+          path="/manage-markers"
           title="Manage Markers"
           body="Something"
           imgURL={imgURLs.apply}
@@ -41,7 +41,7 @@ const DashBoardViewPage = (): JSX.Element => {
           imgURL={imgURLs.applcations}
         />
         <DashBoardCard
-          path="/apptable"
+          path="/manage-course-coordinators"
           title="Manage Course Coordinators"
           body="Something"
           imgURL={imgURLs.appTable}

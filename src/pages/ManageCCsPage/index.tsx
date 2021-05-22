@@ -2,7 +2,7 @@ import React from 'react';
 
 import useFetch from '../../hooks/useFetch';
 import CCsList from './CCsList';
-import ExtendedFAB from './ExtendedFAB';
+import ExtendedFAB from 'components/common-ui/ExtendedFAB';
 
 // fetch course coordinators
 const courseCoordinators = [
@@ -28,7 +28,12 @@ const ManageCCsPage = (): JSX.Element => {
         <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">
           Manage Course Coordinators
         </p>
-        <ExtendedFAB title={'Add a New Course Coordinator'} to={'/add-new-cc'} />
+        <ExtendedFAB
+          title={'Add a New Course Coordinator'}
+          to={{
+            pathname: `/add-new-cc`,
+          }}
+        />
       </div>
       {loading ? (
         <div className="m-auto ease-linear border-8 border-t-8 border-gray-200 rounded-full w-14 h-14 loader"></div>

@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { UserRole } from '../../models/UserRole';
-import { NULL_COURSE_ID } from '../../utils/Constants';
 
-const ExtendedFAB = (userRole: UserRole): JSX.Element => {
+interface ExtendedFABProps {
+  title: string;
+  to: NavigationState;
+}
+
+interface NavigationState {
+  pathname: string;
+  state?: any;
+}
+
+const ExtendedFAB = ({ title, to }: ExtendedFABProps): JSX.Element => {
   return (
     <div className="flex justify-end m-auto mr-10">
-      <Link
-        to={{
-          pathname: `/courses/new`,
-          state: {
-            userRole: userRole.identity,
-            userId: userRole.userId,
-            courseId: NULL_COURSE_ID,
-          },
-        }}
-      >
+      <Link to={to}>
         <button className="w-auto h-12 px-4 py-2 text-white transition duration-200 ease-in bg-indigo-600 rounded-full shadow hover:bg-indigo-800 active:shadow-lg mouse focus:outline-none">
           <svg
             viewBox="0 0 20 20"
@@ -29,7 +28,7 @@ const ExtendedFAB = (userRole: UserRole): JSX.Element => {
                                     C15.952,9,16,9.447,16,10z"
             />
           </svg>
-          <span>Add a New Course</span>
+          <span>{title}</span>
         </button>
       </Link>
     </div>
