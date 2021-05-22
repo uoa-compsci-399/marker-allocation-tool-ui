@@ -1,6 +1,5 @@
-import React from 'react';
 import InputField from './InputField';
-import { NULL_USER_ID } from '../../utils/Constants';
+import { NULL_USER_ID } from 'utils/Constants';
 import { User } from 'models/User';
 
 const AddCCFields = (state: User): JSX.Element => {

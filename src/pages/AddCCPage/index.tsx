@@ -1,7 +1,6 @@
 import { RouteComponentProps } from 'react-router';
 import AddCCForm from './AddCCForm';
-import { NULL_USER_ID } from '../../utils/Constants';
-import React from 'react';
+import { NULL_USER_ID } from 'utils/Constants';
 
 const AddCCPage = (props: RouteComponentProps): JSX.Element => {
   const { location } = props;

@@ -1,13 +1,13 @@
 import { Form, Formik } from 'formik';
 import axios from 'axios';
+import clsx from 'clsx';
 
 import AddCCFields from './AddCCFields';
-import clsx from 'clsx';
 import { CCFormatted, CCTypes, courseCoordinatorSchema } from 'models/CoordinatorFormDefinition';
+import { NULL_USER_ID } from 'utils/Constants';
+
 import useFetchCoordinator from 'hooks/useFetchCoordinator';
 import Spinner from 'components/common-ui/Spinner';
-import React from 'react';
-import { NULL_USER_ID } from 'utils/Constants';
 import { User } from 'models/User';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;

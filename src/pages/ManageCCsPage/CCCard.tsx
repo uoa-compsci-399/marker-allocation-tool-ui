@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { MailIcon } from '@heroicons/react/outline';
 import KebabMenu from './KebabMenu';
 import { CoordinatorData } from 'models/CoordinatorData';

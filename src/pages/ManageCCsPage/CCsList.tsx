@@ -1,5 +1,3 @@
-import React from 'react';
-
 import CCCard from './CCCard';
 import { CoordinatorData } from 'models/CoordinatorData';
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CoordinatorData } from '../models/CoordinatorData';
+import { CoordinatorData } from 'models/CoordinatorData';
 
 interface ResponseBody {
   message: string;

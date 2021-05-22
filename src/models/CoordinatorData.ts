@@ -1,4 +1,4 @@
-import { NULL_USER_ID } from '../utils/Constants';
+import { NULL_USER_ID } from 'utils/Constants';
 
 export interface CoordinatorData {
   userID: string;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import CCsList from './CCsList';
 import ExtendedFAB from 'components/common-ui/ExtendedFAB';
 import useFetchCoordinators from 'hooks/useFetchCoordinators';
