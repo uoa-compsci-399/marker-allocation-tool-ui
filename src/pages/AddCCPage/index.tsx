@@ -1,7 +1,12 @@
 import { Form, Formik } from 'formik';
 import axios from 'axios';
 
-import { courseCoordinatorSchema, CCType, initialCCValues } from '../../models/FormDefination';
+import {
+  courseCoordinatorSchema,
+  CCTypes,
+  initialCCValues,
+  CCFormatted,
+} from '../../models/FormDefination';
 import AddCCFields from './AddCCFields';
 
 const AddCCPage = (): JSX.Element => {
@@ -12,11 +17,12 @@ const AddCCPage = (): JSX.Element => {
   //   const [upi, setUpi] = useState('');
   //   const [role, setRole] = useState('CC');
 
-  async function addNewCC(cc: CCType): Promise<void> {
+  async function addNewCC(cc: CCTypes): Promise<void> {
     // setState({ ...state, loading: true });
-    const data: CCType = cc;
+    const data: CCFormatted = cc;
     data.userID = data.UPI;
-    await axios.post('https://dev.classe.wumbo.co.nz/api/user/coordinator', data);
+    console.log(data);
+    await axios.post('http://dev.classe.wumbo.co.nz/api/user/coordinator', data);
   }
 
   return (
@@ -24,6 +30,7 @@ const AddCCPage = (): JSX.Element => {
       <Formik
         initialValues={initialCCValues}
         onSubmit={(values, actions): void => {
+          console.log(values);
           addNewCC(values).then(() => {
             actions.setSubmitting(false);
             actions.resetForm();

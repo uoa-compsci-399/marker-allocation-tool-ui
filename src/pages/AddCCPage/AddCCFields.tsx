@@ -4,10 +4,10 @@ import InputField from './InputField';
 const AddCCFields = (): JSX.Element => {
   return (
     <>
-      <InputField label="First Name" />
-      <InputField label="Last Name" />
-      <InputField label="Email" />
-      <InputField label="UPI" />
+      <InputField field="firstName" label="First Name" />
+      <InputField field="lastName" label="Last Name" />
+      <InputField field="email" label="Email" />
+      <InputField field="UPI" label="UPI" />
       <div className="text-center">
         <button
           type="submit"
