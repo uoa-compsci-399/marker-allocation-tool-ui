@@ -4,5 +4,5 @@ export interface CoordinatorData {
   lastName?: string;
   upi?: string;
   email?: string;
-  courses?: string[];
+  courses?: string;
 }

@@ -20,12 +20,7 @@ const CCsList = ({ ccData }: CCsListProps): JSX.Element => {
     />
   ));
 
-  return (
-    <div>
-      <div className="text-center my-12 font-bold text-4xl">Current Course Coordinators</div>
-      {renderCCs}
-    </div>
-  );
+  return <div>{renderCCs}</div>;
 };
 
 export default CCsList;

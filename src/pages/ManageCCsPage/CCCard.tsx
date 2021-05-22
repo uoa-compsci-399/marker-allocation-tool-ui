@@ -5,7 +5,7 @@ import KebabMenu from './KebabMenu';
 import { CoordinatorData } from 'models/CoordinatorData';
 
 const CCCard = ({ userID, firstName, lastName, email, courses }: CoordinatorData): JSX.Element => {
-  const assignedCourses = !courses ? 'No Courses' : courses.join(', ');
+  const assignedCourses = !courses ? 'No Courses' : courses;
   return (
     <div className="w-7/12 h-full overflow-auto bg-white mx-auto rounded shadow-md border-blue-300 border-2 my-5 py-4">
       <div className="ml-12 my-8">
