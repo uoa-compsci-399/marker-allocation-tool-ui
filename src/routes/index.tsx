@@ -1,4 +1,3 @@
-import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Form from 'pages/CourseApplyPage';
@@ -9,7 +8,7 @@ import DashBoardViewPage from 'pages/DashBoardPage';
 import ManageMarkersPage from 'pages/ManageMarkersPage';
 import NewCoursePage from 'pages/NewCoursePage';
 import ManageCCsPage from 'pages/ManageCCsPage';
-import AddCCPage from '../pages/AddCCPage';
+import AddCCPage from 'pages/AddCCPage';
 
 export default function Routes(): JSX.Element {
   return (

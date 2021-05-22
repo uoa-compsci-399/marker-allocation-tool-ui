@@ -1,6 +1,5 @@
-import React from 'react';
-
 import DashBoardCard from './DashBoardCard';
+import USER_DETAILS from 'utils/DummyUserCredentials';
 
 const imgURLs = {
   courses:
@@ -24,7 +23,11 @@ const DashBoardViewPage = (): JSX.Element => {
         <DashBoardCard
           path="/courses"
           title="Manage Courses"
-          body="Something"
+          body={
+            USER_DETAILS.identity === '1'
+              ? 'View, edit and create courses'
+              : 'View and edit your courses'
+          }
           imgURL={imgURLs.courses}
         />
         <DashBoardCard
@@ -39,12 +42,14 @@ const DashBoardViewPage = (): JSX.Element => {
           body="Something"
           imgURL={imgURLs.applcations}
         />
-        <DashBoardCard
-          path="/coursecoordinators"
-          title="Manage Course Coordinators"
-          body="Something"
-          imgURL={imgURLs.appTable}
-        />
+        {USER_DETAILS.identity === '1' ? (
+          <DashBoardCard
+            path="/coursecoordinators"
+            title="Manage Course Coordinators"
+            body="View, edit and add course coordinators"
+            imgURL={imgURLs.appTable}
+          />
+        ) : null}
       </div>
     </div>
   );

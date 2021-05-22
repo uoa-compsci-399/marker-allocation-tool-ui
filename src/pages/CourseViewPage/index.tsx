@@ -2,7 +2,8 @@ import CourseList from './CourseList';
 import ExtendedFAB from 'components/common-ui/ExtendedFAB';
 import useFetchCourses from 'hooks/useFetchCourses';
 import Spinner from 'components/common-ui/Spinner';
-import { NULL_COURSE_ID, USER_DETAILS } from 'utils/Constants';
+import { NULL_COURSE_ID } from 'utils/Constants';
+import USER_DETAILS from 'utils/DummyUserCredentials';
 
 const CourseViewPage = (): JSX.Element => {
   //TODO: Filter course list by userID
