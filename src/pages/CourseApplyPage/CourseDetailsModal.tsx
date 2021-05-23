@@ -6,7 +6,7 @@ import Spinner from 'components/common-ui/Spinner';
 import { CoursesDetails } from 'models/CoursesDetails';
 import CourseDetail from './CourseDetail';
 
-interface modal {
+interface Modal {
   isShown: boolean;
   toggle: MouseEventHandler;
 }
@@ -24,7 +24,7 @@ const CourseDetails = ({ courseDetails }: any): JSX.Element => {
   return <div>{renderCourseDetails}</div>;
 };
 
-const CourseDetailsModal = ({ isShown, toggle }: modal): React.ReactPortal | null => {
+const CourseDetailsModal = ({ isShown, toggle }: Modal): React.ReactPortal | null => {
   const [coursesDetails, loading] = useFetchCoursesDetails();
   return isShown
     ? createPortal(

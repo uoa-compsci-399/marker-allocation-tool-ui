@@ -9,7 +9,7 @@ function useFetchApplicant(id: string): [any, boolean] {
 
   useEffect(() => {
     async function fetchApplication(): Promise<any> {
-      const json = await axios.get(`${api_url}/api/application/${id}`);
+      const json = await axios.get(`${api_url}/api/application/${id}/nofiles`);
       return json.data.data;
     }
 

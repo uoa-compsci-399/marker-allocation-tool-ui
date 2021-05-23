@@ -10,6 +10,6 @@ export interface ApplicantDetails {
   location: string;
   availabilityConstraint: string;
   prefCourse: string;
-  academicRecord: string;
-  curriculumVitae: string;
+  academicRecord?: string;
+  curriculumVitae?: string;
 }
