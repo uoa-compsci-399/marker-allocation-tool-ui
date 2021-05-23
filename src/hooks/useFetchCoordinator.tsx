@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { NULL_COURSE_ID } from 'utils/Constants';
+import { NULL_USER_ID } from 'utils/Constants';
 import { CoordinatorData, initialValues } from 'models/CoordinatorData';
 
 interface ResponseBody {
@@ -21,7 +21,7 @@ function useFetchCoordinator(id: string): [ResponseBody, boolean] {
       setLoading(false);
     }
 
-    if (id !== NULL_COURSE_ID) {
+    if (id !== NULL_USER_ID) {
       fetchCoordinator();
     } else {
       setLoading(false);
