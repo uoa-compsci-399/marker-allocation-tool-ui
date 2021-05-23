@@ -8,6 +8,7 @@ export interface ApplicantDetails {
   experience: string;
   visaStatus: string;
   location: string;
+  availabilityConstraint: string;
   prefCourse: string;
   academicRecord: string;
   curriculumVitae: string;

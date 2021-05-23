@@ -17,9 +17,10 @@ function ApplicationDetails(data: any): ApplicantDetails {
     areaOfStudy: `${data.areaOfStudy}`,
     currentYear: `${data.year}`,
     availableSems: `${data.availability}`,
-    experience: 'N/A',
+    experience: `${data.relevantExperience}`,
     visaStatus: `${data.workEligible === 1 ? 'Valid' : 'Invalid'}`,
     location: `${data.inAuckland === 1 ? 'In Auckland' : 'Remote'}`,
+    availabilityConstraint: `${data.availabilityConstraint}`,
     prefCourse: 'N/A',
     academicRecord: ``,
     curriculumVitae: ``,
@@ -42,6 +43,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
     visaStatus,
     location,
     prefCourse,
+    availabilityConstraint,
     academicRecord,
     curriculumVitae,
   } = ApplicationDetails(data);
@@ -64,6 +66,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
           <DetailSection title="Experience" value={experience} />
           <DetailSection title="Visa Status" value={visaStatus} />
           <DetailSection title="Location" value={location} />
+          <DetailSection title="Availability Constraints" value={availabilityConstraint} />
           <DetailSection title="Preferred Course" value={prefCourse} />
           <div className="mx-32 mb-4">
             <div className="mb-1 ml-4 text-2xl font-semibold">Files</div>
