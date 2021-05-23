@@ -11,9 +11,12 @@ import {
 import Spinner from 'components/common-ui/Spinner';
 
 import useFetchCourseNames from 'hooks/useFetchCourseNames';
+import CourseDetailsModal from './CourseDetailsModal';
+import { useModal } from 'hooks/useModal';
 
 const FormFields = (): JSX.Element => {
   const [courses, loading] = useFetchCourseNames();
+  const { isShown, toggle } = useModal();
 
   return (
     <div className="space-y-7">
@@ -30,11 +33,25 @@ const FormFields = (): JSX.Element => {
               <TextBox field={'upi'} label={'UPI'} />
             </div>
           </div>
-          <MultiSelect
-            field={'selectedCourses'}
-            options={courses}
-            label={'Courses you are applying for'}
-          />
+          <div className="space-y-3">
+            <MultiSelect
+              field={'selectedCourses'}
+              options={courses}
+              label={'Courses you are applying for'}
+            />
+            <div className="grid min-w-full grid-cols-2 row-span-1 gap-x-7">
+              <div />
+              <div className="justify-self-end">
+                <button
+                  className="font-semibold tracking-wide text-indigo-700 cursor-pointer focus:outline-none"
+                  type="button"
+                  onClick={toggle}
+                >
+                  More Course Details
+                </button>
+              </div>
+            </div>
+          </div>
           <Dropdown
             field={'enrolmentStatus'}
             options={['Bachelors', 'Honours', 'Postgrad Diploma', 'Masters', 'PhD']}
@@ -84,6 +101,7 @@ const FormFields = (): JSX.Element => {
           </button>
         </>
       )}
+      <CourseDetailsModal isShown={isShown} toggle={toggle} />
     </div>
   );
 };
