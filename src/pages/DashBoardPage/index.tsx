@@ -1,7 +1,5 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
-
 import DashBoardCard from './DashBoardCard';
+import USER_DETAILS from 'utils/DummyUserCredentials';
 
 const imgURLs = {
   courses:
@@ -18,18 +16,22 @@ const DashBoardViewPage = (): JSX.Element => {
   return (
     <div>
       <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
-        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">DashBoard</p>
+        <p className="font-semibold text-2xl text-gray-600 tracking-tight ml-4 my-4">Dashboard</p>
       </div>
 
       <div className="mt-8 grid lg:grid-cols-4">
         <DashBoardCard
           path="/courses"
           title="Manage Courses"
-          body="Something"
+          body={
+            USER_DETAILS.identity === '1'
+              ? 'View, edit and create courses'
+              : 'View and edit your courses'
+          }
           imgURL={imgURLs.courses}
         />
         <DashBoardCard
-          path="/apply"
+          path="/manage-markers"
           title="Manage Markers"
           body="Something"
           imgURL={imgURLs.apply}
@@ -40,12 +42,14 @@ const DashBoardViewPage = (): JSX.Element => {
           body="Something"
           imgURL={imgURLs.applcations}
         />
-        <DashBoardCard
-          path="/apptable"
-          title="Manage Course Coordinators"
-          body="Something"
-          imgURL={imgURLs.appTable}
-        />
+        {USER_DETAILS.identity === '1' ? (
+          <DashBoardCard
+            path="/coursecoordinators"
+            title="Manage Course Coordinators"
+            body="View, edit and add course coordinators"
+            imgURL={imgURLs.appTable}
+          />
+        ) : null}
       </div>
     </div>
   );

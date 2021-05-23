@@ -5,10 +5,10 @@ const Header = (): JSX.Element => {
   return (
     <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between p-6 bg-blue-600 shadow-lg">
       <div className="flex items-center mr-6 text-white flex-no-shrink">
-        <a href="/">
+        <a href="/dashboard">
           <img src={logo} alt="Classe Logo" className="max-h-16" />
         </a>
-        <a href="/" className="m-4 text-3xl font-semibold tracking-tight">
+        <a href="/dashboard" className="m-4 text-3xl font-semibold tracking-tight">
           Classe
         </a>
       </div>
