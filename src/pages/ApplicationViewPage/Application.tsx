@@ -3,8 +3,7 @@ import { FormApplication } from 'models/FormApplication';
 
 const Application = ({
   courseID,
-  title,
-  date,
+  courseName,
   applicantName,
   applicationID,
 }: FormApplication): JSX.Element => {
@@ -24,10 +23,7 @@ const Application = ({
       <div className="justify-between my-4 md:flex">
         <div className="my-4 text-lg text-left ml-28">{applicationID}</div>
         <div>
-          <div className="mx-12 my-4 text-lg font-semibold">
-            Date Submitted: <span className="font-medium">{date}</span>
-          </div>
-          <div className="mx-12 text-right text-gray-600 md:text-sm">{title}</div>
+          <div className="mx-12 text-right text-gray-600 md:text-sm">{`${courseName}`}</div>
         </div>
       </div>
     </div>

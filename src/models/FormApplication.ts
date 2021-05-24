@@ -1,7 +1,6 @@
 export interface FormApplication {
   courseID: string;
-  title: string;
-  date: string;
+  courseName?: string;
   applicantName: string;
   applicationID: string;
 }

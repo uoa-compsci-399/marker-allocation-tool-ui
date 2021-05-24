@@ -4,35 +4,9 @@ import Application from './Application';
 import { FormApplication, FormApplication as ApplicationType } from 'models/FormApplication';
 import { DecodeBitField } from 'utils/BitFieldHelper';
 import useFetchAvailableCount from 'hooks/useFetchAvailableCount';
+import useFetchSummaries from 'hooks/useFetchSummaries';
 
 const api_url = process.env.REACT_APP_API_DOMAIN;
-
-//TODO: Send GET request to get a list applications for that course
-const applicantDetails = (id: string, name: string): FormApplication[] => {
-  return [
-    {
-      courseID: id,
-      title: `${name}  Application #1`,
-      date: '11/04/21',
-      applicantName: 'Songyan Teng',
-      applicationID: '1',
-    },
-    {
-      courseID: id,
-      title: `${name}  Application #2`,
-      date: '08/04/21',
-      applicantName: 'Isaac Kaabel',
-      applicationID: '2',
-    },
-    {
-      courseID: id,
-      title: `${name}  Application #3`,
-      date: '05/04/21',
-      applicantName: 'Darren Chen',
-      applicationID: '3',
-    },
-  ];
-};
 
 const renderMarkers = (): JSX.Element => {
   return (
@@ -47,14 +21,18 @@ const renderMarkers = (): JSX.Element => {
   );
 };
 
-const renderApplications = (courseId: string, courseName: string): JSX.Element[] =>
-  applicantDetails(courseId, courseName).map((application: ApplicationType) => {
-    const { title, date, applicantName, applicationID } = application;
+const renderApplications = (
+  courseId: string,
+  courseName: string,
+  applications: FormApplication[]
+): JSX.Element[] =>
+  applications.map((application: ApplicationType) => {
+    const { applicantName, applicationID } = application;
+
     return (
       <Application
         courseID={courseId}
-        title={title}
-        date={date}
+        courseName={courseName}
         applicantName={applicantName}
         applicationID={applicationID}
       />
@@ -74,6 +52,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
   } = location.state;
 
   const [count] = useFetchAvailableCount(`${api_url}/api/course/${courseID}/application/open`);
+  const [applications] = useFetchSummaries(courseID);
 
   return (
     <div>
@@ -104,15 +83,21 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
         </div>
       </div>
       <div className="my-6 text-2xl font-semibold">
-        <div className="w-7/12 m-auto mt-10 mb-4 text-right">
-          <label className="mx-4 text-lg font-semibold">Sort by:</label>
-          <select className="text-lg">
-            <option>Latest</option>
-            <option>GPA</option>
-            <option>Location</option>
-          </select>
-        </div>
-        <div>{renderApplications(courseID, courseName)}</div>
+        {applications.data.length === 0 ? (
+          <div className="text-center my-12 font-bold text-2xl">No Applications Yet</div>
+        ) : (
+          <div>
+            <div className="w-7/12 m-auto mt-10 mb-4 text-right">
+              <label className="mx-4 text-lg font-semibold">Sort by:</label>
+              <select className="text-lg">
+                <option>Latest</option>
+                <option>GPA</option>
+                <option>Location</option>
+              </select>
+            </div>
+            <div>{renderApplications(courseID, courseName, applications.data)}</div>
+          </div>
+        )}
       </div>
     </div>
   );
