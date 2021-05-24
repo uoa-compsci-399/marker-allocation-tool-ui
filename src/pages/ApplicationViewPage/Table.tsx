@@ -46,7 +46,7 @@ const Table = ({ statusFilter, sortFilter, courseID }: TableProps): JSX.Element 
     fetchUrl();
     setIsFetching(false);
   }, [fetchTrigger, courseID, statusFilter, sortFilter]);
-  //I want to trigger refetch if any of these parameters change
+  // Triggers if these params change
 
   return (
     <div className="flex flex-col w-7/12 m-auto">
