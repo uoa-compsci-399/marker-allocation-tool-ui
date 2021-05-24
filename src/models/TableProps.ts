@@ -1,3 +1,5 @@
+type Modify<T, R> = Omit<T, keyof R> & R;
+
 export interface Applicant {
   courseID: string;
   name: string;
@@ -12,6 +14,15 @@ export interface TableProps {
   sortFilter: string;
   courseID: string;
 }
+
+export type TableRowProps = Modify<
+  TableProps,
+  {
+    person: Applicant;
+    courseID: string;
+    setIsFetching: any;
+  }
+>;
 
 export type StatusFilter = 'Approved' | 'Pending' | 'Denied' | '';
 
