@@ -1,6 +1,5 @@
 import { RouteComponentProps } from 'react-router';
 
-import ButtonGroup from './ButtonGroup';
 import DetailSection from './DetailSection';
 import Spinner from 'components/common-ui/Spinner';
 import DownloadButton from 'components/common-ui/DownloadButton';
@@ -81,7 +80,6 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
               />
             </div>
           </div>
-          <ButtonGroup />
         </>
       )}
     </div>
