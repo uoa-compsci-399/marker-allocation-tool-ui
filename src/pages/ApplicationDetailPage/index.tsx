@@ -29,7 +29,6 @@ function ApplicationDetails(data: any): ApplicantDetails {
 const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
   const { match } = props; //allows us to get the id of the route
   const [data, loading] = useFetchApplicant(match.params.id);
-  console.log(data);
 
   const {
     name,
