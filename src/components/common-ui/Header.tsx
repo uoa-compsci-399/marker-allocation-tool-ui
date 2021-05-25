@@ -2,13 +2,10 @@ import { Link } from 'react-router-dom';
 import logo from './assets/classe-logo.png';
 import LoginButton from './HeaderLoginButton';
 import Loggedin from './HeaderLoggedin';
-
 import { useUserContext } from 'context/UserContext';
 
 const Header = (): JSX.Element => {
-  const { userData, setUserData } = useUserContext();
-  // console.log('From Header:', userData);
-  setUserData(userData);
+  const { userData } = useUserContext();
 
   // To make it fixed at the top: sticky top-0 z-50
   return (
