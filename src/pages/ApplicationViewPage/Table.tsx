@@ -30,7 +30,12 @@ function formatRows(data: any): Applicant[] {
   return Applications;
 }
 
-const Table = ({ statusFilter, sortFilter, courseID, setTriggerCount}: TableProps): JSX.Element => {
+const Table = ({
+  statusFilter,
+  sortFilter,
+  courseID,
+  setTriggerCount,
+}: TableProps): JSX.Element => {
   const [fetchTrigger, setIsFetching] = useState(true);
   const [rows, setData] = useState<string[]>([]);
 
