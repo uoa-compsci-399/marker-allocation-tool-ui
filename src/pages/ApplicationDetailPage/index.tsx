@@ -1,13 +1,14 @@
 import { RouteComponentProps } from 'react-router';
 
-import ButtonGroup from './ButtonGroup';
 import DetailSection from './DetailSection';
 import Spinner from 'components/common-ui/Spinner';
 import DownloadButton from 'components/common-ui/DownloadButton';
 import { ApplicantDetails } from 'models/ApplicantDetails';
 
 import useFetchApplicant from 'hooks/useFetchApplicant';
-import { DecodeBitField } from '../../utils/BitFieldHelper';
+import { DecodeBitField } from 'utils/BitFieldHelper';
+
+const api_url = process.env.REACT_APP_API_DOMAIN;
 
 function ApplicationDetails(data: any): ApplicantDetails {
   return {
@@ -17,19 +18,17 @@ function ApplicationDetails(data: any): ApplicantDetails {
     areaOfStudy: `${data.areaOfStudy}`,
     currentYear: `${data.year}`,
     availableSems: `${data.availability}`,
-    experience: 'N/A',
+    experience: `${data.relevantExperience}`,
     visaStatus: `${data.workEligible === 1 ? 'Valid' : 'Invalid'}`,
     location: `${data.inAuckland === 1 ? 'In Auckland' : 'Remote'}`,
+    availabilityConstraint: `${data.availabilityConstraint}`,
     prefCourse: 'N/A',
-    academicRecord: ``,
-    curriculumVitae: ``,
   };
 }
 
 const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Element => {
   const { match } = props; //allows us to get the id of the route
   const [data, loading] = useFetchApplicant(match.params.id);
-  console.log(data);
 
   const {
     name,
@@ -42,8 +41,7 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
     visaStatus,
     location,
     prefCourse,
-    academicRecord,
-    curriculumVitae,
+    availabilityConstraint,
   } = ApplicationDetails(data);
 
   return (
@@ -64,16 +62,24 @@ const ApplicationDetail = (props: RouteComponentProps<{ id: string }>): JSX.Elem
           <DetailSection title="Experience" value={experience} />
           <DetailSection title="Visa Status" value={visaStatus} />
           <DetailSection title="Location" value={location} />
+          <DetailSection title="Availability Constraints" value={availabilityConstraint} />
           <DetailSection title="Preferred Course" value={prefCourse} />
           <div className="mx-32 mb-4">
             <div className="mb-1 ml-4 text-2xl font-semibold">Files</div>
             <div className="mb-2 border-t-2"></div>
             <div className="flex mb-12 ml-4 text-xl">
-              <DownloadButton title="Academic Record" downloadLink={academicRecord} />
-              <DownloadButton title="Curriculum Vitae" downloadLink={curriculumVitae} />
+              <DownloadButton
+                title="Academic Record"
+                name={name}
+                downloadLink={`${api_url}/api/application/${match.params.id}/academicrecord`}
+              />
+              <DownloadButton
+                title="Curriculum Vitae"
+                name={name}
+                downloadLink={`${api_url}/api/application/${match.params.id}/curriculumvitae`}
+              />
             </div>
           </div>
-          <ButtonGroup />
         </>
       )}
     </div>

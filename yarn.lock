@@ -1580,6 +1580,11 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@popperjs/core@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
+  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
+
 "@rest-hooks/core@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@rest-hooks/core/-/core-1.1.2.tgz#0ea95b704986bfbb12a90db1529fea3c6ff1f26d"
@@ -1603,13 +1608,6 @@
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/@rest-hooks/normalizr/-/normalizr-6.1.1.tgz#c667e5e1323e641dd635c028f505678c52d4e42e"
   integrity sha512-SbX9/8sGfwoAK0tjr7EQmfuWiPT0hZjqChzp5+xxYj5MEqvtghuz2Zu6fEZGnxLkHeH4UUBWf29gkF06IPKLtg==
-  dependencies:
-    "@babel/runtime" "^7.7.2"
-
-"@rest-hooks/rest@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@rest-hooks/rest/-/rest-2.1.1.tgz#fe2040f7e6d70ae1d962db7aa236ca95bdf76a31"
-  integrity sha512-TAGa+VxT09fjBA7nm5kR2P+PzUk4vXvqrW23IAuUnBqlxrp0sgiTI7A6EdqECBX9SVkPH6MErM1LRI+hYb3o4w==
   dependencies:
     "@babel/runtime" "^7.7.2"
 

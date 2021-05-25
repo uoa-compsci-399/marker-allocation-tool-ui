@@ -9,6 +9,7 @@ export const applicationSchema = yup.object({
   lastName: yup.string().defined('Required field'),
   studentId: yup.string().matches(/^\d+$/, 'Input must be a number').defined('Required field'),
   email: yup.string().email('Input must be a valid email').defined('Required field'),
+  upi: yup.string().defined('Required field'),
   selectedCourses: yup
     .array()
     .of(yup.string())
@@ -20,6 +21,8 @@ export const applicationSchema = yup.object({
   availability: yup.array().of(yup.string()).defined().min(1, 'You must select a available period'),
   workEligible: yup.string().defined('Required field'),
   inAuckland: yup.string().defined('Required field'),
+  availabilityConstraint: yup.string(),
+  relevantExperience: yup.string(),
   academicRecord: yup
     .mixed()
     .defined('Upload academic record')
@@ -52,6 +55,7 @@ export const initialValues: FormTypes = {
   lastName: '',
   studentId: '',
   email: '',
+  upi: '',
   selectedCourses: [],
   areaOfStudy: '',
   dateOfBirth: '',
@@ -59,6 +63,8 @@ export const initialValues: FormTypes = {
   availability: [],
   workEligible: '',
   inAuckland: '',
+  availabilityConstraint: '',
+  relevantExperience: '',
   academicRecord: undefined,
   curriculumVitae: undefined,
   declaration: '',

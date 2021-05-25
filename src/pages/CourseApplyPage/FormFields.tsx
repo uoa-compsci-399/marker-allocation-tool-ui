@@ -11,9 +11,12 @@ import {
 import Spinner from 'components/common-ui/Spinner';
 
 import useFetchCourseNames from 'hooks/useFetchCourseNames';
+import CourseDetailsModal from './CourseDetailsModal';
+import { useModal } from 'hooks/useModal';
 
 const FormFields = (): JSX.Element => {
   const [courses, loading] = useFetchCourseNames();
+  const { isShown, toggle } = useModal();
 
   return (
     <div className="space-y-7">
@@ -24,23 +27,40 @@ const FormFields = (): JSX.Element => {
           <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
             <TextBox field={'firstName'} label={'First Name'} />
             <TextBox field={'lastName'} label={'Last Name'} />
-            <TextBox field={'studentId'} label={'Student ID'} />
             <TextBox field={'email'} label={'University of Auckland Email'} />
+            <div className="grid min-w-full grid-cols-2 row-span-1 gap-7">
+              <TextBox field={'studentId'} label={'Student ID'} />
+              <TextBox field={'upi'} label={'UPI'} />
+            </div>
           </div>
-          <MultiSelect
-            field={'selectedCourses'}
-            options={courses}
-            label={'Course you are applying for'}
-          />
+          <div className="space-y-3">
+            <MultiSelect
+              field={'selectedCourses'}
+              options={courses}
+              label={'Courses you are applying for'}
+            />
+            <div className="grid min-w-full grid-cols-2 row-span-1 gap-x-7">
+              <div />
+              <div className="justify-self-end">
+                <button
+                  className="font-semibold tracking-wide text-indigo-700 cursor-pointer focus:outline-none"
+                  type="button"
+                  onClick={toggle}
+                >
+                  More Course Details
+                </button>
+              </div>
+            </div>
+          </div>
           <Dropdown
             field={'enrolmentStatus'}
-            options={['enrolled', 'waiting', 'unenrolled']}
-            label={'University enrolment status'}
+            options={['Bachelors', 'Honours', 'Postgrad Diploma', 'Masters', 'PhD']}
+            label={'Current University enrolment status'}
           />
           <Dropdown
             field={'areaOfStudy'}
-            options={['science', 'engineering', 'need to fetch from api']}
-            label={'Current area of study'}
+            options={['Computer Science', 'Other']}
+            label={'What Department of the University is your current area of study'}
           />
           <CheckBoxes
             field={'availability'}
@@ -52,7 +72,18 @@ const FormFields = (): JSX.Element => {
             field={'workEligible'}
             label={'Are you a NZ citizen or permanent resident?'}
           />
-          <RadioBoxes field={'inAuckland'} label={'Are you located in Auckland?'} />
+          <RadioBoxes
+            field={'inAuckland'}
+            label={'Are you able to be physically present if required?'}
+          />
+          <TextBox
+            field={'availabilityConstraint'}
+            label={'Please state any constraints to your availability'}
+          />
+          <TextBox
+            field={'relevantExperience'}
+            label={'Describe briefly any relevant experience you may have for your chosen courses'}
+          />
           <Upload field={'academicRecord'} label={'Academic Record'} />
           <Upload field={'curriculumVitae'} label={'Curriculum Vitae'} />
           <ConfirmBox
@@ -70,6 +101,7 @@ const FormFields = (): JSX.Element => {
           </button>
         </>
       )}
+      <CourseDetailsModal isShown={isShown} toggle={toggle} />
     </div>
   );
 };

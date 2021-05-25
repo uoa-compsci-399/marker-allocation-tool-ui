@@ -28,7 +28,7 @@ const markers = [
 ];
 
 const ManageCoursesPage = (): JSX.Element => {
-  const [isShown, toggle] = useModal();
+  const { isShown, toggle } = useModal();
 
   const modal = <React.Fragment>Modal!</React.Fragment>;
 
