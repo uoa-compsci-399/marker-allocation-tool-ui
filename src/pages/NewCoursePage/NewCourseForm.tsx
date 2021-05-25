@@ -58,8 +58,6 @@ const ApplyForm = (state: CourseState): JSX.Element => {
       data.courseID = state.courseId;
       await axios.post(`${api_url}/api/course/edit`, data);
     }
-
-    console.log(data);
   }
 
   //TODO: validate request for course using userID
