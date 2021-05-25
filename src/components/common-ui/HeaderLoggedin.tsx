@@ -1,11 +1,18 @@
-import React from 'react';
+import { UserInfo } from 'models/Auth';
+import LogoutButton from './HeaderLogoutButton';
 
 interface HeaderLoggedinProps {
-  name: string;
+  userInfo: UserInfo;
 }
 
-const HeaderLoggedin = ({ name }: HeaderLoggedinProps): JSX.Element => {
-  return <div className="text-white text-lg">Hi, {name}!</div>;
+const HeaderLoggedin = ({ userInfo }: HeaderLoggedinProps): JSX.Element => {
+  const { firstName, role } = userInfo;
+  return (
+    <div className="text-white text-lg mr-12">
+      Hi, {firstName}! You are a: {role}
+      <LogoutButton />
+    </div>
+  );
 };
 
 export default HeaderLoggedin;

@@ -1,9 +1,4 @@
-export interface Auth {
-  authenticated: boolean;
-  user: UserInfo | undefined;
-}
-
-interface UserInfo {
+export interface UserInfo {
   userID: number;
   firstName: string;
   lastName: string;

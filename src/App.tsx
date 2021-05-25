@@ -5,12 +5,11 @@ import Routes from './routes';
 import { UserContext } from 'context/UserContext';
 
 function App(): JSX.Element {
-  const authenticated = false;
   const [userData, setUserData] = useState(undefined);
 
   return (
     <Router>
-      <UserContext.Provider value={{ authenticated, userData, setUserData }}>
+      <UserContext.Provider value={{ userData, setUserData }}>
         <Header />
         <Routes />
       </UserContext.Provider>
