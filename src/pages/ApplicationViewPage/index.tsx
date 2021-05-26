@@ -21,7 +21,6 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
 
   const [courses] = useFetchCourses();
   const [course] = useFetchCourse(courseID);
-  console.log(course)
 
   const [count, setCount] = useState<string>('');
   const [triggerCount, setTriggerCount] = useState<boolean>(true);
@@ -92,28 +91,32 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
             <Button
               statusFilter={statusFilter}
               requiredFilter={'Pending'}
-              colour={'blue'}
+              colour={'bg-blue-300'}
+              colorHighlighted={'bg-blue-600'}
               setStatusFilter={setStatusFilter}
               label={'Pending'}
             />
             <Button
               statusFilter={statusFilter}
               requiredFilter={'Approved'}
-              colour={'green'}
+              colour={'bg-green-300'}
+              colorHighlighted={'bg-green-600'}
               setStatusFilter={setStatusFilter}
               label={'Approved'}
             />
             <Button
               statusFilter={statusFilter}
               requiredFilter={'Denied'}
-              colour={'red'}
+              colour={'bg-red-300'}
+              colorHighlighted={'bg-red-600'}
               setStatusFilter={setStatusFilter}
               label={'Denied'}
             />
             <Button
               statusFilter={statusFilter}
               requiredFilter={''}
-              colour={'gray'}
+              colour={'bg-gray-300'}
+              colorHighlighted={'bg-gray-600'}
               setStatusFilter={setStatusFilter}
               label={'All'}
             />
