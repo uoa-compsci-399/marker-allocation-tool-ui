@@ -21,7 +21,7 @@ const CourseDetail = (props: RouteComponentProps): JSX.Element => {
 
   const [courses] = useFetchCourses();
   const [course] = useFetchCourse(courseID);
-  console.log(course)
+  console.log(course);
 
   const [count, setCount] = useState<string>('');
   const [triggerCount, setTriggerCount] = useState<boolean>(true);
