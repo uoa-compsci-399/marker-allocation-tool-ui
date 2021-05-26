@@ -1,18 +1,62 @@
 import DashBoardCard from './DashBoardCard';
-import USER_DETAILS from 'utils/DummyUserCredentials';
+import { useUserContext } from 'context/UserContext';
 
-const imgURLs = {
-  courses:
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMOdyxB8r2jBbJ0QdBrUAMAA-J1NT2NHckcg&usqp=CAU',
-  apply:
-    'https://uploads-ssl.webflow.com/5a9423a3f702750001758d4f/5c473d17f83b6b98c0a3d449_Canary%20Yellow.png',
-  applcations:
-    'https://images.saymedia-content.com/.image/t_share/MTc1MDA5Njg3NTA1Njc2MDc1/shades-green-greensleeves.jpg',
-  appTable:
-    'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2017%2F05%2Fblue0517.jpg&q=85',
-};
+const cardsData = [
+  {
+    title: 'Manage Courses',
+    path: '/courses',
+    useAnchor: false,
+    imageSrc: '/images/dashboard/courses.png',
+    body: {
+      MarkerCoordinator: 'View, edit, and create courses',
+      CourseCoordinator: 'View and edit your courses',
+    } as Record<string, string>,
+  },
+  {
+    title: 'Manage Markers',
+    path: '/manage-markers',
+    useAnchor: false,
+    imageSrc: '/images/dashboard/manage-markers.png',
+    body: {
+      MarkerCoordinator: 'View and edit markers',
+      CourseCoordinator: 'View and edit your courses',
+    } as Record<string, string>,
+  },
+  {
+    title: 'View Applications',
+    path: '/saved-applications',
+    useAnchor: false,
+    imageSrc: '/images/dashboard/applications.png',
+    body: {
+      MarkerCoordinator: 'View applications',
+      CourseCoordinator: 'View applications',
+      Marker: 'View your applications',
+    } as Record<string, string>,
+  },
+  {
+    title: 'Manage Course Coordinators',
+    path: '/coursecoordinators',
+    useAnchor: false,
+    imageSrc: '/images/dashboard/coursecoordinators.png',
+    body: {
+      MarkerCoordinator: 'View, edit and add course coordinators',
+    } as Record<string, string>,
+  },
+  {
+    title: 'Log in',
+    path: `${process.env.REACT_APP_API_DOMAIN}/api/authn/login`,
+    useAnchor: true,
+    imageSrc: '/images/dashboard/login.png',
+    body: {
+      None: '',
+    },
+  },
+];
 
 const DashBoardViewPage = (): JSX.Element => {
+  const { userData } = useUserContext();
+  const currentRole = userData ? userData.role : 'None';
+
   return (
     <div>
       <div className="flex flex-wrap shadow-md bg-blue-100 mb-10 p-5">
@@ -20,36 +64,19 @@ const DashBoardViewPage = (): JSX.Element => {
       </div>
 
       <div className="mt-8 grid lg:grid-cols-4">
-        <DashBoardCard
-          path="/courses"
-          title="Manage Courses"
-          body={
-            USER_DETAILS.identity === '1'
-              ? 'View, edit and create courses'
-              : 'View and edit your courses'
-          }
-          imgURL={imgURLs.courses}
-        />
-        <DashBoardCard
-          path="/manage-markers"
-          title="Manage Markers"
-          body="Something"
-          imgURL={imgURLs.apply}
-        />
-        <DashBoardCard
-          path="/saved-applications"
-          title="View Applications"
-          body="Something"
-          imgURL={imgURLs.applcations}
-        />
-        {USER_DETAILS.identity === '1' ? (
-          <DashBoardCard
-            path="/coursecoordinators"
-            title="Manage Course Coordinators"
-            body="View, edit and add course coordinators"
-            imgURL={imgURLs.appTable}
-          />
-        ) : null}
+        {cardsData.map((card) => {
+          if (!(currentRole in card.body)) return null;
+          return (
+            <DashBoardCard
+              key={card.path}
+              title={card.title}
+              path={card.path}
+              body={card.body[currentRole]}
+              imgURL={card.imageSrc}
+              useAnchor={card.useAnchor || false}
+            />
+          );
+        })}
       </div>
     </div>
   );
