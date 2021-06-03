@@ -77,3 +77,4 @@ https://dev.classe.wumbo.co.nz/
 - Redesign aspects of the user interface to be more scalable 
 - Move to a commercialised database structure for more efficient backend hosting
 - Incorporate the use of an algorithm to automate marker allocation
+- Enable email notifications to be sent to markers once their application has been reviewed
