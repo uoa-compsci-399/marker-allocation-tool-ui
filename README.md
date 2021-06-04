@@ -1,7 +1,7 @@
 # Classe: A Web-Based Tool For Organising Markers
 
 One of the most important aspects of any student's university life is undoubtedly their grades; therefore, timeliness in the delivery of course grades plays a critical part in creating a positive university experience. Over the last few years, the University of Auckland has seen a large increase in its student body, meaning that more markers are being sought after to match the growing workload. Currently, the marker allocation process is performed manually and is time-consuming. Classe aims to simplify marker allocation and create a more efficient and streamlined process. In doing so, we hope to enhance the university experience for both students and teaching staff alike.
-
+ 
 ## Technologies Used
 
 - Frontend
