@@ -1,10 +1,31 @@
-# Marker-allocation-tool-ui
+# Classe: A Web-Based Tool For Organising Markers
 
-Trello board: https://trello.com/b/mAYp4wAx/classe-a-web-based-tool-for-organising-markers
+One of the most important aspects of any student's university life is undoubtedly their grades; therefore, timeliness in the delivery of course grades plays a critical part in creating a positive university experience. Over the last few years, the University of Auckland has seen a large increase in its student body, meaning that more markers are being sought after to match the growing workload. Currently, the marker allocation process is performed manually and is time-consuming. Classe aims to simplify marker allocation and create a more efficient and streamlined process. In doing so, we hope to enhance the university experience for both students and teaching staff alike.
+ 
+## Technologies Used
 
-# Getting started
+- Frontend
+  - Node.js v14.14.37
+  - React.js v17.0.0
+  - Tailwind CSS v1.7.0
+  - TypeScript v4.1.2
 
-1. Install Node js.
+- Backend
+  - Express.js v4.17.1  
+  - SAML2-js v3.0.1
+  - SQLite3 v5.0.2
+  - TypeScript v4.2.3
+
+- Pre-Commit Hooks
+  - Eslint v7.23.0 
+  - Husky v6.0.0
+  - Prettier v2.2.1
+
+## Installation and Setup
+
+### Frontend
+
+1. Install Node.js.
 
 2. Then to install Yarn: `npm install -g yarn`
 
@@ -12,81 +33,48 @@ Trello board: https://trello.com/b/mAYp4wAx/classe-a-web-based-tool-for-organisi
 
 4. From project root run `yarn install`
 
-5. Then run `yarn dev` to open application in localhost 
+5. Run `yarn dev`.
 
-## Tools
+5. Open in http://localhost:3000/
 
-Craco - Helps extend create-react-app for use with tailwind
+### Backend
 
-Volta - makes sure you have the right node.js and yarn version set
+1. After cloning the repository, run `yarn install`.
 
-Create-react-app - [Create React App](https://github.com/facebook/create-react-app) [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Then to install Yarn: `npm install -g yarn`
 
-## Useful Vscode extensions
+3. Install https://volta.sh/ for automatic node & yarn version management
 
-Tailwind CSS IntelliSense - https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+4. From project root run `yarn install`
 
-Refactor CSS - https://marketplace.visualstudio.com/items?itemName=urbantrout.refactor-css
+5. Run `yarn dev`.
 
-## Other resources
+6. Open in http://localhost:8000/
 
-https://github.com/typescript-cheatsheets/react
+## Usage Examples
 
-https://tailwindcomponents.com/cheatsheet/
+- Marker Coordinator 
+  - Create courses
+  - Create course coordinator accounts
+  - Assign course coordinators to courses
+  - View list of applicants and their applications 
+  - Accept or reject applicants
+- Course Coordinator
+  - View applicants for courses that they manage
+  - Accept or reject applicants for their courses
+- Marker
+  - Access information about each course
+  - Apply for marker positions
+  - See the status of their application
+  - Receive an email notification when a decision about their application has been made
 
-# Contributing 
+## Website URL
 
-To start working on a feature either:
+https://dev.classe.wumbo.co.nz/
 
-- work on a existing branch (not develop or main)
-- or checkout from develop and name the branch according the branch name specified in the trello item e.g. MAT-2
+## Future Plans
 
-Do not merge develop branch into main until we are ready to do a deployment and have done testing.
-
-# Backend Endpoints routes
-
-## GET
-
-Get a list of users 
-  - [/users ](url)
-
-Get a single user using id 
-  - [/user/:userID ](url)
-
-Get a list of applications
-  - [/applications ](url)
- 
-Get a list of courses
-  - [/courses](url)
-    
-Get a list of available/open courses
-  - [/courses/available](url)
-
-Get a list of applications for a course
-  - [/course/:courseID/applications](url)
- 
-Get a list of allocated markers for a course
-  - [/course/:courseID/markers  ](url)
-
-Get a count of the current number of applications for a course
-  - [/course/:courseID/application/total ](url)
-
-Get a count of the remaining number of marker spots open for a course
-  - [/course/:courseID/application/open ](url)
-
-Get a single course row by courseID
-  - [/application/:applicationID](url)
-
-Get a list of course coordinators
-  - [/coursecoordinators ](url) 
-
-## POST
-
-Post insert a user
-  - [/user/](url)
- 
-Post insert a application
-  - [/application/](url)
-
-Post insert a course
-  - [/course/ ](url)
+- Redesign aspects of the user interface to be more scalable 
+- Move to a commercialised database structure for more efficient backend hosting
+- Incorporate the use of an algorithm to automate marker allocation
+- Enable email notifications to be sent to markers once their application has been reviewed
